@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://c18wx5uubmoo0"]
+
+[ext_resource type="PackedScene" uid="uid://bhvt115fo6xky" path="res://playercharacter/player.tscn" id="1_wjl7u"]
+[ext_resource type="PackedScene" uid="uid://b03jooohd8jj8" path="res://monsters/monster.tscn" id="2_7uceq"]
+[ext_resource type="PackedScene" uid="uid://4hpxmhud8ymq" path="res://environment/nuclear_reactor.tscn" id="3_x2wa3"]
+
+[node name="Environment" type="Node3D" unique_id=760955663]
+
+[node name="Player" parent="." unique_id=1667058855 instance=ExtResource("1_wjl7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
+
+[node name="Monster" parent="." unique_id=145722982 instance=ExtResource("2_7uceq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1)
+
+[node name="NuclearReactor" parent="." unique_id=1394473579 instance=ExtResource("3_x2wa3")]
