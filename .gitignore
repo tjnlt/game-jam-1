@@ -1,3 +1,7 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+
+# Temp copies Godot makes of locked native libraries on Windows
+# (~foo.dll and ~foo.dll~RF1234.TMP)
+~*.dll*
