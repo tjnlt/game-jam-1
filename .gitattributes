@@ -1,2 +1,7 @@
 # Normalize EOL for all files that Git considers text files.
 * text=auto eol=lf
+
+# Never apply EOL conversion to native libraries.
+*.dll -text
+*.so -text
+*.dylib -text
