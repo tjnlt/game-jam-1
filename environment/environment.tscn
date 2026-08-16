@@ -1,15 +1,45 @@
 [gd_scene format=3 uid="uid://c18wx5uubmoo0"]
 
-[ext_resource type="PackedScene" uid="uid://bhvt115fo6xky" path="res://playercharacter/player.tscn" id="1_wjl7u"]
 [ext_resource type="PackedScene" uid="uid://b03jooohd8jj8" path="res://monsters/monster.tscn" id="2_7uceq"]
+[ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://playercharacter/proto_controller.tscn" id="3_wjl7u"]
 [ext_resource type="PackedScene" uid="uid://4hpxmhud8ymq" path="res://environment/nuclear_reactor.tscn" id="3_x2wa3"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wjl7u"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_7uceq"]
+sky_material = SubResource("ProceduralSkyMaterial_wjl7u")
+
+[sub_resource type="Environment" id="Environment_x2wa3"]
+background_mode = 2
+sky = SubResource("Sky_7uceq")
+glow_enabled = true
 
 [node name="Environment" type="Node3D" unique_id=760955663]
 
-[node name="Player" parent="." unique_id=1667058855 instance=ExtResource("1_wjl7u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=897633667]
+environment = SubResource("Environment_x2wa3")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=850448975]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
 
 [node name="Monster" parent="." unique_id=145722982 instance=ExtResource("2_7uceq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1)
 
 [node name="NuclearReactor" parent="." unique_id=1394473579 instance=ExtResource("3_x2wa3")]
+
+[node name="BasePlate" type="CSGBox3D" parent="." unique_id=344855726]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -5)
+use_collision = true
+size = Vector3(29, 1, 41)
+
+[node name="ProtoController" parent="." unique_id=104429770 instance=ExtResource("3_wjl7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3466315, 0)
+can_freefly = true
+input_left = "left"
+input_right = "right"
+input_forward = "up"
+input_back = "down"
+input_jump = "jump"
