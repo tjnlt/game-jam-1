@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bnlxtwn30sdfc"
+path="res://.godot/imported/conveyor-stripe-part-end.obj-83b575a223a97aa1ba6aedc33248dcef.mesh"
+
+[deps]
+
+files=["res://.godot/imported/conveyor-stripe-part-end.obj-83b575a223a97aa1ba6aedc33248dcef.mesh"]
+
+source_file="res://addons/KennyAssets/kenney_factory-kit_3.0/Models/OBJ format/conveyor-stripe-part-end.obj"
+dest_files=["res://.godot/imported/conveyor-stripe-part-end.obj-83b575a223a97aa1ba6aedc33248dcef.mesh", "res://.godot/imported/conveyor-stripe-part-end.obj-83b575a223a97aa1ba6aedc33248dcef.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

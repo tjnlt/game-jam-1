@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://saalrfj8v0xe"
+path="res://.godot/imported/conveyor-bars-high-slope.obj-e83c985208f861e6e50d98249a11c330.mesh"
+
+[deps]
+
+files=["res://.godot/imported/conveyor-bars-high-slope.obj-e83c985208f861e6e50d98249a11c330.mesh"]
+
+source_file="res://addons/KennyAssets/kenney_factory-kit_3.0/Models/OBJ format/conveyor-bars-high-slope.obj"
+dest_files=["res://.godot/imported/conveyor-bars-high-slope.obj-e83c985208f861e6e50d98249a11c330.mesh", "res://.godot/imported/conveyor-bars-high-slope.obj-e83c985208f861e6e50d98249a11c330.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

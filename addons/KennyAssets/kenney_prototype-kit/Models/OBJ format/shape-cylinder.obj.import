@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cfhubb87n10cv"
+path="res://.godot/imported/shape-cylinder.obj-f0bb3f4c3dec96d10745a541a4dfdae9.mesh"
+
+[deps]
+
+files=["res://.godot/imported/shape-cylinder.obj-f0bb3f4c3dec96d10745a541a4dfdae9.mesh"]
+
+source_file="res://addons/KennyAssets/kenney_prototype-kit/Models/OBJ format/shape-cylinder.obj"
+dest_files=["res://.godot/imported/shape-cylinder.obj-f0bb3f4c3dec96d10745a541a4dfdae9.mesh", "res://.godot/imported/shape-cylinder.obj-f0bb3f4c3dec96d10745a541a4dfdae9.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

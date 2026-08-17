@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bs03vutmfpg26"
+path="res://.godot/imported/robot-arm-b.obj-09d5b7054cc8e59b3329e028e8e5479e.mesh"
+
+[deps]
+
+files=["res://.godot/imported/robot-arm-b.obj-09d5b7054cc8e59b3329e028e8e5479e.mesh"]
+
+source_file="res://addons/KennyAssets/kenney_factory-kit_3.0/Models/OBJ format/robot-arm-b.obj"
+dest_files=["res://.godot/imported/robot-arm-b.obj-09d5b7054cc8e59b3329e028e8e5479e.mesh", "res://.godot/imported/robot-arm-b.obj-09d5b7054cc8e59b3329e028e8e5479e.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
