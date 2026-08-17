@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://ce62ggsouv4dj"
+path="res://.godot/imported/pipe-split.obj-1dfeb64602e9f818020087b3d87a6c5c.mesh"
+
+[deps]
+
+files=["res://.godot/imported/pipe-split.obj-1dfeb64602e9f818020087b3d87a6c5c.mesh"]
+
+source_file="res://addons/KennyAssets/kenney_prototype-kit/Models/OBJ format/pipe-split.obj"
+dest_files=["res://.godot/imported/pipe-split.obj-1dfeb64602e9f818020087b3d87a6c5c.mesh", "res://.godot/imported/pipe-split.obj-1dfeb64602e9f818020087b3d87a6c5c.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

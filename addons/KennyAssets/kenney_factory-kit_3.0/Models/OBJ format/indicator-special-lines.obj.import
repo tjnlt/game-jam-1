@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bo1ax07ahxxpq"
+path="res://.godot/imported/indicator-special-lines.obj-86ff348178da84e8e6a5e82d8fbe9b97.mesh"
+
+[deps]
+
+files=["res://.godot/imported/indicator-special-lines.obj-86ff348178da84e8e6a5e82d8fbe9b97.mesh"]
+
+source_file="res://addons/KennyAssets/kenney_factory-kit_3.0/Models/OBJ format/indicator-special-lines.obj"
+dest_files=["res://.godot/imported/indicator-special-lines.obj-86ff348178da84e8e6a5e82d8fbe9b97.mesh", "res://.godot/imported/indicator-special-lines.obj-86ff348178da84e8e6a5e82d8fbe9b97.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
