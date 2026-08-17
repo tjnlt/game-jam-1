@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cnttp6dm7d368"
+path="res://.godot/imported/machine-bed.obj-8be641cab042e2adcffc82f90d57456f.mesh"
+
+[deps]
+
+files=["res://.godot/imported/machine-bed.obj-8be641cab042e2adcffc82f90d57456f.mesh"]
+
+source_file="res://addons/KennyAssets/kenney_factory-kit_3.0/Models/OBJ format/machine-bed.obj"
+dest_files=["res://.godot/imported/machine-bed.obj-8be641cab042e2adcffc82f90d57456f.mesh", "res://.godot/imported/machine-bed.obj-8be641cab042e2adcffc82f90d57456f.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cumw6lkj710ym"
+path="res://.godot/imported/top.obj-5a541d1651fae0d91dc165f525b3a12c.mesh"
+
+[deps]
+
+files=["res://.godot/imported/top.obj-5a541d1651fae0d91dc165f525b3a12c.mesh"]
+
+source_file="res://addons/KennyAssets/kenney_factory-kit_3.0/Models/OBJ format/top.obj"
+dest_files=["res://.godot/imported/top.obj-5a541d1651fae0d91dc165f525b3a12c.mesh", "res://.godot/imported/top.obj-5a541d1651fae0d91dc165f525b3a12c.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

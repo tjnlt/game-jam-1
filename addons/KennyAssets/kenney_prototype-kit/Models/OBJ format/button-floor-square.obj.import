@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bfgmgnl6s0y2k"
+path="res://.godot/imported/button-floor-square.obj-69088027bac2244224175b09175cd106.mesh"
+
+[deps]
+
+files=["res://.godot/imported/button-floor-square.obj-69088027bac2244224175b09175cd106.mesh"]
+
+source_file="res://addons/KennyAssets/kenney_prototype-kit/Models/OBJ format/button-floor-square.obj"
+dest_files=["res://.godot/imported/button-floor-square.obj-69088027bac2244224175b09175cd106.mesh", "res://.godot/imported/button-floor-square.obj-69088027bac2244224175b09175cd106.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

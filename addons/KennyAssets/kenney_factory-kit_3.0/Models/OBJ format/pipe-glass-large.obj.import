@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://6dffvhnqgx7p"
+path="res://.godot/imported/pipe-glass-large.obj-1229f5cc6712b5e31a3cd2248539a5dd.mesh"
+
+[deps]
+
+files=["res://.godot/imported/pipe-glass-large.obj-1229f5cc6712b5e31a3cd2248539a5dd.mesh"]
+
+source_file="res://addons/KennyAssets/kenney_factory-kit_3.0/Models/OBJ format/pipe-glass-large.obj"
+dest_files=["res://.godot/imported/pipe-glass-large.obj-1229f5cc6712b5e31a3cd2248539a5dd.mesh", "res://.godot/imported/pipe-glass-large.obj-1229f5cc6712b5e31a3cd2248539a5dd.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
