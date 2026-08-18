@@ -5,3 +5,11 @@
 # Temp copies Godot makes of locked native libraries on Windows
 # (~foo.dll and ~foo.dll~RF1234.TMP)
 ~*.dll*
+
+# Local Machine files godot generates
+*.import*
+*.md6*
+*.mesh*
+*.ctex*
+*.scn*
+*.bin*
