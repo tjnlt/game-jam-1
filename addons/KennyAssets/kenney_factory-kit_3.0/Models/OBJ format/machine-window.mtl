@@ -1,0 +1,9 @@
+# Created by Kenney (www.kenney.nl)
+
+newmtl colormap
+Kd 1 1 1
+map_Kd Textures/colormap.png
+
+newmtl material-glass
+Kd 0.8915094 0.922097 1
+
