@@ -57,6 +57,10 @@ var freeflying : bool = false
 var bullet=load("res://gun/bullet.tscn")
 @onready var pos = $Head/Camera3D/gun_tip_pos
 
+# GUN ANIMATION
+@onready var anim_player = $AnimationPlayer
+@onready var camera = $Head/Camera3D
+
 func _ready() -> void:
 	check_input_mappings()
 	look_rotation.y = rotation.y
@@ -126,6 +130,7 @@ func _physics_process(delta: float) -> void:
 	
 	# Handling gun firing
 	if Input.is_action_just_pressed("fire"):
+		anim_player.play("gun_recoil")
 		var bullet_instance = bullet.instantiate()
 		bullet_instance.position = pos.global_position
 		bullet_instance.transform.basis = pos.global_transform.basis

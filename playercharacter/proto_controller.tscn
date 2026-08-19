@@ -16,6 +16,43 @@ height = 1.8
 [sub_resource type="BoxMesh" id="BoxMesh_8jijp"]
 size = Vector3(0.18457031, 0.15185547, 0.84521484)
 
+[sub_resource type="Animation" id="Animation_fpey7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Camera3D/gun:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.4563719, -0.34061098, -0.8898953)]
+}
+
+[sub_resource type="Animation" id="Animation_oa1sy"]
+resource_name = "gun_recoil"
+length = 0.08
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Camera3D/gun:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.04056906, 0.08),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.4563719, -0.34061098, -0.8898953), Vector3(0.456, -0.341, -0.7), Vector3(0.456, -0.341, -0.89)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qsj1a"]
+_data = {
+&"RESET": SubResource("Animation_fpey7"),
+&"gun_recoil": SubResource("Animation_oa1sy")
+}
+
 [node name="ProtoController" type="CharacterBody3D" unique_id=1701036524]
 script = ExtResource("1_ucva2")
 
@@ -35,8 +72,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
 [node name="Camera3D" type="Camera3D" parent="Head" unique_id=1661765899]
 
 [node name="gun_tip_pos" type="Node3D" parent="Head/Camera3D" unique_id=498278531]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.42819288, -0.36364186, -1.2735741)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4595063, -0.3374939, -1.45953)
 
 [node name="gun" type="MeshInstance3D" parent="Head/Camera3D" unique_id=315731820]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4563719, -0.34061098, -0.8898953)
 mesh = SubResource("BoxMesh_8jijp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=599974593]
+libraries/ = SubResource("AnimationLibrary_qsj1a")
