@@ -1,3 +1,15 @@
 [gd_scene format=3 uid="uid://b03jooohd8jj8"]
 
-[node name="Monster" type="Node3D" unique_id=145722982]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d81ba"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_d81ba"]
+
+[node name="Monster" type="CharacterBody3D" unique_id=743479525]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1046154523]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_d81ba")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=856203578]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_d81ba")

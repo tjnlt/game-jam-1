@@ -27,7 +27,7 @@ light_energy = 0.1
 shadow_enabled = true
 
 [node name="Monster" parent="." unique_id=145722982 instance=ExtResource("2_7uceq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, -1)
 
 [node name="NuclearReactor" parent="." unique_id=1394473579 instance=ExtResource("3_x2wa3")]
 
