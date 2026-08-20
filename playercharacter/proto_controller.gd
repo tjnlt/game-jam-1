@@ -67,6 +67,7 @@ var bullet=load("res://gun/bullet.tscn")
 @onready var gun_audio = $Head/Camera3D/gun/GunAudio
 
 func _ready() -> void:
+	add_to_group("player")
 	check_input_mappings()
 	look_rotation.y = rotation.y
 	look_rotation.x = head.rotation.x

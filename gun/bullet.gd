@@ -2,8 +2,10 @@ extends CharacterBody3D
 
 @export var speed := 100.0
 @export var lifetime := 1.0
+@export var damage := 1
 
 func _ready():
+	add_to_group("bullet")
 	await get_tree().create_timer(lifetime).timeout
 	queue_free()
 
@@ -12,4 +14,10 @@ func _physics_process(delta):
 	var collision = move_and_collide(direction * speed * delta)
 
 	if collision:
+		var collider = collision.get_collider()
+		print("bullet hit: ", collider.name if collider else "null")
+		if collider.has_method("take_damage"):
+			collider.take_damage(damage)
+		elif collider.get_parent() and collider.get_parent().has_method("take_damage"):
+			collider.get_parent().take_damage(damage)
 		queue_free()
