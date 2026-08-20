@@ -2,6 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://playercharacter/proto_controller.tscn" id="3_wjl7u"]
 [ext_resource type="PackedScene" uid="uid://4hpxmhud8ymq" path="res://environment/nuclear_reactor.tscn" id="3_x2wa3"]
+[ext_resource type="PackedScene" uid="uid://dsf3srwusnksu" path="res://environment/basiclight.tscn" id="7_nmo3v"]
+[ext_resource type="PackedScene" uid="uid://u7xtskirf0nc" path="res://environment/generator.tscn" id="7_vh8kr"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wjl7u"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -11,8 +13,10 @@ ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 sky_material = SubResource("ProceduralSkyMaterial_wjl7u")
 
 [sub_resource type="Environment" id="Environment_x2wa3"]
-background_mode = 2
+background_mode = 1
 sky = SubResource("Sky_7uceq")
+ambient_light_source = 1
+ambient_light_energy = 0.0
 glow_enabled = true
 
 [node name="Environment" type="Node3D" unique_id=760955663]
@@ -22,21 +26,68 @@ environment = SubResource("Environment_x2wa3")
 
 [node name="Sun" type="DirectionalLight3D" parent="." unique_id=581615175]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+visible = false
 light_energy = 0.1
 shadow_enabled = true
 
 [node name="NuclearReactor" parent="." unique_id=1394473579 instance=ExtResource("3_x2wa3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="BasePlate" type="CSGBox3D" parent="." unique_id=344855726]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -0.32495117, -5)
 use_collision = true
 size = Vector3(29, 0.35009766, 41)
 
-[node name="ProtoController" parent="." unique_id=104429770 instance=ExtResource("3_wjl7u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3466315, 0)
+[node name="ProtoController" parent="." unique_id=104429770 groups=["player"] instance=ExtResource("3_wjl7u")]
+transform = Transform3D(-0.16399916, 0, -0.9864605, 0, 1, 0, 0.9864605, 0, -0.16399916, 0, 1.3466315, 7.6271567)
 can_freefly = true
 input_left = "left"
 input_right = "right"
 input_forward = "up"
 input_back = "down"
 input_jump = "jump"
+
+[node name="Basiclight" parent="." unique_id=700343751 instance=ExtResource("7_nmo3v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.036568, 0.5, 11.375793)
+
+[node name="Basiclight2" parent="." unique_id=1920290454 instance=ExtResource("7_nmo3v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.805943, 0.5, 11.375793)
+
+[node name="Basiclight3" parent="." unique_id=1383093740 instance=ExtResource("7_nmo3v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.545071, 0.5, 11.375793)
+
+[node name="Basiclight4" parent="." unique_id=1268783932 instance=ExtResource("7_nmo3v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0939455, 0.5, 11.375793)
+
+[node name="Basiclight5" parent="." unique_id=1152474235 instance=ExtResource("7_nmo3v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.6167803, 0.5, 11.375793)
+
+[node name="Basiclight6" parent="." unique_id=665705610 instance=ExtResource("7_nmo3v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0496278, 0.5, 11.375793)
+
+[node name="Basiclight7" parent="." unique_id=1464409494 instance=ExtResource("7_nmo3v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23554802, 0.5, 11.375793)
+
+[node name="Basiclight8" parent="." unique_id=353356904 instance=ExtResource("7_nmo3v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.036568, 0.5, 2.5432835)
+
+[node name="Basiclight9" parent="." unique_id=1004572486 instance=ExtResource("7_nmo3v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.805943, 0.5, 2.5432835)
+
+[node name="Basiclight10" parent="." unique_id=797662914 instance=ExtResource("7_nmo3v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.545071, 0.5, 2.5432835)
+
+[node name="Basiclight11" parent="." unique_id=818490764 instance=ExtResource("7_nmo3v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0939455, 0.5, 2.5432835)
+
+[node name="Basiclight12" parent="." unique_id=429692568 instance=ExtResource("7_nmo3v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.6167803, 0.5, 2.5432835)
+
+[node name="Basiclight13" parent="." unique_id=2022162949 instance=ExtResource("7_nmo3v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0496278, 0.5, 2.5432835)
+
+[node name="Basiclight14" parent="." unique_id=342799337 instance=ExtResource("7_nmo3v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23554802, 0.5, 2.5432835)
+
+[node name="generator" parent="." unique_id=1782917758 instance=ExtResource("7_vh8kr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.357883, 0.5, 5.854232)
