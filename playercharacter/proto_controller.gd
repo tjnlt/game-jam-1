@@ -53,6 +53,17 @@ var freeflying : bool = false
 @onready var head: Node3D = $Head
 @onready var collider: CollisionShape3D = $Collider
 
+## BULLET REFERENCES
+var bullet=load("res://gun/bullet.tscn")
+@onready var pos = $Head/Camera3D/gun/gun_tip_pos
+
+# GUN ANIMATION
+@onready var anim_player = $AnimationPlayer
+@onready var camera = $Head/Camera3D
+
+# GUN AUDIO
+@onready var gun_audio = $Head/Camera3D/gun/GunAudio
+
 func _ready() -> void:
 	check_input_mappings()
 	look_rotation.y = rotation.y
@@ -75,6 +86,8 @@ func _unhandled_input(event: InputEvent) -> void:
 			enable_freefly()
 		else:
 			disable_freefly()
+			
+
 
 func _physics_process(delta: float) -> void:
 	# If freeflying, handle freefly and nothing else
@@ -117,6 +130,16 @@ func _physics_process(delta: float) -> void:
 	
 	# Use velocity to actually move
 	move_and_slide()
+	
+	# Handling gun firing
+	if Input.is_action_just_pressed("fire"):
+		anim_player.play("gun_recoil")
+		gun_audio.pitch_scale = randf_range(0.8, 1.2)
+		gun_audio.play()
+		var bullet_instance = bullet.instantiate()
+		bullet_instance.position = pos.global_position
+		bullet_instance.transform.basis = pos.global_transform.basis
+		get_parent().add_child(bullet_instance)
 
 
 ## Rotate us to look around.

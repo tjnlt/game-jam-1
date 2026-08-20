@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bg4j0gf0q6dda"]
+
+[ext_resource type="Script" uid="uid://d0yib21842j0c" path="res://gun/bullet.gd" id="1_y4yru"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_oa1sy"]
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_j86l8"]
+albedo_color = Color(0.21176471, 0.89411765, 0.92156863, 1)
+emission_enabled = true
+emission = Color(0.105882354, 1, 1, 1)
+emission_energy_multiplier = 16.0
+backlight_enabled = true
+backlight = Color(1, 1, 1, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qsj1a"]
+
+[node name="bullet" type="CharacterBody3D" unique_id=1420164622]
+script = ExtResource("1_y4yru")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1229696868]
+transform = Transform3D(0.2, 0, 0, 0, -8.742278e-09, -0.2, 0, 0.2, -8.742278e-09, 0, 0, 0)
+cast_shadow = 0
+mesh = SubResource("CapsuleMesh_oa1sy")
+surface_material_override/0 = SubResource("ORMMaterial3D_j86l8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1912354547]
+transform = Transform3D(0.2, 0, 0, 0, -8.742278e-09, -0.2, 0, 0.2, -8.742278e-09, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_qsj1a")
+
+[node name="AreaLight3D" type="AreaLight3D" parent="." unique_id=403120804]
+light_color = Color(0.07058824, 1, 1, 1)
