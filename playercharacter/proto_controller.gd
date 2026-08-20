@@ -65,6 +65,7 @@ var bullet=load("res://gun/bullet.tscn")
 @onready var gun_audio = $Head/Camera3D/gun/GunAudio
 
 func _ready() -> void:
+	add_to_group("player")
 	check_input_mappings()
 	look_rotation.y = rotation.y
 	look_rotation.x = head.rotation.x
@@ -140,6 +141,7 @@ func _physics_process(delta: float) -> void:
 		bullet_instance.position = pos.global_position
 		bullet_instance.transform.basis = pos.global_transform.basis
 		get_parent().add_child(bullet_instance)
+		bullet_instance.add_collision_exception_with(self)
 
 
 ## Rotate us to look around.
