@@ -7,6 +7,8 @@ extends CharacterBody3D
 
 ## Can we move around?
 @export var can_move : bool = true
+## Can we shoot?
+@export var can_shoot : bool = true
 ## Are we affected by gravity?
 @export var has_gravity : bool = true
 ## Can we press to jump?
@@ -71,7 +73,7 @@ func _ready() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	# Mouse capturing
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+	if can_move and Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		capture_mouse()
 	if Input.is_key_pressed(KEY_ESCAPE):
 		release_mouse()
@@ -132,7 +134,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	# Handling gun firing
-	if Input.is_action_just_pressed("fire"):
+	if can_shoot and Input.is_action_just_pressed("fire"):
 		anim_player.play("gun_recoil")
 		gun_audio.pitch_scale = randf_range(0.8, 1.2)
 		gun_audio.play()
@@ -140,6 +142,8 @@ func _physics_process(delta: float) -> void:
 		bullet_instance.position = pos.global_position
 		bullet_instance.transform.basis = pos.global_transform.basis
 		get_parent().add_child(bullet_instance)
+		
+	
 
 
 ## Rotate us to look around.
