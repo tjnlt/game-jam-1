@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://u7xtskirf0nc"]
+
+[ext_resource type="Script" uid="uid://tbvi4gek01ow" path="res://environment/lightswitch.gd" id="1_7oswe"]
+[ext_resource type="PackedScene" uid="uid://lh0qheqy86cn" path="res://addons/KennyAssets/kenney_factory-kit_3.0/Models/FBX format/warning-traffic.fbx" id="2_nmo0g"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_nmo0g"]
+height = 0.5241699
+radius = 0.6694336
+
+[node name="Lightswitch" type="Area3D" unique_id=1782917758]
+script = ExtResource("1_7oswe")
+
+[node name="warning-traffic" parent="." unique_id=1086861466 instance=ExtResource("2_nmo0g")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2112343772]
+transform = Transform3D(2.74, 0, 0, 0, 2.74, 0, 0, 0, 2.74, 0, 0.7509765, 0)
+shape = SubResource("CylinderShape3D_nmo0g")

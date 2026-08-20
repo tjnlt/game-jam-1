@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dsf3srwusnksu"]
+
+[ext_resource type="PackedScene" uid="uid://dy1a3b7m5vngw" path="res://addons/KennyAssets/kenney_factory-kit_3.0/Models/FBX format/warning-orange.fbx" id="1_kobl8"]
+[ext_resource type="Script" uid="uid://c3j32cssah51r" path="res://environment/lighthandler.gd" id="2_jky1k"]
+
+[node name="Basiclight" type="Node3D" unique_id=700343751]
+
+[node name="warning-orange" parent="." unique_id=1134304991 groups=["lights"] instance=ExtResource("1_kobl8")]
+script = ExtResource("2_jky1k")
+
+[node name="Light3D" type="OmniLight3D" parent="warning-orange" unique_id=584265747]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4807684, 0)
+light_color = Color(1, 0.27058825, 0.09803922, 1)
+light_energy = 16.0
+light_indirect_energy = 3.773
+light_volumetric_fog_energy = 2.584
+light_size = 0.555
+omni_range = 2.511676
