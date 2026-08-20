@@ -55,11 +55,14 @@ var freeflying : bool = false
 
 ## BULLET REFERENCES
 var bullet=load("res://gun/bullet.tscn")
-@onready var pos = $Head/Camera3D/gun_tip_pos
+@onready var pos = $Head/Camera3D/gun/gun_tip_pos
 
 # GUN ANIMATION
 @onready var anim_player = $AnimationPlayer
 @onready var camera = $Head/Camera3D
+
+# GUN AUDIO
+@onready var gun_audio = $Head/Camera3D/gun/GunAudio
 
 func _ready() -> void:
 	check_input_mappings()
@@ -131,6 +134,8 @@ func _physics_process(delta: float) -> void:
 	# Handling gun firing
 	if Input.is_action_just_pressed("fire"):
 		anim_player.play("gun_recoil")
+		gun_audio.pitch_scale = randf_range(0.8, 1.2)
+		gun_audio.play()
 		var bullet_instance = bullet.instantiate()
 		bullet_instance.position = pos.global_position
 		bullet_instance.transform.basis = pos.global_transform.basis
