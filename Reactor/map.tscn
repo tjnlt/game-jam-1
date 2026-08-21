@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://dcresl8uqkcgv"]
+
+[ext_resource type="Texture2D" uid="uid://d2tyeb3ly81ud" path="res://Reactor/Textures/dirt.jpeg" id="1_8q1ak"]
+[ext_resource type="Texture2D" uid="uid://4dhfqmwns66f" path="res://Reactor/Textures/Concrete.jpg" id="2_w60j4"]
+[ext_resource type="Texture2D" uid="uid://c5772riv7ehfp" path="res://Reactor/Textures/BrickTexture.jpg" id="3_pftv1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8x6dy"]
+albedo_color = Color(0.5842209, 0.36946535, 0.219057, 1)
+albedo_texture = ExtResource("1_8q1ak")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_dwcvr"]
+material = SubResource("StandardMaterial3D_8x6dy")
+size = Vector2(300, 300)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dwcvr"]
+albedo_color = Color(0.43134022, 0.43134025, 0.43134025, 1)
+albedo_texture = ExtResource("2_w60j4")
+
+[sub_resource type="BoxMesh" id="BoxMesh_uonkq"]
+size = Vector3(300, 25, 3)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ep2g1"]
+load_path = "res://.godot/imported/CorrugatedMetal.png-1aaf32291aa039deab58791f027d0fb3.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w60j4"]
+albedo_color = Color(0.27022192, 0.27022192, 0.2702219, 1)
+albedo_texture = SubResource("CompressedTexture2D_ep2g1")
+
+[sub_resource type="BoxMesh" id="BoxMesh_3143v"]
+size = Vector3(75, 30, 75)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pftv1"]
+albedo_color = Color(0.5409905, 0.5409905, 0.5409905, 1)
+albedo_texture = ExtResource("3_pftv1")
+uv1_scale = Vector3(50, 50, 50)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6wv1j"]
+size = Vector3(74, 29, 74)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6tw0t"]
+size = Vector3(2, 3, 1)
+
+[node name="Map" type="Node3D" unique_id=331739924]
+
+[node name="Dirt" type="MeshInstance3D" parent="." unique_id=1013409827]
+mesh = SubResource("PlaneMesh_dwcvr")
+
+[node name="Outter Walls" type="Node3D" parent="Dirt" unique_id=1549971786]
+
+[node name="Wall1" type="MeshInstance3D" parent="Dirt/Outter Walls" unique_id=504259786]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.520851, 149.90854)
+material_override = SubResource("StandardMaterial3D_dwcvr")
+mesh = SubResource("BoxMesh_uonkq")
+
+[node name="Wall2" type="MeshInstance3D" parent="Dirt/Outter Walls" unique_id=1792891314]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.520851, -148.82481)
+material_override = SubResource("StandardMaterial3D_dwcvr")
+mesh = SubResource("BoxMesh_uonkq")
+
+[node name="Wall3" type="MeshInstance3D" parent="Dirt/Outter Walls" unique_id=1801400463]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -149.17406, 12.520851, 1.5193329)
+material_override = SubResource("StandardMaterial3D_dwcvr")
+mesh = SubResource("BoxMesh_uonkq")
+
+[node name="Wall4" type="MeshInstance3D" parent="Dirt/Outter Walls" unique_id=443854243]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 148.51949, 12.520851, 1.5193329)
+material_override = SubResource("StandardMaterial3D_dwcvr")
+mesh = SubResource("BoxMesh_uonkq")
+
+[node name="Building" type="Node3D" parent="." unique_id=1502960178]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0104065, 0)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Building" unique_id=1796947471]
+operation = 2
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="Building/CSGCombiner3D" unique_id=56339376]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.127327, 0)
+material_override = SubResource("StandardMaterial3D_w60j4")
+mesh = SubResource("BoxMesh_3143v")
+material = SubResource("StandardMaterial3D_pftv1")
+
+[node name="Building_main_cutout" type="CSGMesh3D" parent="Building/CSGCombiner3D" unique_id=1038104310]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.128429, 0)
+operation = 2
+mesh = SubResource("BoxMesh_6wv1j")
+
+[node name="Door_1_cutout" type="CSGMesh3D" parent="Building/CSGCombiner3D" unique_id=747208795]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.380188, 2.9960399, 37.0685)
+operation = 2
+mesh = SubResource("BoxMesh_6tw0t")
