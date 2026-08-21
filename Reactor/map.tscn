@@ -20,7 +20,6 @@ albedo_texture = ExtResource("2_w60j4")
 size = Vector3(300, 25, 3)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ep2g1"]
-load_path = "res://.godot/imported/CorrugatedMetal.png-1aaf32291aa039deab58791f027d0fb3.s3tc.ctex"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w60j4"]
 albedo_color = Color(0.27022192, 0.27022192, 0.2702219, 1)
