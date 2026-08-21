@@ -3,7 +3,6 @@ extends Node3D
 
 const RUN_SPEED := 3.0
 const DANCE_RADIUS := 2.0
-const FLASH_DURATION := 0.15
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
@@ -11,16 +10,9 @@ var player: Node3D
 var _dancing := false
 var health := 5
 
-var _mesh_instances: Array[MeshInstance3D] = []
-var _flash_material := StandardMaterial3D.new()
-
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
 	animation_player.play("local/sneaky_run")
-
-	_flash_material.albedo_color = Color.RED
-	for child in find_children("*", "MeshInstance3D", true, false):
-		_mesh_instances.append(child)
 
 func _physics_process(delta: float) -> void:
 	if not player:
@@ -46,15 +38,5 @@ func _physics_process(delta: float) -> void:
 
 func take_damage(amount: int) -> void:
 	health -= amount
-	_flash_red()
 	if health <= 0:
 		queue_free()
-
-func _flash_red() -> void:
-	for mesh_instance in _mesh_instances:
-		mesh_instance.material_override = _flash_material
-	get_tree().create_timer(FLASH_DURATION).timeout.connect(_reset_color)
-
-func _reset_color() -> void:
-	for mesh_instance in _mesh_instances:
-		mesh_instance.material_override = null

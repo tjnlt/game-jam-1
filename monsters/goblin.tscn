@@ -2,8 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://bxm5chklw1lnm" path="res://addons/goblin_assets/Meshy_AI_A_smallish_green_gobl_biped/Meshy_AI_A_smallish_green_gobl_biped_Animation_All_Night_Dance_withSkin.glb" id="1_058bl"]
 [ext_resource type="Script" uid="uid://dalo2ueb38o44" path="res://monsters/goblin.gd" id="2_nhwii"]
+[ext_resource type="Texture2D" uid="uid://cusvp3l52oiqt" path="res://addons/goblin_assets/Meshy_AI_A_smallish_green_gobl_biped/Meshy_AI_A_smallish_green_gobl_biped_Animation_All_Night_Dance_withSkin_texture_0.png" id="3_14xik"]
 [ext_resource type="Animation" uid="uid://yoqch684s5a5" path="res://addons/goblin_assets/running.res" id="3_wo0fx"]
 [ext_resource type="Animation" uid="uid://dcumj8yq6b0qx" path="res://addons/goblin_assets/sneaky_run.res" id="4_le7lg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ehb6n"]
+albedo_texture = ExtResource("3_14xik")
 
 [sub_resource type="Animation" id="Animation_nhwii"]
 resource_name = "Armature|All_Night_Dance|baselayer"
@@ -275,7 +279,7 @@ size = Vector3(1, 1.2280273, 1.0419312)
 [node name="goblin" unique_id=697920282 instance=ExtResource("1_058bl")]
 script = ExtResource("2_nhwii")
 
-[node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(743781723) index="0" unique_id=546076182]
+[node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(276187440) index="0" unique_id=597921312]
 bones/0/position = Vector3(14.985762, 63.791027, -12.4725065)
 bones/0/rotation = Quaternion(-0.17243218, -0.3288521, -0.10302424, 0.9227727)
 bones/1/rotation = Quaternion(0.9031493, 0.1233585, -0.3560879, 0.20568284)
@@ -309,7 +313,10 @@ bones/21/rotation = Quaternion(-0.4245487, 0.07862223, -0.23015015, 0.8721283)
 bones/22/rotation = Quaternion(-0.2268903, -3.732095e-09, 0.0071648974, 0.97389406)
 bones/23/rotation = Quaternion(0.5106621, -1.7814246e-08, -0.016126014, 0.8596304)
 
-[node name="AnimationPlayer" parent="." index="1" unique_id=981796374]
+[node name="char1" parent="Armature/Skeleton3D" index="0" unique_id=1069206761]
+material_override = SubResource("StandardMaterial3D_ehb6n")
+
+[node name="AnimationPlayer" parent="." index="1" unique_id=1290531984]
 process_mode = 3
 physics_interpolation_mode = 1
 libraries/local = SubResource("AnimationLibrary_kitfx")
