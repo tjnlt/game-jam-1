@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://playercharacter/proto_controller.tscn" id="3_wjl7u"]
 [ext_resource type="PackedScene" uid="uid://4hpxmhud8ymq" path="res://environment/nuclear_reactor.tscn" id="3_x2wa3"]
+[ext_resource type="PackedScene" uid="uid://0g850nfmu28a" path="res://environment/oxygentank.tscn" id="6_ehb6n"]
 [ext_resource type="PackedScene" uid="uid://dsf3srwusnksu" path="res://environment/basiclight.tscn" id="7_nmo3v"]
 [ext_resource type="PackedScene" uid="uid://u7xtskirf0nc" path="res://environment/generator.tscn" id="7_vh8kr"]
 [ext_resource type="PackedScene" uid="uid://buvs0swpo16jt" path="res://monsters/goblin.tscn" id="9_te1ty"]
@@ -98,3 +99,6 @@ transform = Transform3D(0.6888115, 0, -0.7249405, 0, 1, 0, 0.7249405, 0, 0.68881
 
 [node name="goblin2" parent="." unique_id=266320911 instance=ExtResource("9_te1ty")]
 transform = Transform3D(-0.051077425, 0, -0.99869466, 0, 1, 0, 0.99869466, 0, -0.051077425, 27.52525, 0.645097, 4.15832)
+
+[node name="Oxygentank" parent="." unique_id=1959012536 instance=ExtResource("6_ehb6n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.18505, 0.51696765, 3.2792006)

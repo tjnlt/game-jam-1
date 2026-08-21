@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" uid="uid://dhuvl8iemn6am" path="res://environment/oxygentank.gd" id="1_2g1x2"]
+[ext_resource type="PackedScene" uid="uid://brolc3ic5ey13" path="res://addons/KennyAssets/kenney_factory-kit_3.0/Models/FBX format/hopper-high-round.fbx" id="1_xggt1"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ox1"]
+height = 2.5
+radius = 0.9
+
+[sub_resource type="QuadMesh" id="QuadMesh_ox1"]
+size = Vector2(0.2, 0.2)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ox1"]
+direction = Vector3(0, 1, 0)
+spread = 25.0
+gravity = Vector3(0, 0.2, 0)
+initial_velocity_min = 0.5
+initial_velocity_max = 1.2
+scale_min = 0.3
+scale_max = 0.6
+color = Color(1, 1, 1, 0.5)
+
+[node name="Oxygentank" type="Area3D" unique_id=1959012536]
+script = ExtResource("1_2g1x2")
+
+[node name="hopper-high-round" parent="." unique_id=1199284159 instance=ExtResource("1_xggt1")]
+transform = Transform3D(0.78008586, 0, 0, 0, 0.67565435, 0, 0, 0, 1, -0.011358619, 0, -0.020792007)
+
+[node name="hopper-high-round2" parent="." unique_id=73013437 instance=ExtResource("1_xggt1")]
+transform = Transform3D(0.78008586, 0, 0, 0, -0.67565435, 8.742278e-08, 0, -5.906758e-08, -1, -0.011358619, 2.0136776, -0.020792007)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_ox1")
+
+[node name="Steam" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
+emitting = false
+amount = 24
+lifetime = 1.5
+draw_pass_1 = SubResource("QuadMesh_ox1")
+process_material = SubResource("ParticleProcessMaterial_ox1")
