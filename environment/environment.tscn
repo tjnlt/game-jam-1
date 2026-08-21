@@ -101,7 +101,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.357883, 0.5, 5.854232)
 script = ExtResource("7_6qvha")
 goblin_scene = ExtResource("7_3g2c1")
 
-[node name="goblin2" parent="." unique_id=266320911 instance=ExtResource("9_te1ty")]
+[node name="goblin2" parent="." unique_id=266320911 instance=ExtResource("7_3g2c1")]
 transform = Transform3D(-0.051077425, 0, -0.99869466, 0, 1, 0, 0.99869466, 0, -0.051077425, 27.52525, 0.645097, 4.15832)
 
 [node name="Oxygentank" parent="." unique_id=1959012536 instance=ExtResource("6_ehb6n")]
