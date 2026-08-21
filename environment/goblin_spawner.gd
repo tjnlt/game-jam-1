@@ -5,7 +5,7 @@ extends Node3D
 # SETTINGS
 # ─────────────────────────────────────────────
 
-@export var knight_scene: PackedScene
+@export var goblin_scene: PackedScene
 
 @export var spawn_points: Node3D
 
@@ -18,7 +18,11 @@ extends Node3D
 @export_range(0.1, 1.0, 0.05)
 var spawn_interval_multiplier: float = 0.80
 
-@export var maximum_knights: int = 1000
+@export var maximum_goblins: int = 1000
+
+@export var ground_ray_height: float = 10.0
+
+@export var ground_ray_depth: float = 20.0
 
 
 # ─────────────────────────────────────────────
@@ -59,10 +63,10 @@ func _ready() -> void:
 	# CHECK REFERENCES
 	# ─────────────────────────────────────────
 
-	if knight_scene == null:
+	if goblin_scene == null:
 
 		push_error(
-			"KnightSpawner: Knight Scene is missing."
+			"GoblinSpawner: Goblin Scene is missing."
 		)
 
 		return
@@ -71,7 +75,7 @@ func _ready() -> void:
 	if spawn_points == null:
 
 		push_error(
-			"KnightSpawner: SpawnPoints is missing."
+			"GoblinSpawner: SpawnPoints is missing."
 		)
 
 		return
@@ -80,7 +84,7 @@ func _ready() -> void:
 	if spawn_points.get_child_count() == 0:
 
 		push_error(
-			"KnightSpawner: SpawnPoints has no children."
+			"GoblinSpawner: SpawnPoints has no children."
 		)
 
 		return
@@ -88,11 +92,11 @@ func _ready() -> void:
 
 	print("================================")
 
-	print("KNIGHT SPAWNER WORKING")
+	print("GOBLIN SPAWNER WORKING")
 
 	print(
-		"Knight scene: ",
-		knight_scene
+		"Goblin scene: ",
+		goblin_scene
 	)
 
 	print(
@@ -100,13 +104,13 @@ func _ready() -> void:
 		spawn_points.get_child_count()
 	)
 
-	print("Spawning first knight NOW.")
+	print("Spawning first goblin NOW.")
 
 	print("================================")
 
 
 	# Spawn one immediately.
-	spawn_knight()
+	spawn_goblin()
 
 	# Start repeating spawns.
 	spawn_loop()
@@ -125,7 +129,7 @@ func spawn_loop() -> void:
 		)
 
 		print(
-			"Next knight in: ",
+			"Next goblin in: ",
 			wait_time,
 			" seconds"
 		)
@@ -145,7 +149,7 @@ func spawn_loop() -> void:
 
 		elapsed_spawn_time += wait_time
 
-		spawn_knight()
+		spawn_goblin()
 
 
 # ─────────────────────────────────────────────
@@ -180,22 +184,22 @@ func get_current_spawn_interval() -> float:
 
 
 # ─────────────────────────────────────────────
-# SPAWN KNIGHT
+# SPAWN GOBLIN
 # ─────────────────────────────────────────────
 
-func spawn_knight() -> void:
+func spawn_goblin() -> void:
 
-	print("spawn_knight() CALLED")
+	print("spawn_goblin() CALLED")
 
 
 	# ─────────────────────────────────────────
-	# CHECK KNIGHT SCENE
+	# CHECK GOBLIN SCENE
 	# ─────────────────────────────────────────
 
-	if knight_scene == null:
+	if goblin_scene == null:
 
 		push_error(
-			"KnightSpawner: Knight Scene is null."
+			"GoblinSpawner: Goblin Scene is null."
 		)
 
 		return
@@ -208,17 +212,17 @@ func spawn_knight() -> void:
 	if spawn_points == null:
 
 		push_error(
-			"KnightSpawner: SpawnPoints is null."
+			"GoblinSpawner: SpawnPoints is null."
 		)
 
 		return
 
 
 	# ─────────────────────────────────────────
-	# KNIGHT CAP
+	# GOBLIN CAP
 	# ─────────────────────────────────────────
 
-	var existing_knights: int = (
+	var existing_goblins: int = (
 		get_tree()
 		.get_nodes_in_group("enemies")
 		.size()
@@ -226,13 +230,13 @@ func spawn_knight() -> void:
 
 
 	if (
-		maximum_knights > 0
-		and existing_knights >= maximum_knights
+		maximum_goblins > 0
+		and existing_goblins >= maximum_goblins
 	):
 
 		print(
-			"Knight cap reached: ",
-			existing_knights
+			"Goblin cap reached: ",
+			existing_goblins
 		)
 
 		return
@@ -257,7 +261,7 @@ func spawn_knight() -> void:
 	if available_spawn_points.is_empty():
 
 		push_error(
-			"KnightSpawner: No valid 3D spawn points."
+			"GoblinSpawner: No valid 3D spawn points."
 		)
 
 		return
@@ -273,50 +277,71 @@ func spawn_knight() -> void:
 
 
 	# ─────────────────────────────────────────
-	# CREATE KNIGHT
+	# CREATE GOBLIN
 	# ─────────────────────────────────────────
 
-	var new_knight: Node = (
-		knight_scene.instantiate()
+	var new_goblin: Node = (
+		goblin_scene.instantiate()
 	)
 
 
-	if not (new_knight is Node3D):
+	if not (new_goblin is Node3D):
 
 		push_error(
-			"KnightSpawner: Knight root is not Node3D."
+			"GoblinSpawner: Goblin root is not Node3D."
 		)
 
-		new_knight.queue_free()
+		new_goblin.queue_free()
 
 		return
 
 
-	var knight_3d: Node3D = (
-		new_knight as Node3D
+	var goblin_3d: Node3D = (
+		new_goblin as Node3D
 	)
 
 
 	# ─────────────────────────────────────────
-	# ADD KNIGHT
+	# ADD GOBLIN
 	# ─────────────────────────────────────────
 
 	get_tree().current_scene.add_child(
-		knight_3d
+		goblin_3d
 	)
 
 
-	knight_3d.global_position = (
+	goblin_3d.global_position = _get_ground_position(
 		spawn_point.global_position
 	)
 
 
 	print(
-		"KNIGHT SPAWNED at ",
+		"GOBLIN SPAWNED at ",
 		spawn_point.name,
-		" | Active knights: ",
-		existing_knights + 1
+		" | Active goblins: ",
+		existing_goblins + 1
 	)
+
+
+# ─────────────────────────────────────────────
+# GROUND SNAP
+# ─────────────────────────────────────────────
+
+func _get_ground_position(spawn_position: Vector3) -> Vector3:
+
+	var space_state := get_world_3d().direct_space_state
+
+	var query := PhysicsRayQueryParameters3D.create(
+		spawn_position + Vector3.UP * ground_ray_height,
+		spawn_position + Vector3.DOWN * ground_ray_depth
+	)
+
+	var result := space_state.intersect_ray(query)
+
+	if result:
+		return result.position
+
+	return spawn_position
 
 
 # ─────────────────────────────────────────────
