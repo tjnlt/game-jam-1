@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://c18wx5uubmoo0"]
 
+[ext_resource type="Script" uid="uid://ck3tji2lwmoeg" path="res://environment/environment.gd" id="1_3g2c1"]
 [ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://playercharacter/proto_controller.tscn" id="3_wjl7u"]
 [ext_resource type="PackedScene" uid="uid://4hpxmhud8ymq" path="res://environment/nuclear_reactor.tscn" id="3_x2wa3"]
 [ext_resource type="PackedScene" path="res://environment/oxygentank.tscn" id="6_ehb6n"]
@@ -26,6 +27,7 @@ ambient_light_energy = 0.0
 glow_enabled = true
 
 [node name="Environment" type="Node3D" unique_id=760955663]
+script = ExtResource("1_3g2c1")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=583491660]
 environment = SubResource("Environment_x2wa3")
