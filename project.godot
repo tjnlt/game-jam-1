@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="game_jam_1"
-run/main_scene="uid://c18wx5uubmoo0"
+run/main_scene="res://ui/main_menu.tscn"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 

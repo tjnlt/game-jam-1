@@ -8,7 +8,7 @@ const DANCE_RADIUS := 2.0
 
 var player: Node3D
 var _dancing := false
-var health := 5
+var health := 2
 
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
@@ -39,4 +39,7 @@ func _physics_process(delta: float) -> void:
 func take_damage(amount: int) -> void:
 	health -= amount
 	if health <= 0:
+		var environment := get_tree().get_first_node_in_group("environment")
+		if environment and environment.has_method("register_goblin_kill"):
+			environment.register_goblin_kill()
 		queue_free()
