@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://playercharacter/proto_controller.tscn" id="3_wjl7u"]
 [ext_resource type="PackedScene" uid="uid://4hpxmhud8ymq" path="res://environment/nuclear_reactor.tscn" id="3_x2wa3"]
-[ext_resource type="PackedScene" uid="uid://0g850nfmu28a" path="res://environment/oxygentank.tscn" id="6_ehb6n"]
+[ext_resource type="PackedScene" path="res://environment/oxygentank.tscn" id="6_ehb6n"]
 [ext_resource type="PackedScene" uid="uid://dv33mjkltx4ua" path="res://environment/Spawner.tscn" id="6_vh8kr"]
 [ext_resource type="PackedScene" uid="uid://buvs0swpo16jt" path="res://monsters/goblin.tscn" id="7_3g2c1"]
 [ext_resource type="Script" uid="uid://e1mgmeobxdwl" path="res://environment/goblin_spawner.gd" id="7_6qvha"]
@@ -38,13 +38,8 @@ shadow_enabled = true
 [node name="NuclearReactor" parent="." unique_id=1394473579 instance=ExtResource("3_x2wa3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
-[node name="BasePlate" type="CSGBox3D" parent="." unique_id=344855726]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.980957, 0.008483887, -3.368103)
-use_collision = true
-size = Vector3(48.961914, 1.0169678, 44.263794)
-
 [node name="ProtoController" parent="." unique_id=104429770 groups=["player"] instance=ExtResource("3_wjl7u")]
-transform = Transform3D(-0.16399916, 0, -0.9864605, 0, 1, 0, 0.9864605, 0, -0.16399916, 0, 1.3466315, 7.6271567)
+transform = Transform3D(-0.16399916, 0, -0.9864605, 0, 1, 0, 0.9864605, 0, -0.16399916, 0, 0.29461694, 7.6271567)
 can_freefly = true
 input_left = "left"
 input_right = "right"
@@ -53,56 +48,57 @@ input_back = "down"
 input_jump = "jump"
 
 [node name="Basiclight" parent="." unique_id=700343751 instance=ExtResource("7_nmo3v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.036568, 0.5, 11.375793)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.036568, 0.009118795, 11.375793)
 
 [node name="Basiclight2" parent="." unique_id=1920290454 instance=ExtResource("7_nmo3v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.805943, 0.5, 11.375793)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.805943, 0.009118795, 11.375793)
 
 [node name="Basiclight3" parent="." unique_id=1383093740 instance=ExtResource("7_nmo3v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.545071, 0.5, 11.375793)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.545071, 0.009118795, 11.375793)
 
 [node name="Basiclight4" parent="." unique_id=1268783932 instance=ExtResource("7_nmo3v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0939455, 0.5, 11.375793)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0939455, 0.009118795, 11.375793)
 
 [node name="Basiclight5" parent="." unique_id=1152474235 instance=ExtResource("7_nmo3v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.6167803, 0.5, 11.375793)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.6167803, 0.009118795, 11.375793)
 
 [node name="Basiclight6" parent="." unique_id=665705610 instance=ExtResource("7_nmo3v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0496278, 0.5, 11.375793)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0496278, 0.009118795, 11.375793)
 
 [node name="Basiclight7" parent="." unique_id=1464409494 instance=ExtResource("7_nmo3v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23554802, 0.5, 11.375793)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23554802, 0.009118795, 11.375793)
 
 [node name="Basiclight8" parent="." unique_id=353356904 instance=ExtResource("7_nmo3v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.036568, 0.5, 2.5432835)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.036568, 0.009118795, 2.5432835)
 
 [node name="Basiclight9" parent="." unique_id=1004572486 instance=ExtResource("7_nmo3v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.805943, 0.5, 2.5432835)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.805943, 0.009118795, 2.5432835)
 
 [node name="Basiclight10" parent="." unique_id=797662914 instance=ExtResource("7_nmo3v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.545071, 0.5, 2.5432835)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.545071, 0.009118795, 2.5432835)
 
 [node name="Basiclight11" parent="." unique_id=818490764 instance=ExtResource("7_nmo3v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0939455, 0.5, 2.5432835)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0939455, 0.009118795, 2.5432835)
 
 [node name="Basiclight12" parent="." unique_id=429692568 instance=ExtResource("7_nmo3v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.6167803, 0.5, 2.5432835)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.6167803, 0.009118795, 2.5432835)
 
 [node name="Basiclight13" parent="." unique_id=2022162949 instance=ExtResource("7_nmo3v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0496278, 0.5, 2.5432835)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0496278, 0.009118795, 2.5432835)
 
 [node name="Basiclight14" parent="." unique_id=342799337 instance=ExtResource("7_nmo3v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23554802, 0.5, 2.5432835)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23554802, 0.009118795, 2.5432835)
 
 [node name="generator" parent="." unique_id=1782917758 instance=ExtResource("7_vh8kr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.357883, 0.5, 5.854232)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.357883, -0.010233104, 5.854232)
 
 [node name="Spawner" parent="." unique_id=1976176245 instance=ExtResource("6_vh8kr")]
 script = ExtResource("7_6qvha")
 goblin_scene = ExtResource("7_3g2c1")
 
 [node name="Oxygentank" parent="." unique_id=1959012536 instance=ExtResource("6_ehb6n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.18505, 0.51696765, 3.2792006)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.18505, -0.004873395, 3.2792006)
+
 [node name="SpawnPoints" type="Node3D" parent="." unique_id=1331210168]
 
 [node name="Marker3D4" type="Marker3D" parent="SpawnPoints" unique_id=592883958]
