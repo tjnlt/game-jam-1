@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dcresl8uqkcgv" path="res://Reactor/map.tscn" id="7_te1ty"]
 [ext_resource type="PackedScene" uid="uid://u7xtskirf0nc" path="res://environment/generator.tscn" id="7_vh8kr"]
 [ext_resource type="PackedScene" uid="uid://dl6metfmda0i6" path="res://Reactor/NukeReactor.tscn" id="8_3g2c1"]
+[ext_resource type="Script" uid="uid://cfrkpaqaxuwa4" path="res://environment/environment.gd" id="9_env"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wjl7u"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -26,6 +27,7 @@ ambient_light_energy = 0.0
 glow_enabled = true
 
 [node name="Environment" type="Node3D" unique_id=760955663]
+script = ExtResource("9_env")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=583491660]
 environment = SubResource("Environment_x2wa3")
