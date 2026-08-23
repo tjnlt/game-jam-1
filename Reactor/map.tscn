@@ -16,7 +16,6 @@
 [ext_resource type="PackedScene" uid="uid://d05fxojgb2052" path="res://addons/KennyAssets/kenney_factory-kit_3.0/Models/GLB format/catwalk-stairs.glb" id="12_i3w50"]
 [ext_resource type="PackedScene" uid="uid://caph44lc8ifwd" path="res://addons/KennyAssets/kenney_factory-kit_3.0/Models/GLB format/catwalk-corner.glb" id="13_hmc4p"]
 [ext_resource type="PackedScene" uid="uid://dsx1tcc0en8eo" path="res://addons/KennyAssets/kenney_factory-kit_3.0/Models/GLB format/catwalk-straight.glb" id="14_hc1oh"]
-[ext_resource type="PackedScene" path="res://addons/KennyAssets/kenney_prototype-kit/Models/GLB format/wall-doorway.glb" id="14_o3b8b"]
 [ext_resource type="PackedScene" uid="uid://dsf3srwusnksu" path="res://environment/basiclight.tscn" id="16_rcsfk"]
 [ext_resource type="PackedScene" uid="uid://2xupxu8ofsjs" path="res://addons/KennyAssets/kenney_factory-kit_3.0/Models/FBX format/pipe-large-valve.fbx" id="18_wk0x8"]
 [ext_resource type="PackedScene" uid="uid://b0ef4xm2pqxys" path="res://addons/KennyAssets/kenney_factory-kit_3.0/Models/FBX format/pipe-large-side.fbx" id="19_i3w50"]
@@ -38,15 +37,20 @@
 [ext_resource type="PackedScene" uid="uid://caq4vr08f6flh" path="res://addons/KennyAssets/kenney_factory-kit_3.0/Models/FBX format/cog-e.fbx" id="36_m7pli"]
 [ext_resource type="PackedScene" uid="uid://cqur4f5arebba" path="res://addons/KennyAssets/kenney_factory-kit_3.0/Models/FBX format/Meshy_AI_Rocky_Hollow_Cave_0822202306_texture.fbx" id="37_68qrg"]
 [ext_resource type="Texture2D" uid="uid://bwkv0n6hkfrkd" path="res://Reactor/Textures/Metal-panel-wall-panel.png" id="38_u7sdf"]
-[ext_resource type="ArrayMesh" uid="uid://d4m2mr1hqr7bw" path="res://Reactor/Textures/Meshy_AI_concrete_drainage_cha_0822214537_texture_obj/Meshy_AI_concrete_drainage_cha_0822214537_texture.obj" id="39_ikvga"]
-[ext_resource type="PackedScene" path="res://addons/KennyAssets/kenney_prototype-kit/Models/FBX format/vehicle.fbx" id="40_m7pli"]
-[ext_resource type="PackedScene" path="res://addons/KennyAssets/kenney_prototype-kit/Models/FBX format/vehicle-convertible.fbx" id="41_tk3ih"]
+[ext_resource type="ArrayMesh" path="res://Reactor/Textures/Meshy_AI_concrete_drainage_cha_0822214537_texture_obj/Meshy_AI_concrete_drainage_cha_0822214537_texture.obj" id="39_ikvga"]
+[ext_resource type="ArrayMesh" uid="uid://b0lkpny5dn2at" path="res://Reactor/Textures/Meshy_AI_a_run_down_truck_that_0822235303_texture_obj/Meshy_AI_a_run_down_truck_that_0822235303_texture.obj" id="41_c6lhl"]
 [ext_resource type="Texture2D" uid="uid://ck11q32dyethq" path="res://Reactor/Textures/Parking lot.png" id="42_0lsbx"]
+[ext_resource type="ArrayMesh" uid="uid://exau73y7sqpi" path="res://Reactor/Textures/Meshy_AI_a_run_down_truck_that_0822235311_texture_obj/Meshy_AI_a_run_down_truck_that_0822235311_texture.obj" id="42_x2j6o"]
 [ext_resource type="Texture2D" uid="uid://d0n1e7guie78b" path="res://Reactor/Textures/Road.png" id="43_c6lhl"]
-[ext_resource type="ArrayMesh" uid="uid://bo1hgboyi15v2" path="res://Reactor/Textures/Meshy_AI_Trees_are_sparse_thi_0822214907_texture_obj/Meshy_AI_Trees_are_sparse_thi_0822214907_texture.obj" id="44_tk3ih"]
-[ext_resource type="ArrayMesh" uid="uid://cshp8sp5iy1bb" path="res://Reactor/Textures/Meshy_AI_Trees_are_sparse_thi_0822214917_texture_obj/Meshy_AI_Trees_are_sparse_thi_0822214917_texture.obj" id="45_0lsbx"]
-[ext_resource type="ArrayMesh" uid="uid://dnciqsicflme4" path="res://Reactor/Textures/Meshy_AI_Trees_are_sparse_thi_0822215028_texture_obj/Meshy_AI_Trees_are_sparse_thi_0822215028_texture.obj" id="46_c6lhl"]
-[ext_resource type="ArrayMesh" uid="uid://4l2iccw0e7i" path="res://Reactor/Textures/Meshy_AI_Trees_are_sparse_thi_0822215337_texture_obj/Meshy_AI_Trees_are_sparse_thi_0822215337_texture.obj" id="47_x2j6o"]
+[ext_resource type="ArrayMesh" uid="uid://dq47se5bkacud" path="res://Reactor/Textures/Meshy_AI_a_run_down_truck_that_0822235413_texture_obj/Meshy_AI_a_run_down_truck_that_0822235413_texture.obj" id="43_r08dj"]
+[ext_resource type="ArrayMesh" uid="uid://douutv807f70h" path="res://Reactor/Textures/Meshy_AI_concrete_drainage_cha_0822235422_texture_obj/Meshy_AI_concrete_drainage_cha_0822235422_texture.obj" id="44_peqef"]
+[ext_resource type="ArrayMesh" uid="uid://u320diwjcjo2" path="res://Reactor/Textures/Meshy_AI_Trees_are_sparse_thi_0822235203_texture_obj/Meshy_AI_Trees_are_sparse_thi_0822235203_texture.obj" id="45_ustdx"]
+[ext_resource type="ArrayMesh" uid="uid://bsy8fv0ht4778" path="res://Reactor/Textures/Meshy_AI_Trees_are_sparse_thi_0822235212_texture_obj/Meshy_AI_Trees_are_sparse_thi_0822235212_texture.obj" id="46_qebpo"]
+[ext_resource type="ArrayMesh" uid="uid://y7e8e7f3od7" path="res://Reactor/Textures/Meshy_AI_Trees_are_sparse_thi_0822235222_texture_obj/Meshy_AI_Trees_are_sparse_thi_0822235222_texture.obj" id="47_n5h43"]
+[ext_resource type="ArrayMesh" uid="uid://buxml1k8qejqe" path="res://Reactor/Textures/Meshy_AI_Trees_are_sparse_thi_0822235231_texture_obj/Meshy_AI_Trees_are_sparse_thi_0822235231_texture.obj" id="48_sbd6p"]
+[ext_resource type="ArrayMesh" uid="uid://cgiy8a7qgvgad" path="res://Reactor/Textures/Meshy_AI_Trees_are_sparse_thi_0822235251_texture_obj/Meshy_AI_Trees_are_sparse_thi_0822235251_texture.obj" id="49_08wda"]
+[ext_resource type="PackedScene" uid="uid://dbfydl8p75lh" path="res://addons/KennyAssets/kenney_factory-kit_3.0/Models/FBX format/button-floor-round-small.fbx" id="50_r08dj"]
+[ext_resource type="ArrayMesh" uid="uid://dgvxyentxn4vr" path="res://addons/KennyAssets/kenney_factory-kit_3.0/Models/OBJ format/screen-hanging-wide.obj" id="51_peqef"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8x6dy"]
 albedo_color = Color(0.5842209, 0.36946535, 0.219057, 1)
@@ -349,13 +353,13 @@ transform = Transform3D(-1, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -1, 1.98
 [node name="Doorways" type="Node3D" parent="." unique_id=423284959]
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, -31.815834, 2.5119042, -5.94187)
 
-[node name="wall-doorway4" parent="Doorways" unique_id=762176390 instance=ExtResource("14_o3b8b")]
+[node name="wall-doorway4" parent="Doorways" unique_id=762176390]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -56.43696, -2.00171, -4.6119413)
 
-[node name="wall-doorway2" parent="Doorways" unique_id=253549982 instance=ExtResource("14_o3b8b")]
+[node name="wall-doorway2" parent="Doorways" unique_id=253549982]
 transform = Transform3D(-3.2185326e-07, 0, -3, 0, 3, 0, 3, 0, -3.2185326e-07, -48.676735, -1.8646767, -30.5943)
 
-[node name="wall-doorway3" parent="Doorways" unique_id=1815829263 instance=ExtResource("14_o3b8b")]
+[node name="wall-doorway3" parent="Doorways" unique_id=1815829263]
 transform = Transform3D(-3.2185326e-07, 0, -3, 0, 3, 0, 3, 0, -3.2185326e-07, -17.359325, -1.957453, 18.81941)
 
 [node name="Basiclight" parent="." unique_id=700343751 instance=ExtResource("16_rcsfk")]
@@ -553,25 +557,25 @@ transform = Transform3D(3.25, 0, 0, 0, 3.25, 0, 0, 0, 3.25, 79.242935, -0.068157
 transform = Transform3D(0.3076923, 0, 0, 0, 0.3076923, 0, 0, 0, 0.3076923, -52.93995, 75.54472, 43.194855)
 mesh = ExtResource("39_ikvga")
 
-[node name="vehicle" parent="Parking_Lot" unique_id=147538936 instance=ExtResource("40_m7pli")]
+[node name="vehicle" parent="Parking_Lot" unique_id=147538936]
 transform = Transform3D(0.035723977, 0, 0.9993611, 0, 0.9999998, 0, -0.9993611, 0, 0.035723977, 0.7827707, 0, -4.3543797)
 
-[node name="vehicle2" parent="Parking_Lot" unique_id=1404207218 instance=ExtResource("40_m7pli")]
+[node name="vehicle2" parent="Parking_Lot" unique_id=1404207218]
 transform = Transform3D(0.1500792, 0, -0.98867315, 0, 0.9999998, 0, 0.98867315, 0, 0.1500792, 2.1695998, 0, -6.9706116)
 
-[node name="vehicle3" parent="Parking_Lot" unique_id=616540199 instance=ExtResource("40_m7pli")]
+[node name="vehicle3" parent="Parking_Lot" unique_id=616540199]
 transform = Transform3D(0.15048799, 0, 0.98861104, 0, 0.9999998, 0, -0.98861104, 0, 0.15048799, -0.4020927, 0, -11.258181)
 
-[node name="vehicle4" parent="Parking_Lot" unique_id=1658476203 instance=ExtResource("40_m7pli")]
+[node name="vehicle4" parent="Parking_Lot" unique_id=1658476203]
 transform = Transform3D(0.15048799, 0, 0.98861104, 0, 0.9999998, 0, -0.98861104, 0, 0.15048799, 2.1641257, 0, -14.363659)
 
-[node name="vehicle-convertible" parent="Parking_Lot" unique_id=472406901 instance=ExtResource("41_tk3ih")]
+[node name="vehicle-convertible" parent="Parking_Lot" unique_id=472406901]
 transform = Transform3D(0.23970631, 0, -0.9708452, 0, 0.9999998, 0, 0.9708452, 0, 0.23970631, 5.445018, 0.02097159, -7.0181904)
 
-[node name="vehicle-convertible3" parent="Parking_Lot" unique_id=78794748 instance=ExtResource("41_tk3ih")]
+[node name="vehicle-convertible3" parent="Parking_Lot" unique_id=78794748]
 transform = Transform3D(-0.163336, 0, -0.9865702, 0, 0.9999998, 0, 0.9865702, 0, -0.163336, -3.0908937, 0.02097159, -14.270224)
 
-[node name="vehicle-convertible2" parent="Parking_Lot" unique_id=1159203194 instance=ExtResource("41_tk3ih")]
+[node name="vehicle-convertible2" parent="Parking_Lot" unique_id=1159203194]
 transform = Transform3D(0.10189734, 0, 0.99479437, 0, 0.9999998, 0, -0.99479437, 0, 0.10189734, -1.8908805, 0.02097159, -7.150896)
 
 [node name="Parking Lot" type="MeshInstance3D" parent="Parking_Lot" unique_id=1055639040]
@@ -619,120 +623,320 @@ transform = Transform3D(0.30769223, 0, 0, 0, 0.30769223, 0, 0, 0, 0.30769223, -1
 material_override = SubResource("StandardMaterial3D_l6i2e")
 mesh = SubResource("BoxMesh_8i4u8")
 
-[node name="Node3D" type="Node3D" parent="." unique_id=1639630056]
+[node name="Landscaping" type="Node3D" parent="." unique_id=1639630056]
 
-[node name="MeshyAiConcreteDrainageCha0822214537Texture" type="MeshInstance3D" parent="." unique_id=1976166680]
-transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, -1.1945429, 29.82832, -0.59814835)
-mesh = ExtResource("39_ikvga")
+[node name="Truck" type="MeshInstance3D" parent="Landscaping" unique_id=1968731699]
+transform = Transform3D(-0.3866551, 0, 3.981269, 0, 4, 0, -3.981269, 0, -0.3866551, 64.5949, 1.9085064, 10.933989)
+mesh = ExtResource("41_c6lhl")
 
-[node name="MeshyAiConcreteDrainageCha0822214537Texture2" type="MeshInstance3D" parent="." unique_id=434271368]
-transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, 120.34384, 8.269604, -41.189182)
-mesh = ExtResource("39_ikvga")
+[node name="Truck3" type="MeshInstance3D" parent="Landscaping" unique_id=641309834]
+transform = Transform3D(0.30801642, 0, 3.9881237, 0, 4, 0, -3.9881237, 0, 0.30801642, 69.53977, 1.9085064, 10.933989)
+mesh = ExtResource("41_c6lhl")
 
-[node name="MeshyAiConcreteDrainageCha0822214537Texture4" type="MeshInstance3D" parent="." unique_id=798934863]
-transform = Transform3D(-17.014763, 0, 18.316603, 0, 25, 0, -18.316603, 0, -17.014763, -111.72315, 8.269604, 101.21071)
-mesh = ExtResource("39_ikvga")
+[node name="Truck2" type="MeshInstance3D" parent="Landscaping" unique_id=1371535050]
+transform = Transform3D(0.9976903, 0, 3.8735795, 0, 4, 0, -3.8735795, 0, 0.9976903, 59.60586, 1.9085064, 11.155435)
+mesh = ExtResource("41_c6lhl")
 
-[node name="MeshyAiConcreteDrainageCha0822214537Texture3" type="MeshInstance3D" parent="." unique_id=1416657407]
-transform = Transform3D(-0.40396592, 0, -24.996737, 0, 25, 0, 24.996737, 0, -0.40396592, 120.34384, 8.269604, 110.51845)
-mesh = ExtResource("39_ikvga")
+[node name="MeshyAiARunDownTruckThat0822235311Texture" type="MeshInstance3D" parent="Landscaping" unique_id=1397524429]
+transform = Transform3D(-4.3790965, 0, 2.413194, 0, 4.9999995, 0, -2.413194, 0, -4.3790965, 56.94574, 2.5587888, -1.2588425)
+mesh = ExtResource("42_x2j6o")
 
-[node name="MeshyAiTreesAreSparseThi0822214907Texture" type="MeshInstance3D" parent="." unique_id=655638995]
-transform = Transform3D(17.666859, 0, -17.688475, 0, 25, 0, 17.688475, 0, 17.666859, -62.369473, 14.2536545, 99.32013)
-mesh = ExtResource("44_tk3ih")
+[node name="MeshyAiARunDownTruckThat0822235311Texture2" type="MeshInstance3D" parent="Landscaping" unique_id=1639021229]
+transform = Transform3D(-1.8755667, 0, -4.634894, 0, 4.9999995, 0, 4.634894, 0, -1.8755667, 86.98702, 2.394072, 9.338302)
+mesh = ExtResource("42_x2j6o")
 
-[node name="MeshyAiTreesAreSparseThi0822214907Texture2" type="MeshInstance3D" parent="." unique_id=192051905]
-transform = Transform3D(17.666859, 0, -17.688475, 0, 25, 0, 17.688475, 0, 17.666859, -74.74576, 14.2536545, -35.384552)
-mesh = ExtResource("44_tk3ih")
+[node name="MeshyAiARunDownTruckThat0822235413Texture" type="MeshInstance3D" parent="Landscaping" unique_id=270144066]
+transform = Transform3D(0.52833605, 0, -4.9720078, 0, 5, 0, 4.9720078, 0, 0.52833605, 96.35874, 2.5722466, -22.344217)
+mesh = ExtResource("43_r08dj")
 
-[node name="MeshyAiTreesAreSparseThi0822214907Texture3" type="MeshInstance3D" parent="." unique_id=322046321]
-transform = Transform3D(-3.059515, 0, -24.81208, 0, 24.999996, 0, 24.81208, 0, -3.059515, 111.83841, 14.2536545, -89.492065)
-mesh = ExtResource("44_tk3ih")
+[node name="MeshyAiARunDownTruckThat0822235413Texture2" type="MeshInstance3D" parent="Landscaping" unique_id=1444319693]
+transform = Transform3D(0.83834004, 0, -4.9292173, 0, 4.9999995, 0, 4.9292173, 0, 0.83834004, 89.94612, 2.5722466, -20.000729)
+mesh = ExtResource("43_r08dj")
 
-[node name="MeshyAiTreesAreSparseThi0822214907Texture4" type="MeshInstance3D" parent="." unique_id=1040448686]
-transform = Transform3D(-23.391314, 0, 8.82307, 0, 25, 0, -8.82307, 0, -23.391314, 10.311104, 14.2536545, -57.506165)
-mesh = ExtResource("44_tk3ih")
+[node name="MeshyAiConcreteDrainageCha0822235422Texture" type="MeshInstance3D" parent="Landscaping" unique_id=2114881829]
+transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, 0.40667343, 29.458448, -1.0949593)
+mesh = ExtResource("44_peqef")
 
-[node name="MeshyAiTreesAreSparseThi0822214917Texture" type="MeshInstance3D" parent="." unique_id=2099917203]
-transform = Transform3D(-1.2221636, 0, 24.970108, 0, 25.000004, 0, -24.970108, 0, -1.2221636, 7.8237267, 11.431381, 94.53462)
-mesh = ExtResource("45_0lsbx")
+[node name="MeshyAiTreesAreSparseThi0822235203Texture" type="MeshInstance3D" parent="Landscaping" unique_id=1893730918]
+transform = Transform3D(18.122467, 0, 17.221386, 0, 25, 0, -17.221386, 0, 18.122467, -59.223427, 13.177728, -52.15235)
+mesh = ExtResource("45_ustdx")
 
-[node name="MeshyAiTreesAreSparseThi0822214917Texture4" type="MeshInstance3D" parent="." unique_id=985560898]
-transform = Transform3D(-10.15961, 0, -22.842554, 0, 25.000004, 0, 22.842554, 0, -10.15961, -64.170876, 11.431381, 19.044518)
-mesh = ExtResource("45_0lsbx")
+[node name="MeshyAiTreesAreSparseThi0822235212Texture" type="MeshInstance3D" parent="Landscaping" unique_id=1419741860]
+transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, -77.01674, 16.62349, 11.058145)
+mesh = ExtResource("46_qebpo")
 
-[node name="MeshyAiTreesAreSparseThi0822214917Texture3" type="MeshInstance3D" parent="." unique_id=205403022]
-transform = Transform3D(-24.990025, 0, 0.7061796, 0, 25, 0, -0.7061796, 0, -24.990025, 120.9989, 11.431381, 41.626564)
-mesh = ExtResource("45_0lsbx")
+[node name="MeshyAiTreesAreSparseThi0822235212Texture4" type="MeshInstance3D" parent="Landscaping" unique_id=466941795]
+transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, -77.01674, 16.62349, 60.08422)
+mesh = ExtResource("46_qebpo")
 
-[node name="MeshyAiTreesAreSparseThi0822214917Texture2" type="MeshInstance3D" parent="." unique_id=42657976]
-transform = Transform3D(-9.339411, 0, 23.18999, 0, 25, 0, -23.18999, 0, -9.339411, 30.227844, 11.431381, -93.96069)
-mesh = ExtResource("45_0lsbx")
+[node name="MeshyAiTreesAreSparseThi0822235212Texture3" type="MeshInstance3D" parent="Landscaping" unique_id=463895390]
+transform = Transform3D(14.147778, 0, -20.611656, 0, 25, 0, 20.611656, 0, 14.147778, -77.01674, 16.62349, 98.73513)
+mesh = ExtResource("46_qebpo")
 
-[node name="MeshyAiTreesAreSparseThi0822215028Texture" type="MeshInstance3D" parent="." unique_id=1551375797]
-transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -28.247875, 13.137287, -63.589687)
-mesh = ExtResource("46_c6lhl")
+[node name="MeshyAiTreesAreSparseThi0822235212Texture2" type="MeshInstance3D" parent="Landscaping" unique_id=911921933]
+transform = Transform3D(0.9450676, 0, -24.98213, 0, 25, 0, 24.98213, 0, 0.9450676, -77.01674, 16.62349, 50.82166)
+mesh = ExtResource("46_qebpo")
 
-[node name="MeshyAiTreesAreSparseThi0822215028Texture12" type="MeshInstance3D" parent="." unique_id=849197516]
-transform = Transform3D(10.544471, 0, -10.668368, 0, 14.999999, 0, 10.668368, 0, 10.544471, -28.247875, 13.137287, -109.02196)
-mesh = ExtResource("46_c6lhl")
+[node name="MeshyAiTreesAreSparseThi0822235212Texture15" type="MeshInstance3D" parent="Landscaping" unique_id=440249227]
+transform = Transform3D(-18.360418, 0, -16.96747, 0, 25, 0, 16.96747, 0, -18.360418, -77.01674, 16.62349, 5.168659)
+mesh = ExtResource("46_qebpo")
 
-[node name="MeshyAiTreesAreSparseThi0822215028Texture13" type="MeshInstance3D" parent="." unique_id=994880970]
-transform = Transform3D(10.544471, 0, -10.668368, 0, 14.999999, 0, 10.668368, 0, 10.544471, 61.32131, 13.137287, -120.952805)
-mesh = ExtResource("46_c6lhl")
+[node name="MeshyAiTreesAreSparseThi0822235212Texture21" type="MeshInstance3D" parent="Landscaping" unique_id=78005070]
+transform = Transform3D(-24.341686, 0, 5.6993294, 0, 25, 0, -5.6993294, 0, -24.341686, -110.84269, 16.62349, 5.168659)
+mesh = ExtResource("46_qebpo")
 
-[node name="MeshyAiTreesAreSparseThi0822215028Texture2" type="MeshInstance3D" parent="." unique_id=444299174]
-transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -96.99423, 13.068844, 57.97432)
-mesh = ExtResource("46_c6lhl")
+[node name="MeshyAiTreesAreSparseThi0822235212Texture22" type="MeshInstance3D" parent="Landscaping" unique_id=2019571900]
+transform = Transform3D(-24.341167, 0, -5.7015486, 0, 25, 0, 5.7015486, 0, -24.341167, -110.84269, 16.62349, 54.309696)
+mesh = ExtResource("46_qebpo")
 
-[node name="MeshyAiTreesAreSparseThi0822215028Texture6" type="MeshInstance3D" parent="." unique_id=728734143]
-transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -96.99423, 13.068844, -112.72682)
-mesh = ExtResource("46_c6lhl")
+[node name="MeshyAiTreesAreSparseThi0822235212Texture23" type="MeshInstance3D" parent="Landscaping" unique_id=642884470]
+transform = Transform3D(-10.71435, 0, 22.587671, 0, 25, 0, -22.587671, 0, -10.71435, -110.84269, 16.62349, 91.678055)
+mesh = ExtResource("46_qebpo")
 
-[node name="MeshyAiTreesAreSparseThi0822215028Texture7" type="MeshInstance3D" parent="." unique_id=1066948330]
-transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -122.52385, 13.068844, -112.72682)
-mesh = ExtResource("46_c6lhl")
+[node name="MeshyAiTreesAreSparseThi0822235212Texture24" type="MeshInstance3D" parent="Landscaping" unique_id=289841717]
+transform = Transform3D(-10.71435, 0, 22.587671, 0, 25, 0, -22.587671, 0, -10.71435, -110.84269, 16.62349, -2.634964)
+mesh = ExtResource("46_qebpo")
 
-[node name="MeshyAiTreesAreSparseThi0822215028Texture8" type="MeshInstance3D" parent="." unique_id=1779743772]
-transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -132.50986, 13.068844, -65.17106)
-mesh = ExtResource("46_c6lhl")
+[node name="MeshyAiTreesAreSparseThi0822235212Texture25" type="MeshInstance3D" parent="Landscaping" unique_id=88735517]
+transform = Transform3D(-10.71435, 0, 22.587671, 0, 25, 0, -22.587671, 0, -10.71435, -110.84269, 16.62349, -121.17832)
+mesh = ExtResource("46_qebpo")
 
-[node name="MeshyAiTreesAreSparseThi0822215028Texture3" type="MeshInstance3D" parent="." unique_id=1305619874]
-transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -33.008484, 13.068844, 57.97432)
-mesh = ExtResource("46_c6lhl")
+[node name="MeshyAiTreesAreSparseThi0822235212Texture29" type="MeshInstance3D" parent="Landscaping" unique_id=627147940]
+transform = Transform3D(-3.2019787, 0, -24.794106, 0, 25.000004, 0, 24.794106, 0, -3.2019787, -110.84269, 16.62349, -121.17832)
+mesh = ExtResource("46_qebpo")
 
-[node name="MeshyAiTreesAreSparseThi0822215028Texture14" type="MeshInstance3D" parent="." unique_id=832363888]
-transform = Transform3D(7.5551114, 0, 12.9584055, 0, 14.999999, 0, -12.9584055, 0, 7.5551114, 8.666843, 13.068844, 57.97432)
-mesh = ExtResource("46_c6lhl")
+[node name="MeshyAiTreesAreSparseThi0822235212Texture30" type="MeshInstance3D" parent="Landscaping" unique_id=1310428856]
+transform = Transform3D(-3.2019787, 0, -24.794106, 0, 25.000004, 0, 24.794106, 0, -3.2019787, -29.172348, 16.62349, -121.17832)
+mesh = ExtResource("46_qebpo")
 
-[node name="MeshyAiTreesAreSparseThi0822215028Texture15" type="MeshInstance3D" parent="." unique_id=814471231]
-transform = Transform3D(7.5551114, 0, 12.9584055, 0, 14.999999, 0, -12.9584055, 0, 7.5551114, -30.469532, 13.068844, 92.8677)
-mesh = ExtResource("46_c6lhl")
+[node name="MeshyAiTreesAreSparseThi0822235212Texture31" type="MeshInstance3D" parent="Landscaping" unique_id=1886955616]
+transform = Transform3D(-24.447115, 0, 5.228677, 0, 25.000008, 0, -5.228677, 0, -24.447115, 18.628475, 16.62349, -121.17832)
+mesh = ExtResource("46_qebpo")
 
-[node name="MeshyAiTreesAreSparseThi0822215028Texture4" type="MeshInstance3D" parent="." unique_id=1462548585]
-transform = Transform3D(10.769499, 0, 10.441161, 0, 14.999999, 0, -10.441161, 0, 10.769499, 87.180374, 13.068844, 57.97432)
-mesh = ExtResource("46_c6lhl")
+[node name="MeshyAiTreesAreSparseThi0822235212Texture39" type="MeshInstance3D" parent="Landscaping" unique_id=1358603185]
+transform = Transform3D(-24.447115, 0, 5.228677, 0, 25.000008, 0, -5.228677, 0, -24.447115, 18.628475, 16.62349, -65.076515)
+mesh = ExtResource("46_qebpo")
 
-[node name="MeshyAiTreesAreSparseThi0822215028Texture11" type="MeshInstance3D" parent="." unique_id=506368367]
-transform = Transform3D(10.769499, 0, 10.441161, 0, 14.999999, 0, -10.441161, 0, 10.769499, 66.86692, 13.068844, 98.541725)
-mesh = ExtResource("46_c6lhl")
+[node name="MeshyAiTreesAreSparseThi0822235212Texture40" type="MeshInstance3D" parent="Landscaping" unique_id=1686262147]
+transform = Transform3D(-23.784994, 0, -7.698996, 0, 25.000011, 0, 7.698996, 0, -23.784994, 52.96013, 16.62349, -59.873905)
+mesh = ExtResource("46_qebpo")
 
-[node name="MeshyAiTreesAreSparseThi0822215028Texture10" type="MeshInstance3D" parent="." unique_id=394450442]
-transform = Transform3D(10.769499, 0, 10.441161, 0, 14.999999, 0, -10.441161, 0, 10.769499, 109.82667, 13.068844, 84.4395)
-mesh = ExtResource("46_c6lhl")
+[node name="MeshyAiTreesAreSparseThi0822235212Texture42" type="MeshInstance3D" parent="Landscaping" unique_id=1993204658]
+transform = Transform3D(-19.955389, 0, 15.059312, 0, 25.00001, 0, -15.059312, 0, -19.955389, 103.21649, 16.62349, -59.873905)
+mesh = ExtResource("46_qebpo")
 
-[node name="MeshyAiTreesAreSparseThi0822215028Texture5" type="MeshInstance3D" parent="." unique_id=1994242600]
-transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 78.14629, 13.068844, -50.644775)
-mesh = ExtResource("46_c6lhl")
+[node name="MeshyAiTreesAreSparseThi0822235212Texture43" type="MeshInstance3D" parent="Landscaping" unique_id=796681549]
+transform = Transform3D(-19.955389, 0, 15.059312, 0, 25.00001, 0, -15.059312, 0, -19.955389, 103.21649, 16.62349, -97.93071)
+mesh = ExtResource("46_qebpo")
 
-[node name="MeshyAiTreesAreSparseThi0822215028Texture9" type="MeshInstance3D" parent="." unique_id=74399819]
-transform = Transform3D(3.559791, 0, -14.571474, 0, 14.999999, 0, 14.571474, 0, 3.559791, 63.13208, 13.068844, -82.68927)
-mesh = ExtResource("46_c6lhl")
+[node name="MeshyAiTreesAreSparseThi0822235212Texture41" type="MeshInstance3D" parent="Landscaping" unique_id=631152282]
+transform = Transform3D(-23.784994, 0, -7.698996, 0, 25.000011, 0, 7.698996, 0, -23.784994, 108.89478, -2.4502869, -118.68356)
+mesh = ExtResource("46_qebpo")
 
-[node name="MeshyAiTreesAreSparseThi0822215337Texture" type="MeshInstance3D" parent="." unique_id=2059017465]
-transform = Transform3D(9.897647, 0, -22.957277, 0, 25, 0, 22.957277, 0, 9.897647, -111.23359, 13.590759, 10.755829)
-mesh = ExtResource("47_x2j6o")
+[node name="MeshyAiTreesAreSparseThi0822235212Texture32" type="MeshInstance3D" parent="Landscaping" unique_id=2129570879]
+transform = Transform3D(7.2443566, 0, -23.927387, 0, 25.000011, 0, 23.927387, 0, 7.2443566, 80.66919, -2.6406803, -121.17832)
+mesh = ExtResource("46_qebpo")
 
-[node name="MeshyAiTreesAreSparseThi0822215337Texture2" type="MeshInstance3D" parent="." unique_id=536227289]
-transform = Transform3D(5.47464, 0, -24.393204, 0, 25, 0, 24.393204, 0, 5.47464, 47.93505, 13.590759, 49.938717)
-mesh = ExtResource("47_x2j6o")
+[node name="MeshyAiTreesAreSparseThi0822235212Texture33" type="MeshInstance3D" parent="Landscaping" unique_id=740873377]
+transform = Transform3D(-21.412708, 0, -12.903353, 0, 25.00001, 0, 12.903353, 0, -21.412708, 20.432068, -2.6406803, -121.17832)
+mesh = ExtResource("46_qebpo")
+
+[node name="MeshyAiTreesAreSparseThi0822235212Texture34" type="MeshInstance3D" parent="Landscaping" unique_id=1057554851]
+transform = Transform3D(-24.94794, 0, 1.6127205, 0, 25.00001, 0, -1.6127205, 0, -24.94794, -36.870003, -2.6406803, -121.17832)
+mesh = ExtResource("46_qebpo")
+
+[node name="MeshyAiTreesAreSparseThi0822235212Texture35" type="MeshInstance3D" parent="Landscaping" unique_id=2110702668]
+transform = Transform3D(-19.846184, 0, 15.202946, 0, 25.000013, 0, -15.202946, 0, -19.846184, -36.870003, -2.6406803, -80.112595)
+mesh = ExtResource("46_qebpo")
+
+[node name="MeshyAiTreesAreSparseThi0822235212Texture36" type="MeshInstance3D" parent="Landscaping" unique_id=1943039757]
+transform = Transform3D(-0.42002773, 0, 24.99648, 0, 25.000011, 0, -24.99648, 0, -0.42002773, 4.1990967, -2.6406803, -80.112595)
+mesh = ExtResource("46_qebpo")
+
+[node name="MeshyAiTreesAreSparseThi0822235212Texture37" type="MeshInstance3D" parent="Landscaping" unique_id=1595033487]
+transform = Transform3D(-0.42002773, 0, 24.99648, 0, 25.000011, 0, -24.99648, 0, -0.42002773, 4.1990967, -2.6406803, -59.645107)
+mesh = ExtResource("46_qebpo")
+
+[node name="MeshyAiTreesAreSparseThi0822235212Texture38" type="MeshInstance3D" parent="Landscaping" unique_id=1025542621]
+transform = Transform3D(-9.1197815, 0, -23.277243, 0, 25.000013, 0, 23.277243, 0, -9.1197815, 4.1990967, -2.6406803, -59.645107)
+mesh = ExtResource("46_qebpo")
+
+[node name="MeshyAiTreesAreSparseThi0822235212Texture26" type="MeshInstance3D" parent="Landscaping" unique_id=165535954]
+transform = Transform3D(-23.576498, 0, 8.315592, 0, 25.000004, 0, -8.315592, 0, -23.576498, -110.84269, -6.631119, -121.17832)
+mesh = ExtResource("46_qebpo")
+
+[node name="MeshyAiTreesAreSparseThi0822235212Texture27" type="MeshInstance3D" parent="Landscaping" unique_id=346712473]
+transform = Transform3D(-19.03568, 0, 16.206274, 0, 25.000004, 0, -16.206274, 0, -19.03568, -126.58728, -15.236961, -96.71289)
+mesh = ExtResource("46_qebpo")
+
+[node name="MeshyAiTreesAreSparseThi0822235212Texture28" type="MeshInstance3D" parent="Landscaping" unique_id=1559928907]
+transform = Transform3D(-1.969554, 0, 24.922306, 0, 25.000004, 0, -24.922306, 0, -1.969554, -126.58728, -15.236961, -84.162155)
+mesh = ExtResource("46_qebpo")
+
+[node name="MeshyAiTreesAreSparseThi0822235212Texture17" type="MeshInstance3D" parent="Landscaping" unique_id=698231094]
+transform = Transform3D(-12.488331, 0, -21.657368, 0, 25, 0, 21.657368, 0, -12.488331, -77.01674, -3.1288414, -43.14552)
+mesh = ExtResource("46_qebpo")
+
+[node name="MeshyAiTreesAreSparseThi0822235212Texture18" type="MeshInstance3D" parent="Landscaping" unique_id=622895884]
+transform = Transform3D(24.735321, 0, 3.628209, 0, 25, 0, -3.628209, 0, 24.735321, -77.01674, -3.1288414, -43.14552)
+mesh = ExtResource("46_qebpo")
+
+[node name="MeshyAiTreesAreSparseThi0822235212Texture16" type="MeshInstance3D" parent="Landscaping" unique_id=1396734205]
+transform = Transform3D(-11.777575, 0, 22.051956, 0, 25, 0, -22.051956, 0, -11.777575, -77.01674, 4.461294, 29.928152)
+mesh = ExtResource("46_qebpo")
+
+[node name="MeshyAiTreesAreSparseThi0822235212Texture7" type="MeshInstance3D" parent="Landscaping" unique_id=365864000]
+transform = Transform3D(-13.140416, 0, -21.26804, 0, 25, 0, 21.26804, 0, -13.140416, 25.2099, 16.62349, 53.94093)
+mesh = ExtResource("46_qebpo")
+
+[node name="MeshyAiTreesAreSparseThi0822235212Texture8" type="MeshInstance3D" parent="Landscaping" unique_id=133678115]
+transform = Transform3D(-13.140416, 0, -21.26804, 0, 25, 0, 21.26804, 0, -13.140416, 25.2099, 16.62349, 106.061584)
+mesh = ExtResource("46_qebpo")
+
+[node name="MeshyAiTreesAreSparseThi0822235212Texture10" type="MeshInstance3D" parent="Landscaping" unique_id=1852966477]
+transform = Transform3D(-13.140416, 0, -21.26804, 0, 25, 0, 21.26804, 0, -13.140416, 90.53893, 16.62349, 106.061584)
+mesh = ExtResource("46_qebpo")
+
+[node name="MeshyAiTreesAreSparseThi0822235212Texture11" type="MeshInstance3D" parent="Landscaping" unique_id=592177467]
+transform = Transform3D(-24.907324, 0, 2.1506119, 0, 24.999996, 0, -2.1506119, 0, -24.907324, 90.53893, 16.62349, 106.061584)
+mesh = ExtResource("46_qebpo")
+
+[node name="MeshyAiTreesAreSparseThi0822235212Texture12" type="MeshInstance3D" parent="Landscaping" unique_id=924606140]
+transform = Transform3D(-24.907324, 0, 2.1506119, 0, 24.999996, 0, -2.1506119, 0, -24.907324, 90.53893, 16.62349, 73.627594)
+mesh = ExtResource("46_qebpo")
+
+[node name="MeshyAiTreesAreSparseThi0822235212Texture13" type="MeshInstance3D" parent="Landscaping" unique_id=177121170]
+transform = Transform3D(2.9772887, 0, 24.82208, 0, 24.999996, 0, -24.82208, 0, 2.9772887, 90.53893, 16.62349, 54.985176)
+mesh = ExtResource("46_qebpo")
+
+[node name="MeshyAiTreesAreSparseThi0822235212Texture19" type="MeshInstance3D" parent="Landscaping" unique_id=2025966469]
+transform = Transform3D(-21.637783, 0, 12.522232, 0, 24.999996, 0, -12.522232, 0, -21.637783, 49.12629, -4.8413715, 54.985176)
+mesh = ExtResource("46_qebpo")
+
+[node name="MeshyAiTreesAreSparseThi0822235212Texture20" type="MeshInstance3D" parent="Landscaping" unique_id=38837813]
+transform = Transform3D(-18.128218, 0, 17.215332, 0, 24.999996, 0, -17.215332, 0, -18.128218, 47.74808, -4.8413715, 30.153828)
+mesh = ExtResource("46_qebpo")
+
+[node name="MeshyAiTreesAreSparseThi0822235212Texture14" type="MeshInstance3D" parent="Landscaping" unique_id=772355290]
+transform = Transform3D(-19.013908, 0, 16.231794, 0, 24.999996, 0, -16.231794, 0, -19.013908, 90.53893, 0.75017357, 60.80491)
+mesh = ExtResource("46_qebpo")
+
+[node name="MeshyAiTreesAreSparseThi0822235212Texture9" type="MeshInstance3D" parent="Landscaping" unique_id=101011382]
+transform = Transform3D(-17.075403, 0, 18.260082, 0, 24.999996, 0, -18.260082, 0, -17.075403, 25.2099, 16.62349, 106.061584)
+mesh = ExtResource("46_qebpo")
+
+[node name="MeshyAiTreesAreSparseThi0822235212Texture5" type="MeshInstance3D" parent="Landscaping" unique_id=1405373180]
+transform = Transform3D(0.9450676, 0, -24.98213, 0, 25, 0, 24.98213, 0, 0.9450676, -2.7964325, 16.62349, 50.82166)
+mesh = ExtResource("46_qebpo")
+
+[node name="MeshyAiTreesAreSparseThi0822235212Texture6" type="MeshInstance3D" parent="Landscaping" unique_id=109657680]
+transform = Transform3D(-21.575819, 0, -12.628696, 0, 25, 0, 12.628696, 0, -21.575819, -2.7964325, 16.62349, 68.32826)
+mesh = ExtResource("46_qebpo")
+
+[node name="MeshyAiTreesAreSparseThi0822235222Texture" type="MeshInstance3D" parent="Landscaping" unique_id=860934960]
+transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, -51.995148, 11.266092, 85.459145)
+mesh = ExtResource("47_n5h43")
+
+[node name="MeshyAiTreesAreSparseThi0822235222Texture6" type="MeshInstance3D" parent="Landscaping" unique_id=556540528]
+transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, -23.86998, 11.266092, -40.614807)
+mesh = ExtResource("47_n5h43")
+
+[node name="MeshyAiTreesAreSparseThi0822235222Texture7" type="MeshInstance3D" parent="Landscaping" unique_id=1607572330]
+transform = Transform3D(18.811094, 0, -16.466413, 0, 25, 0, 16.466413, 0, 18.811094, 93.59479, 11.266092, -85.0905)
+mesh = ExtResource("47_n5h43")
+
+[node name="MeshyAiTreesAreSparseThi0822235222Texture8" type="MeshInstance3D" parent="Landscaping" unique_id=1870785566]
+transform = Transform3D(19.851559, 0, -15.195909, 0, 25, 0, 15.195909, 0, 19.851559, -101.65327, 11.266092, -109.244774)
+mesh = ExtResource("47_n5h43")
+
+[node name="MeshyAiTreesAreSparseThi0822235222Texture4" type="MeshInstance3D" parent="Landscaping" unique_id=1800964181]
+transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, 84.54042, 11.266092, 85.459145)
+mesh = ExtResource("47_n5h43")
+
+[node name="MeshyAiTreesAreSparseThi0822235222Texture5" type="MeshInstance3D" parent="Landscaping" unique_id=1260946085]
+transform = Transform3D(-24.741306, 0, -3.5871687, 0, 25, 0, 3.5871687, 0, -24.741306, 110.97901, 11.266092, 113.248825)
+mesh = ExtResource("47_n5h43")
+
+[node name="MeshyAiTreesAreSparseThi0822235222Texture3" type="MeshInstance3D" parent="Landscaping" unique_id=352163281]
+transform = Transform3D(4.0952287, 0, -24.6623, 0, 25, 0, 24.6623, 0, 4.0952287, -11.677273, 11.266092, 65.25378)
+mesh = ExtResource("47_n5h43")
+
+[node name="MeshyAiTreesAreSparseThi0822235222Texture2" type="MeshInstance3D" parent="Landscaping" unique_id=326245496]
+transform = Transform3D(-14.381655, 0, 20.449158, 0, 25, 0, -20.449158, 0, -14.381655, -51.995148, 11.266092, 110.2735)
+mesh = ExtResource("47_n5h43")
+
+[node name="MeshyAiTreesAreSparseThi0822235231Texture" type="MeshInstance3D" parent="Landscaping" unique_id=1536174407]
+transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, -107.23824, 10.747887, 95.33192)
+mesh = ExtResource("48_sbd6p")
+
+[node name="MeshyAiTreesAreSparseThi0822235231Texture2" type="MeshInstance3D" parent="Landscaping" unique_id=1151050228]
+transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, -107.23824, 10.747887, 54.109367)
+mesh = ExtResource("48_sbd6p")
+
+[node name="MeshyAiTreesAreSparseThi0822235231Texture4" type="MeshInstance3D" parent="Landscaping" unique_id=962739334]
+transform = Transform3D(10.427107, 0, 22.721695, 0, 25, 0, -22.721695, 0, 10.427107, -96.42024, 10.747887, -5.7468414)
+mesh = ExtResource("48_sbd6p")
+
+[node name="MeshyAiTreesAreSparseThi0822235231Texture3" type="MeshInstance3D" parent="Landscaping" unique_id=274674639]
+transform = Transform3D(12.737393, 0, -21.51183, 0, 25, 0, 21.51183, 0, 12.737393, 26.969826, 10.747887, 54.109367)
+mesh = ExtResource("48_sbd6p")
+
+[node name="MeshyAiTreesAreSparseThi0822235231Texture5" type="MeshInstance3D" parent="Landscaping" unique_id=1004869269]
+transform = Transform3D(12.737393, 0, -21.51183, 0, 25, 0, 21.51183, 0, 12.737393, 6.865059, 10.747887, -82.3144)
+mesh = ExtResource("48_sbd6p")
+
+[node name="MeshyAiTreesAreSparseThi0822235231Texture6" type="MeshInstance3D" parent="Landscaping" unique_id=246483645]
+transform = Transform3D(9.787877, 0, 23.004293, 0, 25, 0, -23.004293, 0, 9.787877, -19.322601, 10.747887, -93.53577)
+mesh = ExtResource("48_sbd6p")
+
+[node name="MeshyAiTreesAreSparseThi0822235231Texture7" type="MeshInstance3D" parent="Landscaping" unique_id=1640915016]
+transform = Transform3D(24.957092, 0, -1.4640908, 0, 25, 0, 1.4640908, 0, 24.957092, -19.322601, 10.747887, -64.67145)
+mesh = ExtResource("48_sbd6p")
+
+[node name="MeshyAiTreesAreSparseThi0822235231Texture8" type="MeshInstance3D" parent="Landscaping" unique_id=1901539968]
+transform = Transform3D(-3.9618397, 0, -24.68408, 0, 25, 0, 24.68408, 0, -3.9618397, 105.34224, 10.747887, -114.2849)
+mesh = ExtResource("48_sbd6p")
+
+[node name="MeshyAiTreesAreSparseThi0822235251Texture" type="MeshInstance3D" parent="Landscaping" unique_id=860410819]
+transform = Transform3D(20.16924, 0, -14.771654, 0, 25, 0, 14.771654, 0, 20.16924, -50.429745, 12.239506, 38.063988)
+mesh = ExtResource("49_08wda")
+
+[node name="MeshyAiTreesAreSparseThi0822235251Texture4" type="MeshInstance3D" parent="Landscaping" unique_id=1377937265]
+transform = Transform3D(10.755087, 0, 22.5683, 0, 25, 0, -22.5683, 0, 10.755087, 57.990944, 12.239506, -62.78293)
+mesh = ExtResource("49_08wda")
+
+[node name="MeshyAiTreesAreSparseThi0822235251Texture5" type="MeshInstance3D" parent="Landscaping" unique_id=429326903]
+transform = Transform3D(-0.52631855, 0, 24.99446, 0, 25, 0, -24.99446, 0, -0.52631855, 110.12571, 12.239506, -58.99281)
+mesh = ExtResource("49_08wda")
+
+[node name="MeshyAiTreesAreSparseThi0822235251Texture3" type="MeshInstance3D" parent="Landscaping" unique_id=1774493269]
+transform = Transform3D(20.16924, 0, -14.771654, 0, 25, 0, 14.771654, 0, 20.16924, 42.316906, 12.239506, 97.99307)
+mesh = ExtResource("49_08wda")
+
+[node name="MeshyAiTreesAreSparseThi0822235251Texture7" type="MeshInstance3D" parent="Landscaping" unique_id=6399499]
+transform = Transform3D(20.16924, 0, -14.771654, 0, 25, 0, 14.771654, 0, 20.16924, 42.316906, 12.239506, -113.76516)
+mesh = ExtResource("49_08wda")
+
+[node name="MeshyAiTreesAreSparseThi0822235251Texture6" type="MeshInstance3D" parent="Landscaping" unique_id=1914464616]
+transform = Transform3D(20.16924, 0, -14.771654, 0, 25, 0, 14.771654, 0, 20.16924, 106.38579, 12.239506, 62.688995)
+mesh = ExtResource("49_08wda")
+
+[node name="MeshyAiTreesAreSparseThi0822235251Texture2" type="MeshInstance3D" parent="Landscaping" unique_id=3671046]
+transform = Transform3D(20.16924, 0, -14.771654, 0, 25, 0, 14.771654, 0, 20.16924, -23.259968, 12.239506, 100.63168)
+mesh = ExtResource("49_08wda")
+
+[node name="Lighting" type="Node3D" parent="." unique_id=1523492435]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1629386, 8.302989, -12.5261)
+
+[node name="button-floor-round-small" parent="Lighting" unique_id=1067550242 instance=ExtResource("50_r08dj")]
+transform = Transform3D(3, 0, 0, 0, -1.3113416e-07, -3, 0, 3, -1.3113416e-07, 20.40453, 0.7584152, -11.909245)
+
+[node name="button-floor-round-small2" parent="Lighting" unique_id=1584039744 instance=ExtResource("50_r08dj")]
+transform = Transform3D(3, 0, 0, 0, -1.3113416e-07, -3, 0, 3, -1.3113416e-07, 21.53587, 0.7584152, -11.909245)
+
+[node name="button-floor-round-small3" parent="Lighting" unique_id=2033715278 instance=ExtResource("50_r08dj")]
+transform = Transform3D(3, 0, 0, 0, -1.3113416e-07, -3, 0, 3, -1.3113416e-07, 22.689924, 0.7584152, -11.909245)
+
+[node name="ScreenHangingWide" type="MeshInstance3D" parent="." unique_id=364683576]
+transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 19.389793, 10.06619, -23.890804)
+mesh = ExtResource("51_peqef")

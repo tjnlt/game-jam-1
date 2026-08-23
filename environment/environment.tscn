@@ -2,14 +2,14 @@
 
 [ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://playercharacter/proto_controller.tscn" id="3_wjl7u"]
 [ext_resource type="PackedScene" uid="uid://4hpxmhud8ymq" path="res://environment/nuclear_reactor.tscn" id="3_x2wa3"]
-[ext_resource type="PackedScene" uid="uid://0g850nfmu28a" path="res://environment/oxygentank.tscn" id="6_ehb6n"]
+[ext_resource type="PackedScene" path="res://environment/oxygentank.tscn" id="6_ehb6n"]
 [ext_resource type="PackedScene" uid="uid://dv33mjkltx4ua" path="res://environment/Spawner.tscn" id="6_vh8kr"]
 [ext_resource type="PackedScene" uid="uid://buvs0swpo16jt" path="res://monsters/goblin.tscn" id="7_3g2c1"]
 [ext_resource type="Script" uid="uid://e1mgmeobxdwl" path="res://environment/goblin_spawner.gd" id="7_6qvha"]
 [ext_resource type="PackedScene" uid="uid://dsf3srwusnksu" path="res://environment/basiclight.tscn" id="7_nmo3v"]
-[ext_resource type="PackedScene" uid="uid://dcresl8uqkcgv" path="res://Reactor/map.tscn" id="7_te1ty"]
 [ext_resource type="PackedScene" uid="uid://u7xtskirf0nc" path="res://environment/generator.tscn" id="7_vh8kr"]
 [ext_resource type="PackedScene" uid="uid://dl6metfmda0i6" path="res://Reactor/NukeReactor.tscn" id="8_3g2c1"]
+[ext_resource type="PackedScene" uid="uid://dcresl8uqkcgv" path="res://Reactor/map.tscn" id="10_te1ty"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wjl7u"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -101,11 +101,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.357883, 0.5, 5.854232)
 script = ExtResource("7_6qvha")
 goblin_scene = ExtResource("7_3g2c1")
 
-[node name="goblin2" parent="." unique_id=266320911 instance=ExtResource("9_te1ty")]
-transform = Transform3D(-0.051077425, 0, -0.99869466, 0, 1, 0, 0.99869466, 0, -0.051077425, 27.52525, 0.645097, 4.15832)
-
 [node name="Oxygentank" parent="." unique_id=1959012536 instance=ExtResource("6_ehb6n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.18505, 0.51696765, 3.2792006)
+
 [node name="SpawnPoints" type="Node3D" parent="." unique_id=1331210168]
 
 [node name="Marker3D4" type="Marker3D" parent="SpawnPoints" unique_id=592883958]
@@ -123,8 +121,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12.996)
 [node name="Marker3D5" type="Marker3D" parent="SpawnPoints" unique_id=1478080678]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.51417, 0, -12.889286)
 
-[node name="Map" parent="." unique_id=331739924 instance=ExtResource("7_te1ty")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 78.1729)
-
 [node name="Reactor" parent="." unique_id=1826133669 instance=ExtResource("8_3g2c1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.43289, 0.15387774, 1)
+
+[node name="Map" parent="." unique_id=331739924 instance=ExtResource("10_te1ty")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map" unique_id=1801404962]
