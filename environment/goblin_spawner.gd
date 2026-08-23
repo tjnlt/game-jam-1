@@ -7,12 +7,8 @@ extends Node3D
 
 @export var goblin_scene: PackedScene
 
-@export var spawn_points: Node3D
-
 @export var starting_spawn_interval: float = 4.0
-
 @export var minimum_spawn_interval: float = 0.10
-
 @export var difficulty_step_time: float = 15.0
 
 @export_range(0.1, 1.0, 0.05)
@@ -20,99 +16,62 @@ var spawn_interval_multiplier: float = 0.80
 
 @export var maximum_goblins: int = 1000
 
-@export var ground_ray_height: float = 10.0
-
-@export var ground_ray_depth: float = 20.0
-
 
 # ─────────────────────────────────────────────
 # INTERNAL
 # ─────────────────────────────────────────────
 
 var elapsed_spawn_time: float = 0.0
-
 var spawning_enabled: bool = true
+
+var spawn_points: Array[Marker3D] = []
 
 
 # ─────────────────────────────────────────────
-# START
+# READY
 # ─────────────────────────────────────────────
 
 func _ready() -> void:
-
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
 	randomize()
 
-	# Try to find SpawnPoints automatically
-	# if it was not assigned in the Inspector.
-	if spawn_points == null:
+	print("================================")
+	print("STARTING GOBLIN SPAWNER")
+	print("================================")
 
-		spawn_points = (
-			get_tree()
-			.current_scene
-			.find_child(
-				"SpawnPoints",
-				true,
-				false
-			) as Node3D
-		)
+	# Find every Marker3D directly underneath this Spawner.
+	for child in get_children():
+		if child is Marker3D:
+			spawn_points.append(child as Marker3D)
 
+	print("Found spawn points: ", spawn_points.size())
 
-	# ─────────────────────────────────────────
-	# CHECK REFERENCES
-	# ─────────────────────────────────────────
-
+	# Make sure goblin scene is assigned.
 	if goblin_scene == null:
-
 		push_error(
-			"GoblinSpawner: Goblin Scene is missing."
+			"GoblinSpawner: Goblin Scene is NOT assigned. " +
+			"Select Spawner and drag goblin.tscn into Goblin Scene."
 		)
-
 		return
 
-
-	if spawn_points == null:
-
+	# Make sure we actually found markers.
+	if spawn_points.is_empty():
 		push_error(
-			"GoblinSpawner: SpawnPoints is missing."
+			"GoblinSpawner: No Marker3D spawn points found."
 		)
-
 		return
 
+	print("Goblin scene: ", goblin_scene)
 
-	if spawn_points.get_child_count() == 0:
+	# Wait one frame so the rest of the level finishes loading.
+	await get_tree().process_frame
 
-		push_error(
-			"GoblinSpawner: SpawnPoints has no children."
-		)
+	print("Spawning first goblin...")
 
-		return
-
-
-	print("================================")
-
-	print("GOBLIN SPAWNER WORKING")
-
-	print(
-		"Goblin scene: ",
-		goblin_scene
-	)
-
-	print(
-		"Spawn points: ",
-		spawn_points.get_child_count()
-	)
-
-	print("Spawning first goblin NOW.")
-
-	print("================================")
-
-
-	# Spawn one immediately.
 	spawn_goblin()
 
-	# Start repeating spawns.
+	# Start continuous spawning.
 	spawn_loop()
 
 
@@ -121,31 +80,19 @@ func _ready() -> void:
 # ─────────────────────────────────────────────
 
 func spawn_loop() -> void:
-
 	while spawning_enabled:
 
-		var wait_time: float = (
-			get_current_spawn_interval()
-		)
+		var wait_time := get_current_spawn_interval()
 
-		print(
-			"Next goblin in: ",
-			wait_time,
-			" seconds"
-		)
+		print("Next goblin in ", wait_time, " seconds")
 
-		await get_tree().create_timer(
-			wait_time
-		).timeout
-
+		await get_tree().create_timer(wait_time).timeout
 
 		if not is_inside_tree():
 			return
 
-
 		if not spawning_enabled:
 			return
-
 
 		elapsed_spawn_time += wait_time
 
@@ -153,7 +100,7 @@ func spawn_loop() -> void:
 
 
 # ─────────────────────────────────────────────
-# SPAWN SPEED
+# SPAWN INTERVAL
 # ─────────────────────────────────────────────
 
 func get_current_spawn_interval() -> float:
@@ -161,21 +108,17 @@ func get_current_spawn_interval() -> float:
 	if difficulty_step_time <= 0.0:
 		return minimum_spawn_interval
 
-
-	var difficulty_steps: int = int(
-		elapsed_spawn_time
-		/ difficulty_step_time
+	var difficulty_steps := int(
+		elapsed_spawn_time / difficulty_step_time
 	)
 
-
-	var new_interval: float = (
+	var new_interval := (
 		starting_spawn_interval
 		* pow(
 			spawn_interval_multiplier,
 			difficulty_steps
 		)
 	)
-
 
 	return max(
 		new_interval,
@@ -191,163 +134,98 @@ func spawn_goblin() -> void:
 
 	print("spawn_goblin() CALLED")
 
-
-	# ─────────────────────────────────────────
-	# CHECK GOBLIN SCENE
-	# ─────────────────────────────────────────
-
 	if goblin_scene == null:
+		push_error("Goblin scene is null.")
+		return
 
-		push_error(
-			"GoblinSpawner: Goblin Scene is null."
-		)
-
+	if spawn_points.is_empty():
+		push_error("No spawn points available.")
 		return
 
 
-	# ─────────────────────────────────────────
-	# CHECK SPAWN POINTS
-	# ─────────────────────────────────────────
-
-	if spawn_points == null:
-
-		push_error(
-			"GoblinSpawner: SpawnPoints is null."
-		)
-
-		return
-
-
-	# ─────────────────────────────────────────
-	# GOBLIN CAP
-	# ─────────────────────────────────────────
-
-	var existing_goblins: int = (
+	# Count existing goblins.
+	var existing_goblins := (
 		get_tree()
 		.get_nodes_in_group("enemies")
 		.size()
 	)
 
 
+	# Stop if we've hit the cap.
 	if (
 		maximum_goblins > 0
 		and existing_goblins >= maximum_goblins
 	):
-
-		print(
-			"Goblin cap reached: ",
-			existing_goblins
-		)
-
+		print("Goblin cap reached.")
 		return
 
 
-	# ─────────────────────────────────────────
-	# GET SPAWN POINTS
-	# ─────────────────────────────────────────
+	# Pick random Marker3D.
+	var spawn_point: Marker3D = spawn_points.pick_random()
 
-	var available_spawn_points: Array[Node3D] = []
-
-
-	for child in spawn_points.get_children():
-
-		if child is Node3D:
-
-			available_spawn_points.append(
-				child as Node3D
-			)
-
-
-	if available_spawn_points.is_empty():
-
-		push_error(
-			"GoblinSpawner: No valid 3D spawn points."
-		)
-
-		return
-
-
-	# ─────────────────────────────────────────
-	# CHOOSE RANDOM POINT
-	# ─────────────────────────────────────────
-
-	var spawn_point: Node3D = (
-		available_spawn_points.pick_random()
-	)
-
-
-	# ─────────────────────────────────────────
-	# CREATE GOBLIN
-	# ─────────────────────────────────────────
-
-	var new_goblin: Node = (
-		goblin_scene.instantiate()
-	)
-
-
-	if not (new_goblin is Node3D):
-
-		push_error(
-			"GoblinSpawner: Goblin root is not Node3D."
-		)
-
-		new_goblin.queue_free()
-
-		return
-
-
-	var goblin_3d: Node3D = (
-		new_goblin as Node3D
-	)
-
-
-	# ─────────────────────────────────────────
-	# ADD GOBLIN
-	# ─────────────────────────────────────────
-
-	get_tree().current_scene.add_child(
-		goblin_3d
-	)
-
-
-	goblin_3d.global_position = _get_ground_position(
+	print(
+		"Selected spawn point: ",
+		spawn_point.name,
+		" at ",
 		spawn_point.global_position
 	)
 
 
+	# Create goblin.
+	var goblin := goblin_scene.instantiate()
+
+
+	# Make sure its root is 3D.
+	if not goblin is Node3D:
+		push_error(
+			"GoblinSpawner: goblin.tscn root must be Node3D."
+		)
+
+		goblin.queue_free()
+		return
+
+
+	var goblin_3d := goblin as Node3D
+
+
+	# Add it to the main scene.
+	get_tree().current_scene.add_child(goblin_3d)
+
+
+	# Put it EXACTLY on the Marker3D.
+	goblin_3d.global_position = spawn_point.global_position
+
+
+	# Ensure the spawner can count it.
+	if not goblin_3d.is_in_group("enemies"):
+		goblin_3d.add_to_group("enemies")
+
+
 	print(
-		"GOBLIN SPAWNED at ",
-		spawn_point.name,
-		" | Active goblins: ",
+		"GOBLIN SPAWNED SUCCESSFULLY!"
+	)
+
+	print(
+		"Position: ",
+		goblin_3d.global_position
+	)
+
+	print(
+		"Spawn point: ",
+		spawn_point.name
+	)
+
+	print(
+		"Total goblins: ",
 		existing_goblins + 1
 	)
 
-
-# ─────────────────────────────────────────────
-# GROUND SNAP
-# ─────────────────────────────────────────────
-
-func _get_ground_position(spawn_position: Vector3) -> Vector3:
-
-	var space_state := get_world_3d().direct_space_state
-
-	var query := PhysicsRayQueryParameters3D.create(
-		spawn_position + Vector3.UP * ground_ray_height,
-		spawn_position + Vector3.DOWN * ground_ray_depth
-	)
-
-	var result := space_state.intersect_ray(query)
-
-	if result:
-		return result.position
-
-	return spawn_position
+	print("--------------------------------")
 
 
 # ─────────────────────────────────────────────
-# STOP SPAWNING
+# STOP SPAWNER
 # ─────────────────────────────────────────────
 
 func stop_spawning() -> void:
-
 	spawning_enabled = false
