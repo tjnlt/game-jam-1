@@ -133,7 +133,7 @@ theme_override_font_sizes/font_size = 20
 theme_override_colors/font_color = Color(0.85, 0.87, 0.85, 1)
 horizontal_alignment = 1
 autowrap_mode = 3
-text = "The goblins got what they came for."
+text = "The creatures got what they came for."
 
 [node name="StatsSpacer" type="Control" parent="CenterContainer/PanelContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 8)
@@ -151,7 +151,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 30
 theme_override_colors/font_color = Color(0.35, 1, 0.35, 1)
 horizontal_alignment = 1
-text = "Goblins slain: 0"
+text = "Creatures slain: 0"
 
 [node name="ButtonSpacer" type="Control" parent="CenterContainer/PanelContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 12)

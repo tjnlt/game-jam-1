@@ -12,10 +12,18 @@ var elapsed_time: float = 0.0
 var goblins_killed: int = 0
 var is_game_over: bool = false
 
+@onready var ambience_player: AudioStreamPlayer3D = $Ambience
+@onready var radio_player: AudioStreamPlayer3D = $RadioMusic
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	add_to_group("environment")
+
+	# Loop the ambience for as long as the environment scene is alive,
+	# regardless of whether the imported .wav itself is set to loop.
+	ambience_player.finished.connect(ambience_player.play)
+	ambience_player.play()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -26,10 +34,20 @@ func _process(delta: float) -> void:
 
 
 func _unhandled_key_input(event: InputEvent) -> void:
+	if not (event is InputEventKey and event.pressed and not event.echo):
+		return
+
+	if event.keycode == KEY_P:
+		if radio_player.playing:
+			radio_player.stop()
+		else:
+			radio_player.play()
+
 	if is_game_over:
 		return
+
 	# Debug-only trigger for testing the end screen without losing all 8 rods.
-	if OS.is_debug_build() and event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_K:
+	if OS.is_debug_build() and event.keycode == KEY_K:
 		trigger_game_over()
 
 

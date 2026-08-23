@@ -15,7 +15,7 @@ func _ready() -> void:
 
 func show_results(time_survived: float, goblins_killed: int) -> void:
 	time_label.text = "You survived: %s" % _format_time(time_survived)
-	kills_label.text = "Goblins slain: %d" % goblins_killed
+	kills_label.text = "Creatures slain: %d" % goblins_killed
 
 
 func _format_time(total_seconds: float) -> String:

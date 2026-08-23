@@ -138,11 +138,11 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 24
 theme_override_colors/font_color = Color(0.9, 0.92, 0.85, 1)
 autowrap_mode = 3
-text = "You're the maintenance guy at a run-down nuclear facility, just trying to get through your shift. Then, out of nowhere, a pack of greedy goblins shows up trying to steal the control rods right out of the reactor.
+text = "You're the maintenance guy at a run-down nuclear facility, just trying to get through your shift. Then, out of nowhere, a pack of greedy creatures shows up trying to steal the control rods right out of the reactor.
 
 There are 8 control rods. If all 8 get stolen, the reactor goes unstable and explodes — and you go with it.
 
-See how long you can hold out while keeping up with the day-to-day: fixing the lights, patching holes in the oxygen tanks, and chasing off goblins before they clean you out.
+See how long you can hold out while keeping up with the day-to-day: fixing the lights, patching holes in the oxygen tanks, and chasing off creatures before they clean you out.
 
 - Move: WASD   Jump: Space   Sprint: Shift
 - Fire: Left Click   Interact: E
