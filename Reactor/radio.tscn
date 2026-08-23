@@ -2,6 +2,11 @@
 
 [ext_resource type="Texture2D" uid="uid://4dhfqmwns66f" path="res://Reactor/Textures/Concrete.jpg" id="1_rqqa6"]
 [ext_resource type="Texture2D" uid="uid://4iwauasho1rx" path="res://Reactor/Textures/Radio.png" id="2_ibpu1"]
+[ext_resource type="Script" uid="uid://doo6l0ahccacu" path="res://Reactor/radio.gd" id="3_radio"]
+[ext_resource type="AudioStream" uid="uid://darxe5mg6fxmn" path="res://addons/audio/epic_beat.wav" id="4_fit0r"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_radio_interact"]
+size = Vector3(2.6, 2, 2)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6tw0t"]
 albedo_color = Color(0.13682577, 0.13682574, 0.13682571, 1)
@@ -35,7 +40,15 @@ albedo_color = Color(0.08468992, 0.08468992, 0.08468992, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_6wv1j"]
 size = Vector3(1.9492188, 0.040008545, 0.03955078)
 
-[node name="Radio" type="Node3D" unique_id=1077230544]
+[sub_resource type="BoxShape3D" id="BoxShape3D_radio"]
+size = Vector3(1.9333588, 1.1942139, 0.42871094)
+
+[node name="Radio" type="Area3D" unique_id=1077230544]
+script = ExtResource("3_radio")
+
+[node name="InteractShape" type="CollisionShape3D" parent="." unique_id=1077230546]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.34964383, 0.14710695, 0.47509766)
+shape = SubResource("BoxShape3D_radio_interact")
 
 [node name="Base" type="MeshInstance3D" parent="." unique_id=1861952194]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3361711, 0.078152716, 0.477144)
@@ -71,3 +84,13 @@ mesh = SubResource("BoxMesh_3143v")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3301674, 0.91175437, 0.47876567)
 material_override = SubResource("StandardMaterial3D_uonkq")
 mesh = SubResource("BoxMesh_6wv1j")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=845306816]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1077230545]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.34964383, 0.14710695, 0.47509766)
+shape = SubResource("BoxShape3D_radio")
+
+[node name="RadioMusic" type="AudioStreamPlayer3D" parent="." unique_id=593746839]
+stream = ExtResource("4_fit0r")
+volume_db = -10.0
