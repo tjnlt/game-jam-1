@@ -19,6 +19,8 @@ const SEPARATION_SPEED := 4.0
 	$FootStepSound1, $FootStepSound2, $FootStepSound3, $FootStepSound4
 ]
 
+@export var dance_only: bool = false
+
 var player: Node3D
 var _retreating := false
 var _retreat_timer := 0.0
@@ -29,7 +31,11 @@ var health := 2
 func _ready() -> void:
 	add_to_group("enemies")
 	player = get_tree().get_first_node_in_group("player")
-	animation_player.play("local/run")
+
+	if dance_only:
+		animation_player.stop()
+	else:
+		animation_player.play("local/run")
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	# Debug-only toggle for testing the fast_run animation/speed.
@@ -39,6 +45,9 @@ func _unhandled_key_input(event: InputEvent) -> void:
 			animation_player.play("local/fast_run" if _fast_mode else "local/run")
 
 func _physics_process(delta: float) -> void:
+	if dance_only:
+		return
+
 	if not player:
 		return
 
@@ -108,7 +117,20 @@ func _advance_footsteps(moved_distance: float, footstep_distance: float = FOOTST
 	var footstep: AudioStreamPlayer3D = footstep_sounds.pick_random()
 	footstep.play()
 
+func set_dancing(active: bool) -> void:
+	if not dance_only:
+		return
+
+	if active:
+		animation_player.play("local/dance")
+	else:
+		animation_player.stop()
+
+
 func take_damage(amount: int) -> void:
+	if dance_only:
+		return
+
 	health -= amount
 
 	var sound: AudioStreamPlayer3D = damage_sounds.pick_random()

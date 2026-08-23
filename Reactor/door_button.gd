@@ -43,6 +43,7 @@ extends Area3D
 
 @export var closed_time: float = 5.0
 @export var cooldown_time: float = 10.0
+@export var door_close_sound_offset: float = 0.15
 
 
 var player_in_range: bool = false
@@ -137,8 +138,8 @@ func _activate_button() -> void:
 	for i in range(amount_to_close):
 		selected_pairs.append(door_pairs[i])
 
-	# Play the closing sound once.
-	door_close_sound.play()
+	# Play one close sound per door, slightly offset so each is audible.
+	_play_door_close_sounds(selected_pairs.size())
 
 	# Close selected doors and activate their indicators.
 	for pair in selected_pairs:
@@ -167,6 +168,20 @@ func _activate_button() -> void:
 	await get_tree().create_timer(cooldown_time).timeout
 
 	button_available = true
+
+
+func _play_door_close_sounds(count: int) -> void:
+	for i in range(count):
+		_play_door_close_sound()
+		if i < count - 1:
+			await get_tree().create_timer(door_close_sound_offset).timeout
+
+
+func _play_door_close_sound() -> void:
+	var sound: AudioStreamPlayer3D = door_close_sound.duplicate()
+	add_child(sound)
+	sound.finished.connect(sound.queue_free)
+	sound.play()
 
 
 func _set_indicator(

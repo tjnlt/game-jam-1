@@ -13,7 +13,6 @@ var goblins_killed: int = 0
 var is_game_over: bool = false
 
 @onready var ambience_player: AudioStreamPlayer3D = $Ambience
-@onready var radio_player: AudioStreamPlayer3D = $RadioMusic
 
 
 # Called when the node enters the scene tree for the first time.
@@ -36,12 +35,6 @@ func _process(delta: float) -> void:
 func _unhandled_key_input(event: InputEvent) -> void:
 	if not (event is InputEventKey and event.pressed and not event.echo):
 		return
-
-	if event.keycode == KEY_P:
-		if radio_player.playing:
-			radio_player.stop()
-		else:
-			radio_player.play()
 
 	if is_game_over:
 		return
