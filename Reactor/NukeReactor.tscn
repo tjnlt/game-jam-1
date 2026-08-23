@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://dm7kfip6u5cbv" path="res://Reactor/Textures/Liquid.png" id="2_sadly"]
 [ext_resource type="Texture2D" uid="uid://wkep8bnc0xwp" path="res://Reactor/Textures/MetalFloorTexture.jpeg" id="3_sadly"]
 [ext_resource type="Texture2D" uid="uid://btxdijsf5it2k" path="res://Reactor/Textures/RD_SYM.png" id="4_pcb2m"]
-[ext_resource type="PackedScene" uid="uid://be7fy3wq3lgm2" path="res://Reactor/nuke_rod.tscn" id="5_qr6f0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6wv1j"]
 albedo_color = Color(0.38039216, 0.38039216, 0.38039216, 1)
@@ -494,27 +493,3 @@ mesh = SubResource("CylinderMesh_6tw0t")
 transform = Transform3D(0.5, 2.1855692e-08, 0.8660253, 0.8660254, -3.785517e-08, -0.49999997, 2.1855694e-08, 0.99999994, -3.785517e-08, 0.9779482, 6.618908, -3.6579227)
 material_override = SubResource("StandardMaterial3D_eklmo")
 mesh = SubResource("CylinderMesh_6tw0t")
-
-[node name="Nuke Rod" parent="." unique_id=1201692476 instance=ExtResource("5_qr6f0")]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -2.3851776, 0.5445523, 1.4413481)
-
-[node name="Nuke Rod2" parent="." unique_id=912211705 instance=ExtResource("5_qr6f0")]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -0.3017912, 0.5445523, 3.3520823)
-
-[node name="Nuke Rod3" parent="." unique_id=1393286390 instance=ExtResource("5_qr6f0")]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 2.3861618, 0.5445523, 3.3100424)
-
-[node name="Nuke Rod4" parent="." unique_id=1111069110 instance=ExtResource("5_qr6f0")]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 4.3740964, 0.5445523, 1.2726352)
-
-[node name="Nuke Rod5" parent="." unique_id=1377135076 instance=ExtResource("5_qr6f0")]
-transform = Transform3D(-0.25, 0, -2.1855694e-08, 0, 0.25, 0, 2.1855694e-08, 0, -0.25, 4.310728, 0.5445523, -1.4239974)
-
-[node name="Nuke Rod6" parent="." unique_id=1044232039 instance=ExtResource("5_qr6f0")]
-transform = Transform3D(-0.25, 0, -2.1855694e-08, 0, 0.25, 0, 2.1855694e-08, 0, -0.25, 2.2554972, 0.5445523, -3.3649843)
-
-[node name="Nuke Rod7" parent="." unique_id=727120968 instance=ExtResource("5_qr6f0")]
-transform = Transform3D(-0.25, 0, -2.1855694e-08, 0, 0.25, 0, 2.1855694e-08, 0, -0.25, -0.43278337, 0.5445523, -3.3622441)
-
-[node name="Nuke Rod8" parent="." unique_id=1232804549 instance=ExtResource("5_qr6f0")]
-transform = Transform3D(-0.25, 0, -2.1855694e-08, 0, 0.25, 0, 2.1855694e-08, 0, -0.25, -2.4502897, 0.5445523, -1.3541164)
