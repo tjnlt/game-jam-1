@@ -6,16 +6,28 @@ const FAST_RUN_SPEED := 12.0
 const BACKWARD_SPEED := 1.0
 const RETREAT_RADIUS := 2.0
 const RETREAT_DURATION := 1.4
+const FOOTSTEP_DISTANCE := 2.0 # distance travelled between footstep sounds
+const FAST_FOOTSTEP_DISTANCE := 3.5 # wider stride while sprinting so footsteps don't double in rate
+const SEPARATION_RADIUS := 1.0 # creatures closer than this get pushed apart
+const SEPARATION_SPEED := 4.0
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var damage_sounds: Array[AudioStreamPlayer3D] = [
+	$DamageSound1, $DamageSound2, $DamageSound3, $DamageSound4
+]
+@onready var footstep_sounds: Array[AudioStreamPlayer3D] = [
+	$FootStepSound1, $FootStepSound2, $FootStepSound3, $FootStepSound4
+]
 
 var player: Node3D
 var _retreating := false
 var _retreat_timer := 0.0
 var _fast_mode := false
+var _distance_since_footstep := 0.0
 var health := 2
 
 func _ready() -> void:
+	add_to_group("enemies")
 	player = get_tree().get_first_node_in_group("player")
 	animation_player.play("local/run")
 
@@ -41,7 +53,9 @@ func _physics_process(delta: float) -> void:
 	if _retreating:
 		_retreat_timer -= delta
 		global_position -= to_player_dir * BACKWARD_SPEED * delta
+		_apply_separation(delta)
 		look_at(global_position - to_player_dir, Vector3.UP)
+		_advance_footsteps(BACKWARD_SPEED * delta)
 
 		if _retreat_timer <= 0.0:
 			_retreating = false
@@ -55,17 +69,61 @@ func _physics_process(delta: float) -> void:
 		_retreat_timer = RETREAT_DURATION
 		animation_player.play("local/walk_backward")
 		global_position -= to_player_dir * BACKWARD_SPEED * delta
+		_apply_separation(delta)
 		look_at(global_position - to_player_dir, Vector3.UP)
+		_advance_footsteps(BACKWARD_SPEED * delta)
 		return
 
 	var speed := FAST_RUN_SPEED if _fast_mode else RUN_SPEED
 	global_position += to_player_dir * speed * delta
+	_apply_separation(delta)
 	look_at(global_position - to_player_dir, Vector3.UP)
+	_advance_footsteps(speed * delta, FAST_FOOTSTEP_DISTANCE if _fast_mode else FOOTSTEP_DISTANCE)
+
+# Pushes this creature away from other nearby creatures so they don't stack
+# on top of each other. O(n) per creature per frame - fine for this game's
+# enemy counts, but would need spatial partitioning at much larger scale.
+func _apply_separation(delta: float) -> void:
+	var push := Vector3.ZERO
+
+	for other in get_tree().get_nodes_in_group("enemies"):
+		if other == self:
+			continue
+
+		var offset := global_position - (other as Node3D).global_position
+		offset.y = 0.0
+		var dist := offset.length()
+
+		if dist > 0.0001 and dist < SEPARATION_RADIUS:
+			push += offset.normalized() * (SEPARATION_RADIUS - dist)
+
+	if push != Vector3.ZERO:
+		global_position += push * SEPARATION_SPEED * delta
+
+func _advance_footsteps(moved_distance: float, footstep_distance: float = FOOTSTEP_DISTANCE) -> void:
+	_distance_since_footstep += moved_distance
+	if _distance_since_footstep < footstep_distance:
+		return
+	_distance_since_footstep -= footstep_distance
+	var footstep: AudioStreamPlayer3D = footstep_sounds.pick_random()
+	footstep.play()
 
 func take_damage(amount: int) -> void:
 	health -= amount
+
+	var sound: AudioStreamPlayer3D = damage_sounds.pick_random()
+
 	if health <= 0:
 		var environment := get_tree().get_first_node_in_group("environment")
 		if environment and environment.has_method("register_goblin_kill"):
 			environment.register_goblin_kill()
+
+		# Let the killing hit's sound finish playing instead of getting cut
+		# off when this creature (and its child AudioStreamPlayer3D) is freed.
+		sound.reparent(get_tree().current_scene, true)
+		sound.finished.connect(sound.queue_free)
+		sound.play()
+
 		queue_free()
+	else:
+		sound.play()

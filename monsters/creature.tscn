@@ -8,6 +8,14 @@
 [ext_resource type="Animation" uid="uid://5nvv618ulgu8" path="res://addons/creature_animations/run.res" id="4_owpbx"]
 [ext_resource type="Animation" uid="uid://cicosnkudwvml" path="res://addons/creature_animations/walk_backward.res" id="5_s2bae"]
 [ext_resource type="Animation" uid="uid://bn3n6vd4cgvic" path="res://addons/creature_animations/scream.res" id="6_u226g"]
+[ext_resource type="AudioStream" uid="uid://cm1afoe3ucl3e" path="res://addons/audio/creature_damage_sound_1.wav" id="9_okvct"]
+[ext_resource type="AudioStream" uid="uid://dsj5up1t2td0r" path="res://addons/audio/creature_damage_sound_2.wav" id="10_s06yi"]
+[ext_resource type="AudioStream" uid="uid://cdb1owqfnkdkd" path="res://addons/audio/creature_damage_sound_3.wav" id="11_ygmlt"]
+[ext_resource type="AudioStream" uid="uid://c12skrcvcwg8s" path="res://addons/audio/creature_damage_sound_4.wav" id="12_0ph8b"]
+[ext_resource type="AudioStream" uid="uid://ojvfks2nlib0" path="res://addons/audio/foot_step_1.wav" id="13_0deyl"]
+[ext_resource type="AudioStream" uid="uid://df2nerktuxnyc" path="res://addons/audio/foot_step_2.wav" id="14_7kv3o"]
+[ext_resource type="AudioStream" uid="uid://brtg7l4rxyvig" path="res://addons/audio/foot_step_3.wav" id="15_v6oth"]
+[ext_resource type="AudioStream" uid="uid://dpkfpiv1abb8q" path="res://addons/audio/foot_step_4.wav" id="16_jrldw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0u7sy"]
 albedo_texture = ExtResource("2_sevsk")
@@ -266,10 +274,10 @@ size = Vector3(1, 1.7371826, 1.1235046)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.12684262, 0)
 script = ExtResource("2_u226g")
 
-[node name="Armature" parent="." index="0" unique_id=820583447]
+[node name="Armature" parent="." index="0" unique_id=1304026690]
 transform = Transform3D(0.013, 0, 0, 0, 0.013, 0, 0, 0, 0.013, 0, 0, 0)
 
-[node name="Skeleton3D" parent="Armature" index="0" unique_id=912139525]
+[node name="Skeleton3D" parent="Armature" index="0" unique_id=2030576381]
 bones/0/position = Vector3(7.9880652, 91.63251, -8.17834)
 bones/0/rotation = Quaternion(0.21205254, -0.30931497, 0.09343582, 0.92229486)
 bones/1/position = Vector3(6.67969, -6.0196643, 2.2190945)
@@ -309,7 +317,7 @@ bones/21/rotation = Quaternion(0.17872085, 0.15748875, -0.20131397, 0.9501205)
 bones/22/rotation = Quaternion(-0.13910578, 2.2642258e-08, 0.0019020193, 0.99027574)
 bones/23/rotation = Quaternion(0.33354917, 5.2323006e-08, -0.004560607, 0.9427217)
 
-[node name="char1" parent="Armature/Skeleton3D" index="0" unique_id=778910291]
+[node name="char1" parent="Armature/Skeleton3D" index="0" unique_id=1408240659]
 material_override = SubResource("StandardMaterial3D_0u7sy")
 
 [node name="EyeAttachment" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="1" unique_id=1640096343]
@@ -327,7 +335,7 @@ transform = Transform3D(1, 4.656613e-08, 8.1490725e-08, -3.3527613e-08, 1, -4.47
 material_override = SubResource("StandardMaterial3D_eyeglow")
 mesh = SubResource("SphereMesh_eyeglow")
 
-[node name="AnimationPlayer" parent="." index="1" unique_id=354210961]
+[node name="AnimationPlayer" parent="." index="1" unique_id=805315263]
 libraries/local = SubResource("AnimationLibrary_0u7sy")
 
 [node name="HurtBox" type="StaticBody3D" parent="." index="2" unique_id=900000001]
@@ -336,3 +344,31 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7785518, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox" index="0" unique_id=900000002]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.13687897, 0.06175232)
 shape = SubResource("BoxShape3D_hurtbox")
+
+[node name="DamageSound1" type="AudioStreamPlayer3D" parent="." index="3" unique_id=668774710]
+stream = ExtResource("9_okvct")
+
+[node name="DamageSound2" type="AudioStreamPlayer3D" parent="." index="4" unique_id=616392344]
+stream = ExtResource("10_s06yi")
+
+[node name="DamageSound3" type="AudioStreamPlayer3D" parent="." index="5" unique_id=15180976]
+stream = ExtResource("11_ygmlt")
+
+[node name="DamageSound4" type="AudioStreamPlayer3D" parent="." index="6" unique_id=1377488511]
+stream = ExtResource("12_0ph8b")
+
+[node name="FootStepSound1" type="AudioStreamPlayer3D" parent="." index="7" unique_id=1167259557]
+stream = ExtResource("13_0deyl")
+volume_db = -4.0
+
+[node name="FootStepSound2" type="AudioStreamPlayer3D" parent="." index="8" unique_id=309416380]
+stream = ExtResource("14_7kv3o")
+volume_db = -4.0
+
+[node name="FootStepSound3" type="AudioStreamPlayer3D" parent="." index="9" unique_id=1716584603]
+stream = ExtResource("15_v6oth")
+volume_db = -4.0
+
+[node name="FootStepSound4" type="AudioStreamPlayer3D" parent="." index="10" unique_id=172135217]
+stream = ExtResource("16_jrldw")
+volume_db = -4.0

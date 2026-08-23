@@ -305,13 +305,9 @@ func spawn_goblin() -> void:
 	# ADD GOBLIN
 	# ─────────────────────────────────────────
 
-	get_tree().current_scene.add_child(
-		goblin_3d
-	)
-
-
-	goblin_3d.global_position = _get_ground_position(
-		spawn_point.global_position
+	_place_goblin.call_deferred(
+		goblin_3d,
+		_get_ground_position(spawn_point.global_position)
 	)
 
 
@@ -321,6 +317,15 @@ func spawn_goblin() -> void:
 		" | Active goblins: ",
 		existing_goblins + 1
 	)
+
+
+func _place_goblin(goblin_3d: Node3D, ground_position: Vector3) -> void:
+
+	get_tree().current_scene.add_child(
+		goblin_3d
+	)
+
+	goblin_3d.global_position = ground_position
 
 
 # ─────────────────────────────────────────────
