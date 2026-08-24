@@ -327,6 +327,10 @@ func _place_goblin(goblin_3d: Node3D, ground_position: Vector3) -> void:
 
 	goblin_3d.global_position = ground_position
 
+	# Remember where it came from so it can carry a stolen rod back here.
+	if "spawn_position" in goblin_3d:
+		goblin_3d.spawn_position = ground_position
+
 
 # ─────────────────────────────────────────────
 # GROUND SNAP
