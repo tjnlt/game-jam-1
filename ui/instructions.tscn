@@ -1,9 +1,13 @@
-[gd_scene load_steps=8 format=3]
+[gd_scene load_steps=12 format=3]
 
 [ext_resource type="Script" path="res://ui/instructions.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://ctypd21h66ilu" path="res://Reactor/Textures/Metal_walls.jpg" id="2"]
 [ext_resource type="Texture2D" uid="uid://btxdijsf5it2k" path="res://Reactor/Textures/RD_SYM.png" id="3"]
 [ext_resource type="Shader" path="res://ui/hazard_stripes.gdshader" id="4"]
+[ext_resource type="Texture2D" uid="uid://r6sec8o3icn2" path="res://addons/helper/door_helper.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://dcd76x23u7d35" path="res://addons/helper/lights_task_helper.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://lodlwdyjf5a3" path="res://addons/helper/oxygen_helper.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://dng3v4hvkncdt" path="res://addons/helper/radio_helper.png" id="8"]
 
 [sub_resource type="ShaderMaterial" id="HazardStripeMaterial"]
 shader = ExtResource("4")
@@ -21,7 +25,7 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="StyleBoxFlat" id="LetsGoButtonStyle"]
+[sub_resource type="StyleBoxFlat" id="NavButtonStyle"]
 bg_color = Color(0.95, 0.8, 0.05, 1)
 border_width_left = 6
 border_width_top = 6
@@ -33,7 +37,7 @@ corner_radius_top_right = 6
 corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
 
-[sub_resource type="StyleBoxFlat" id="LetsGoButtonHoverStyle"]
+[sub_resource type="StyleBoxFlat" id="NavButtonHoverStyle"]
 bg_color = Color(1, 0.9, 0.2, 1)
 border_width_left = 6
 border_width_top = 6
@@ -133,8 +137,20 @@ theme_override_constants/margin_top = 40
 theme_override_constants/margin_right = 48
 theme_override_constants/margin_bottom = 40
 
-[node name="BodyText" type="Label" parent="Margin/VBoxContainer/BriefingPanel/TextMargin"]
+[node name="Pages" type="Control" parent="Margin/VBoxContainer/BriefingPanel/TextMargin"]
 layout_mode = 2
+
+[node name="PageControls" type="Control" parent="Margin/VBoxContainer/BriefingPanel/TextMargin/Pages"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="BodyText" type="Label" parent="Margin/VBoxContainer/BriefingPanel/TextMargin/Pages/PageControls"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 theme_override_font_sizes/font_size = 24
 theme_override_colors/font_color = Color(0.9, 0.92, 0.85, 1)
 autowrap_mode = 3
@@ -149,15 +165,148 @@ See how long you can hold out while keeping up with the day-to-day: fixing the l
 
 Good luck!"
 
-[node name="LetsGoButton" type="Button" parent="Margin/VBoxContainer"]
+[node name="PageDoor" type="Control" parent="Margin/VBoxContainer/BriefingPanel/TextMargin/Pages"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Margin/VBoxContainer/BriefingPanel/TextMargin/Pages/PageDoor"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/separation = 16
+
+[node name="HelperImage" type="TextureRect" parent="Margin/VBoxContainer/BriefingPanel/TextMargin/Pages/PageDoor/VBoxContainer"]
 layout_mode = 2
-custom_minimum_size = Vector2(320, 80)
+size_flags_vertical = 3
+texture = ExtResource("5")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="WipCaption" type="Label" parent="Margin/VBoxContainer/BriefingPanel/TextMargin/Pages/PageDoor/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+theme_override_colors/font_color = Color(0.9, 0.92, 0.85, 1)
+horizontal_alignment = 1
+autowrap_mode = 3
+text = "Click this button to randomly close doors around the map. The doors re-open after 90 seconds, so be sure to run back and activate it again!"
+
+[node name="PageLights" type="Control" parent="Margin/VBoxContainer/BriefingPanel/TextMargin/Pages"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Margin/VBoxContainer/BriefingPanel/TextMargin/Pages/PageLights"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/separation = 16
+
+[node name="HelperImage" type="TextureRect" parent="Margin/VBoxContainer/BriefingPanel/TextMargin/Pages/PageLights/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("6")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="WipCaption" type="Label" parent="Margin/VBoxContainer/BriefingPanel/TextMargin/Pages/PageLights/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+theme_override_colors/font_color = Color(0.9, 0.92, 0.85, 1)
+horizontal_alignment = 1
+autowrap_mode = 3
+text = "The lights will shut off every few minutes. Head to the generator located upstairs to reboot the lights!"
+
+[node name="PageOxygen" type="Control" parent="Margin/VBoxContainer/BriefingPanel/TextMargin/Pages"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Margin/VBoxContainer/BriefingPanel/TextMargin/Pages/PageOxygen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/separation = 16
+
+[node name="HelperImage" type="TextureRect" parent="Margin/VBoxContainer/BriefingPanel/TextMargin/Pages/PageOxygen/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("7")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="WipCaption" type="Label" parent="Margin/VBoxContainer/BriefingPanel/TextMargin/Pages/PageOxygen/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+theme_override_colors/font_color = Color(0.9, 0.92, 0.85, 1)
+horizontal_alignment = 1
+autowrap_mode = 3
+text = "Oxygen tanks will leak. You must repair the leaks and reset the oxygen or else you will suffocate!"
+
+[node name="PageRadio" type="Control" parent="Margin/VBoxContainer/BriefingPanel/TextMargin/Pages"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Margin/VBoxContainer/BriefingPanel/TextMargin/Pages/PageRadio"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/separation = 16
+
+[node name="HelperImage" type="TextureRect" parent="Margin/VBoxContainer/BriefingPanel/TextMargin/Pages/PageRadio/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("8")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="WipCaption" type="Label" parent="Margin/VBoxContainer/BriefingPanel/TextMargin/Pages/PageRadio/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+theme_override_colors/font_color = Color(0.9, 0.92, 0.85, 1)
+horizontal_alignment = 1
+autowrap_mode = 3
+text = "Turn on the radio to vibe with the creatures. They're actually pretty cool and can party."
+
+[node name="ButtonRow" type="HBoxContainer" parent="Margin/VBoxContainer"]
+layout_mode = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 34
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="BackButton" type="Button" parent="Margin/VBoxContainer/ButtonRow"]
+layout_mode = 2
+custom_minimum_size = Vector2(220, 80)
+theme_override_font_sizes/font_size = 30
 theme_override_colors/font_color = Color(0.08, 0.08, 0.08, 1)
 theme_override_colors/font_hover_color = Color(0.08, 0.08, 0.08, 1)
-theme_override_styles/normal = SubResource("LetsGoButtonStyle")
-theme_override_styles/hover = SubResource("LetsGoButtonHoverStyle")
-theme_override_styles/pressed = SubResource("LetsGoButtonStyle")
-theme_override_styles/focus = SubResource("LetsGoButtonHoverStyle")
-text = "Let's go!"
+theme_override_styles/normal = SubResource("NavButtonStyle")
+theme_override_styles/hover = SubResource("NavButtonHoverStyle")
+theme_override_styles/pressed = SubResource("NavButtonStyle")
+theme_override_styles/focus = SubResource("NavButtonHoverStyle")
+text = "Back"
+
+[node name="NextButton" type="Button" parent="Margin/VBoxContainer/ButtonRow"]
+layout_mode = 2
+custom_minimum_size = Vector2(220, 80)
+theme_override_font_sizes/font_size = 30
+theme_override_colors/font_color = Color(0.08, 0.08, 0.08, 1)
+theme_override_colors/font_hover_color = Color(0.08, 0.08, 0.08, 1)
+theme_override_styles/normal = SubResource("NavButtonStyle")
+theme_override_styles/hover = SubResource("NavButtonHoverStyle")
+theme_override_styles/pressed = SubResource("NavButtonStyle")
+theme_override_styles/focus = SubResource("NavButtonHoverStyle")
+text = "Next"

@@ -14,6 +14,9 @@ const DELIVER_RADIUS := 1.5 # how close to its spawn before the rod counts as st
 const IDLE_RADIUS := 3.0 # how close to the reactor counts as "waiting there"
 const ROD_CARRY_OFFSET := Vector3(0, 0.5, 0.6) # where a carried rod sits on the creature
 const CARRY_SPEED_MULTIPLIER := 0.25 # creatures move slower while lugging a stolen rod
+const RAVE_SPREAD_RADIUS := 12.0 # how far idling creatures scatter around the reactor
+const DESPAWN_MIN_DELAY := 30.0 # once idling with nothing to steal, wait this long before maybe despawning
+const DESPAWN_MAX_DELAY := 60.0
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var damage_sounds: Array[AudioStreamPlayer3D] = [
@@ -36,6 +39,9 @@ var carried_rod: Node3D = null
 var _idling := false
 var _warned_no_reactor := false
 var spawn_position: Vector3
+var _rave_spot: Vector3
+var _rave_spot_set := false
+var _despawn_timer := 0.0
 
 var timer = 0.25
 
@@ -120,6 +126,9 @@ func _physics_process(delta: float) -> void:
 			look_at(global_position - look_dir.normalized(), Vector3.UP)
 	
 	if _idling:
+		_despawn_timer -= delta
+		if _despawn_timer <= 0.0:
+			queue_free()
 		return
 
 	# An almost purely vertical move_dir means we are standing on the target.
@@ -225,13 +234,26 @@ func _get_target() -> Vector3:
 
 	var rod := _get_nearest_rod()
 	if rod:
+		_rave_spot_set = false
 		return rod.global_position
 
 	var reactor := _get_reactor()
 	if reactor:
-		return reactor.global_position
+		return _get_rave_spot(reactor)
 
 	return global_position
+
+
+# Picks (once) a random spot scattered around the reactor so creatures with
+# nothing left to steal fan out and dance like a rave instead of stacking on
+# the reactor's exact center. Cleared whenever a rod becomes available again.
+func _get_rave_spot(reactor: Node3D) -> Vector3:
+	if not _rave_spot_set:
+		var angle := randf_range(0.0, TAU)
+		var radius := randf_range(RAVE_SPREAD_RADIUS * 0.5, RAVE_SPREAD_RADIUS)
+		_rave_spot = reactor.global_position + Vector3(cos(angle), 0.0, sin(angle)) * radius
+		_rave_spot_set = true
+	return _rave_spot
 
 
 func _at_reactor() -> bool:
@@ -261,6 +283,9 @@ func _update_idle_state() -> void:
 		return
 	_idling = should_idle
 	animation_player.play(_movement_animation())
+
+	if _idling:
+		_despawn_timer = randf_range(DESPAWN_MIN_DELAY, DESPAWN_MAX_DELAY)
 
 
 func _movement_animation() -> String:
