@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ceg5rn48msnqj" path="res://addons/KennyAssets/kenney_blaster-kit_2.1/Models/FBX format/blaster-a.fbx" id="2_oa1sy"]
 [ext_resource type="AudioStream" uid="uid://b5coqr6cejr4a" path="res://gun/blaster_shot.wav" id="2_qsj1a"]
 [ext_resource type="PackedScene" path="res://ui/rod_display.tscn" id="3_roddisp"]
+[ext_resource type="PackedScene" path="res://ui/timer_display.tscn" id="4_timerdisp"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iof21"]
 albedo_color = Color(0.91806, 0.575202, 0.222449, 1)
@@ -142,6 +143,8 @@ mouse_filter = 2
 color = Color(1, 1, 1, 0.8)
 
 [node name="RodDisplay" parent="HUD" instance=ExtResource("3_roddisp")]
+
+[node name="TimerDisplay" parent="HUD" instance=ExtResource("4_timerdisp")]
 
 [node name="CrosshairVertical" type="ColorRect" parent="HUD" unique_id=552650561]
 anchors_preset = 8

@@ -13,6 +13,7 @@ const PICKUP_RADIUS := 1.5 # how close a creature must get to grab a rod
 const DELIVER_RADIUS := 1.5 # how close to its spawn before the rod counts as stolen
 const IDLE_RADIUS := 3.0 # how close to the reactor counts as "waiting there"
 const ROD_CARRY_OFFSET := Vector3(0, 0.5, 0.6) # where a carried rod sits on the creature
+const CARRY_SPEED_MULTIPLIER := 0.25 # creatures move slower while lugging a stolen rod
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var damage_sounds: Array[AudioStreamPlayer3D] = [
@@ -102,6 +103,8 @@ func _physics_process(delta: float) -> void:
 		_try_deliver()
 
 	var speed := FAST_RUN_SPEED if _fast_mode else RUN_SPEED
+	if carried_rod:
+		speed *= CARRY_SPEED_MULTIPLIER
 	#nav_agent.target_position = player.global_position
 	timer += delta
 	if timer >= 0.25:
@@ -181,7 +184,8 @@ func take_damage(amount: int) -> void:
 		if carried_rod:
 			if environment and environment.has_method("recover_rod"):
 				environment.recover_rod()
-			carried_rod.queue_free()
+			if carried_rod.has_method("return_home"):
+				carried_rod.return_home()
 			carried_rod = null
 
 		# Let the killing hit's sound finish playing instead of getting cut

@@ -7,10 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://dcresl8uqkcgv" path="res://Reactor/map.tscn" id="7_te1ty"]
 [ext_resource type="PackedScene" uid="uid://bqw1w0ql7k0b7" path="res://environment/outsidelight.tscn" id="8_3g2c1"]
 [ext_resource type="Script" uid="uid://ck3tji2lwmoeg" path="res://environment/environment.gd" id="9_env"]
-[ext_resource type="AudioStream" uid="uid://ccq4tk36kerrp" path="res://addons/audio/ambience.wav" id="12_0iorr"]
+[ext_resource type="AudioStream" uid="uid://caliuoe8wppjd" path="res://addons/audio/ambience.wav" id="12_0iorr"]
 [ext_resource type="PackedScene" uid="uid://b710ad4smtchk" path="res://monsters/creature.tscn" id="12_h6u84"]
 [ext_resource type="PackedScene" uid="uid://dflkqaonrmslm" path="res://addons/KennyAssets/kenney_factory-kit_3.0/Models/GLB format/pipe-glass-large-long.glb" id="13_0iorr"]
-[ext_resource type="AudioStream" uid="uid://b1kqk048c62mx" path="res://addons/audio/epic_beat.wav" id="13_gewoo"]
+[ext_resource type="AudioStream" uid="uid://darxe5mg6fxmn" path="res://addons/audio/epic_beat.wav" id="13_gewoo"]
+[ext_resource type="AudioStream" uid="uid://c538qlqgn43un" path="res://addons/audio/main_menu_music_ambient.wav" id="13_nsn85"]
 [ext_resource type="PackedScene" uid="uid://bslbptnrwrpkk" path="res://Reactor/radio.tscn" id="14_gewoo"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_h6u84"]
@@ -23,6 +24,9 @@ agent_max_slope = 50.0
 
 [node name="Environment" type="Node3D" unique_id=760955663]
 script = ExtResource("9_env")
+rods_in_reactor = null
+rods_stolen = null
+rods_lost = null
 
 [node name="Sun" type="DirectionalLight3D" parent="." unique_id=581615175]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
@@ -123,423 +127,423 @@ navigation_mesh = SubResource("NavigationMesh_h6u84")
 [node name="Map" parent="." unique_id=331739924 instance=ExtResource("7_te1ty")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 78.1729)
 
-[node name="biglightholder7" type="Node3D" parent="NavigationRegion3D/Map" unique_id=536268361]
+[node name="NavigationRegion3D_Map#biglightholder7" type="Node3D" parent="." unique_id=536268361]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2910194, 0.17366219, -1.9520302)
 
-[node name="lightholdertwo" type="Node3D" parent="NavigationRegion3D/Map/biglightholder7" unique_id=373142761]
+[node name="NavigationRegion3D_Map_biglightholder7#lightholdertwo" type="Node3D" parent="." unique_id=373142761]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.000656, 0, 0)
 
-[node name="Outsidelight" parent="NavigationRegion3D/Map/biglightholder7/lightholdertwo" unique_id=1108001718 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_biglightholder7_lightholdertwo#Outsidelight" parent="." unique_id=1108001718 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -18.414951, 0.31895995, 6.2536225)
 
-[node name="Outsidelight2" parent="NavigationRegion3D/Map/biglightholder7/lightholdertwo" unique_id=846277163 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_biglightholder7_lightholdertwo#Outsidelight2" parent="." unique_id=846277163 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -18.414951, 0.31895995, 2.2629018)
 
-[node name="Outsidelight3" parent="NavigationRegion3D/Map/biglightholder7/lightholdertwo" unique_id=2134792875 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_biglightholder7_lightholdertwo#Outsidelight3" parent="." unique_id=2134792875 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -18.414951, 0.31895995, -1.4566265)
 
-[node name="Outsidelight4" parent="NavigationRegion3D/Map/biglightholder7/lightholdertwo" unique_id=1298615714 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_biglightholder7_lightholdertwo#Outsidelight4" parent="." unique_id=1298615714 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -18.414951, 0.31895995, -5.7184424)
 
-[node name="Outsidelight5" parent="NavigationRegion3D/Map/biglightholder7/lightholdertwo" unique_id=2100416311 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_biglightholder7_lightholdertwo#Outsidelight5" parent="." unique_id=2100416311 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -18.414951, 0.31895995, -9.373362)
 
-[node name="Outsidelight6" parent="NavigationRegion3D/Map/biglightholder7/lightholdertwo" unique_id=433279437 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_biglightholder7_lightholdertwo#Outsidelight6" parent="." unique_id=433279437 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -18.414951, 0.31895995, -13.351479)
 
-[node name="Outsidelight7" parent="NavigationRegion3D/Map/biglightholder7/lightholdertwo" unique_id=1401237420 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_biglightholder7_lightholdertwo#Outsidelight7" parent="." unique_id=1401237420 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -18.414951, 0.31895995, -16.95095)
 
-[node name="Outsidelight8" parent="NavigationRegion3D/Map/biglightholder7/lightholdertwo" unique_id=551970513 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_biglightholder7_lightholdertwo#Outsidelight8" parent="." unique_id=551970513 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -18.414951, 0.31895995, -21.07146)
 
-[node name="Outsidelight9" parent="NavigationRegion3D/Map/biglightholder7/lightholdertwo" unique_id=1904197730 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_biglightholder7_lightholdertwo#Outsidelight9" parent="." unique_id=1904197730 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -13.522381, 0.31895995, 6.2536225)
 
-[node name="Outsidelight10" parent="NavigationRegion3D/Map/biglightholder7/lightholdertwo" unique_id=564094407 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_biglightholder7_lightholdertwo#Outsidelight10" parent="." unique_id=564094407 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -13.522381, 0.31895995, 2.2629018)
 
-[node name="Outsidelight11" parent="NavigationRegion3D/Map/biglightholder7/lightholdertwo" unique_id=784073325 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_biglightholder7_lightholdertwo#Outsidelight11" parent="." unique_id=784073325 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -13.522381, 0.31895995, -1.4566264)
 
-[node name="Outsidelight12" parent="NavigationRegion3D/Map/biglightholder7/lightholdertwo" unique_id=1766065226 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_biglightholder7_lightholdertwo#Outsidelight12" parent="." unique_id=1766065226 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -13.522381, 0.31895995, -5.7184424)
 
-[node name="Outsidelight13" parent="NavigationRegion3D/Map/biglightholder7/lightholdertwo" unique_id=420797619 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_biglightholder7_lightholdertwo#Outsidelight13" parent="." unique_id=420797619 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -13.522381, 0.31895995, -9.373362)
 
-[node name="Outsidelight14" parent="NavigationRegion3D/Map/biglightholder7/lightholdertwo" unique_id=1486970000 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_biglightholder7_lightholdertwo#Outsidelight14" parent="." unique_id=1486970000 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -13.522381, 0.31895995, -13.351479)
 
-[node name="Outsidelight15" parent="NavigationRegion3D/Map/biglightholder7/lightholdertwo" unique_id=1440340522 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_biglightholder7_lightholdertwo#Outsidelight15" parent="." unique_id=1440340522 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -13.522381, 0.31895995, -16.95095)
 
-[node name="Outsidelight16" parent="NavigationRegion3D/Map/biglightholder7/lightholdertwo" unique_id=1722268347 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_biglightholder7_lightholdertwo#Outsidelight16" parent="." unique_id=1722268347 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -13.522381, 0.31895995, -21.07146)
 
-[node name="lightholdertwo2" type="Node3D" parent="NavigationRegion3D/Map/biglightholder7" unique_id=555375335]
+[node name="NavigationRegion3D_Map_biglightholder7#lightholdertwo2" type="Node3D" parent="." unique_id=555375335]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.000656, 0, 31.70665)
 
-[node name="Outsidelight2" parent="NavigationRegion3D/Map/biglightholder7/lightholdertwo2" unique_id=44091156 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_biglightholder7_lightholdertwo2#Outsidelight2" parent="." unique_id=44091156 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -18.414951, 0.31895995, 2.2629018)
 
-[node name="Outsidelight4" parent="NavigationRegion3D/Map/biglightholder7/lightholdertwo2" unique_id=1932704196 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_biglightholder7_lightholdertwo2#Outsidelight4" parent="." unique_id=1932704196 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -18.414951, 0.31895995, -5.7184424)
 
-[node name="Outsidelight5" parent="NavigationRegion3D/Map/biglightholder7/lightholdertwo2" unique_id=1967531 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_biglightholder7_lightholdertwo2#Outsidelight5" parent="." unique_id=1967531 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -18.414951, 0.31895995, -9.373362)
 
-[node name="Outsidelight6" parent="NavigationRegion3D/Map/biglightholder7/lightholdertwo2" unique_id=112699187 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_biglightholder7_lightholdertwo2#Outsidelight6" parent="." unique_id=112699187 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -18.414951, 0.31895995, -13.351479)
 
-[node name="Outsidelight7" parent="NavigationRegion3D/Map/biglightholder7/lightholdertwo2" unique_id=1561843614 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_biglightholder7_lightholdertwo2#Outsidelight7" parent="." unique_id=1561843614 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -18.414951, 0.31895995, -16.95095)
 
-[node name="Outsidelight8" parent="NavigationRegion3D/Map/biglightholder7/lightholdertwo2" unique_id=957006641 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_biglightholder7_lightholdertwo2#Outsidelight8" parent="." unique_id=957006641 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -18.414951, 0.31895995, -21.07146)
 
-[node name="Outsidelight12" parent="NavigationRegion3D/Map/biglightholder7/lightholdertwo2" unique_id=1593057424 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_biglightholder7_lightholdertwo2#Outsidelight12" parent="." unique_id=1593057424 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -13.522381, 0.31895995, -5.7184424)
 
-[node name="Outsidelight13" parent="NavigationRegion3D/Map/biglightholder7/lightholdertwo2" unique_id=508891779 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_biglightholder7_lightholdertwo2#Outsidelight13" parent="." unique_id=508891779 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -13.522381, 0.31895995, -9.373362)
 
-[node name="Outsidelight14" parent="NavigationRegion3D/Map/biglightholder7/lightholdertwo2" unique_id=1464237169 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_biglightholder7_lightholdertwo2#Outsidelight14" parent="." unique_id=1464237169 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -13.522381, 0.31895995, -13.351479)
 
-[node name="Outsidelight15" parent="NavigationRegion3D/Map/biglightholder7/lightholdertwo2" unique_id=739805718 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_biglightholder7_lightholdertwo2#Outsidelight15" parent="." unique_id=739805718 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -13.522381, 0.31895995, -16.95095)
 
-[node name="Outsidelight16" parent="NavigationRegion3D/Map/biglightholder7/lightholdertwo2" unique_id=1283875673 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_biglightholder7_lightholdertwo2#Outsidelight16" parent="." unique_id=1283875673 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -13.522381, 0.31895995, -21.07146)
 
-[node name="rightsidelights" type="Node3D" parent="NavigationRegion3D/Map" unique_id=992196701]
+[node name="NavigationRegion3D_Map#rightsidelights" type="Node3D" parent="." unique_id=992196701]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -10.9922085, 0.18691254, -60.757214)
 
-[node name="Outsidelight13" parent="NavigationRegion3D/Map/rightsidelights" unique_id=1397780140 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_rightsidelights#Outsidelight13" parent="." unique_id=1397780140 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -26.53857, 0.26299715, 20.588203)
 
-[node name="Outsidelight15" parent="NavigationRegion3D/Map/rightsidelights" unique_id=1453563358 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_rightsidelights#Outsidelight15" parent="." unique_id=1453563358 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -26.574093, 0.26299715, 15.678329)
 
-[node name="lightholdertwo" type="Node3D" parent="NavigationRegion3D/Map/rightsidelights" unique_id=1212874870]
+[node name="NavigationRegion3D_Map_rightsidelights#lightholdertwo" type="Node3D" parent="." unique_id=1212874870]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.000656, 0, 0)
 
-[node name="Outsidelight" parent="NavigationRegion3D/Map/rightsidelights/lightholdertwo" unique_id=309453965 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_rightsidelights_lightholdertwo#Outsidelight" parent="." unique_id=309453965 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -18.414951, 0.31895995, 6.2536225)
 
-[node name="Outsidelight2" parent="NavigationRegion3D/Map/rightsidelights/lightholdertwo" unique_id=2096635019 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_rightsidelights_lightholdertwo#Outsidelight2" parent="." unique_id=2096635019 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -18.414951, 0.31895995, 2.2629018)
 
-[node name="Outsidelight3" parent="NavigationRegion3D/Map/rightsidelights/lightholdertwo" unique_id=1698538643 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_rightsidelights_lightholdertwo#Outsidelight3" parent="." unique_id=1698538643 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -18.414951, 0.31895995, -1.4566265)
 
-[node name="Outsidelight4" parent="NavigationRegion3D/Map/rightsidelights/lightholdertwo" unique_id=91519583 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_rightsidelights_lightholdertwo#Outsidelight4" parent="." unique_id=91519583 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -18.414951, 0.31895995, -5.7184424)
 
-[node name="Outsidelight5" parent="NavigationRegion3D/Map/rightsidelights/lightholdertwo" unique_id=382854589 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_rightsidelights_lightholdertwo#Outsidelight5" parent="." unique_id=382854589 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -18.414951, 0.31895995, -9.373362)
 
-[node name="Outsidelight6" parent="NavigationRegion3D/Map/rightsidelights/lightholdertwo" unique_id=1491554191 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_rightsidelights_lightholdertwo#Outsidelight6" parent="." unique_id=1491554191 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -18.414951, 0.31895995, -13.351479)
 
-[node name="Outsidelight9" parent="NavigationRegion3D/Map/rightsidelights/lightholdertwo" unique_id=382171375 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_rightsidelights_lightholdertwo#Outsidelight9" parent="." unique_id=382171375 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -13.522381, 0.31895995, 6.2536225)
 
-[node name="Outsidelight10" parent="NavigationRegion3D/Map/rightsidelights/lightholdertwo" unique_id=1837545638 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_rightsidelights_lightholdertwo#Outsidelight10" parent="." unique_id=1837545638 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -13.522381, 0.31895995, 2.2629018)
 
-[node name="Outsidelight11" parent="NavigationRegion3D/Map/rightsidelights/lightholdertwo" unique_id=1565758771 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_rightsidelights_lightholdertwo#Outsidelight11" parent="." unique_id=1565758771 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -13.522381, 0.31895995, -1.4566264)
 
-[node name="Outsidelight12" parent="NavigationRegion3D/Map/rightsidelights/lightholdertwo" unique_id=194459257 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_rightsidelights_lightholdertwo#Outsidelight12" parent="." unique_id=194459257 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -13.522381, 0.31895995, -5.7184424)
 
-[node name="Outsidelight13" parent="NavigationRegion3D/Map/rightsidelights/lightholdertwo" unique_id=390771888 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_rightsidelights_lightholdertwo#Outsidelight13" parent="." unique_id=390771888 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -13.522381, 0.31895995, -9.373362)
 
-[node name="Outsidelight14" parent="NavigationRegion3D/Map/rightsidelights/lightholdertwo" unique_id=933525413 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_rightsidelights_lightholdertwo#Outsidelight14" parent="." unique_id=933525413 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -13.522381, 0.31895995, -13.351479)
 
-[node name="lightholdertwo2" type="Node3D" parent="NavigationRegion3D/Map/rightsidelights" unique_id=1636554684]
+[node name="NavigationRegion3D_Map_rightsidelights#lightholdertwo2" type="Node3D" parent="." unique_id=1636554684]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.000656, 0, 31.70665)
 
-[node name="Outsidelight2" parent="NavigationRegion3D/Map/rightsidelights/lightholdertwo2" unique_id=1521282333 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_rightsidelights_lightholdertwo2#Outsidelight2" parent="." unique_id=1521282333 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -18.414951, 0.31895995, 2.2629018)
 
-[node name="Outsidelight3" parent="NavigationRegion3D/Map/rightsidelights/lightholdertwo2" unique_id=80392762 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_rightsidelights_lightholdertwo2#Outsidelight3" parent="." unique_id=80392762 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -18.414951, 0.31895995, -1.4566265)
 
-[node name="Outsidelight4" parent="NavigationRegion3D/Map/rightsidelights/lightholdertwo2" unique_id=964793415 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_rightsidelights_lightholdertwo2#Outsidelight4" parent="." unique_id=964793415 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -18.414951, 0.31895995, -5.7184424)
 
-[node name="Outsidelight8" parent="NavigationRegion3D/Map/rightsidelights/lightholdertwo2" unique_id=919842332 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_rightsidelights_lightholdertwo2#Outsidelight8" parent="." unique_id=919842332 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -18.414951, 0.31895995, -21.07146)
 
-[node name="Outsidelight9" parent="NavigationRegion3D/Map/rightsidelights/lightholdertwo2" unique_id=1270772027 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_rightsidelights_lightholdertwo2#Outsidelight9" parent="." unique_id=1270772027 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -13.522381, 0.31895995, 6.2536225)
 
-[node name="Outsidelight10" parent="NavigationRegion3D/Map/rightsidelights/lightholdertwo2" unique_id=2072301109 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_rightsidelights_lightholdertwo2#Outsidelight10" parent="." unique_id=2072301109 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -13.522381, 0.31895995, 2.2629018)
 
-[node name="Outsidelight11" parent="NavigationRegion3D/Map/rightsidelights/lightholdertwo2" unique_id=1332483269 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_rightsidelights_lightholdertwo2#Outsidelight11" parent="." unique_id=1332483269 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -13.522381, 0.31895995, -1.4566264)
 
-[node name="Outsidelight12" parent="NavigationRegion3D/Map/rightsidelights/lightholdertwo2" unique_id=1672230254 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_rightsidelights_lightholdertwo2#Outsidelight12" parent="." unique_id=1672230254 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -13.522381, 0.31895995, -5.7184424)
 
-[node name="Outsidelight13" parent="NavigationRegion3D/Map/rightsidelights/lightholdertwo2" unique_id=327396085 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_rightsidelights_lightholdertwo2#Outsidelight13" parent="." unique_id=327396085 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -13.522381, 0.31895995, -9.373362)
 
-[node name="Outsidelight15" parent="NavigationRegion3D/Map/rightsidelights/lightholdertwo2" unique_id=404359805 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_rightsidelights_lightholdertwo2#Outsidelight15" parent="." unique_id=404359805 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -13.522381, 0.31895995, -16.95095)
 
-[node name="Outsidelight16" parent="NavigationRegion3D/Map/rightsidelights/lightholdertwo2" unique_id=1050680019 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_rightsidelights_lightholdertwo2#Outsidelight16" parent="." unique_id=1050680019 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -13.522381, 0.31895995, -21.07146)
 
-[node name="leftsidelights" type="Node3D" parent="NavigationRegion3D/Map" unique_id=1862712552]
+[node name="NavigationRegion3D_Map#leftsidelights" type="Node3D" parent="." unique_id=1862712552]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -15.229692, 0.15975761, -1.429388)
 
-[node name="lightholdertwo" type="Node3D" parent="NavigationRegion3D/Map/leftsidelights" unique_id=260103081]
+[node name="NavigationRegion3D_Map_leftsidelights#lightholdertwo" type="Node3D" parent="." unique_id=260103081]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.000656, 0, 0)
 
-[node name="Outsidelight" parent="NavigationRegion3D/Map/leftsidelights/lightholdertwo" unique_id=516104303 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_leftsidelights_lightholdertwo#Outsidelight" parent="." unique_id=516104303 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -18.414951, 0.31895995, 6.2536225)
 
-[node name="Outsidelight2" parent="NavigationRegion3D/Map/leftsidelights/lightholdertwo" unique_id=2047193246 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_leftsidelights_lightholdertwo#Outsidelight2" parent="." unique_id=2047193246 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -18.414951, 0.31895995, 2.2629018)
 
-[node name="Outsidelight3" parent="NavigationRegion3D/Map/leftsidelights/lightholdertwo" unique_id=179044193 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_leftsidelights_lightholdertwo#Outsidelight3" parent="." unique_id=179044193 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -18.414951, 0.31895995, -1.4566265)
 
-[node name="Outsidelight4" parent="NavigationRegion3D/Map/leftsidelights/lightholdertwo" unique_id=1576394213 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_leftsidelights_lightholdertwo#Outsidelight4" parent="." unique_id=1576394213 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -18.414951, 0.31895995, -5.7184424)
 
-[node name="Outsidelight5" parent="NavigationRegion3D/Map/leftsidelights/lightholdertwo" unique_id=707619044 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_leftsidelights_lightholdertwo#Outsidelight5" parent="." unique_id=707619044 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -18.414951, 0.31895995, -9.373362)
 
-[node name="Outsidelight6" parent="NavigationRegion3D/Map/leftsidelights/lightholdertwo" unique_id=563287320 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_leftsidelights_lightholdertwo#Outsidelight6" parent="." unique_id=563287320 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -18.414951, 0.31895995, -13.351479)
 
-[node name="Outsidelight9" parent="NavigationRegion3D/Map/leftsidelights/lightholdertwo" unique_id=1525381019 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_leftsidelights_lightholdertwo#Outsidelight9" parent="." unique_id=1525381019 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -13.522381, 0.31895995, 6.2536225)
 
-[node name="Outsidelight10" parent="NavigationRegion3D/Map/leftsidelights/lightholdertwo" unique_id=619426762 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_leftsidelights_lightholdertwo#Outsidelight10" parent="." unique_id=619426762 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -13.522381, 0.31895995, 2.2629018)
 
-[node name="Outsidelight11" parent="NavigationRegion3D/Map/leftsidelights/lightholdertwo" unique_id=4935254 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_leftsidelights_lightholdertwo#Outsidelight11" parent="." unique_id=4935254 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -13.522381, 0.31895995, -1.4566264)
 
-[node name="Outsidelight12" parent="NavigationRegion3D/Map/leftsidelights/lightholdertwo" unique_id=1573810433 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_leftsidelights_lightholdertwo#Outsidelight12" parent="." unique_id=1573810433 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -13.522381, 0.31895995, -5.7184424)
 
-[node name="Outsidelight13" parent="NavigationRegion3D/Map/leftsidelights/lightholdertwo" unique_id=2065734456 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_leftsidelights_lightholdertwo#Outsidelight13" parent="." unique_id=2065734456 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -13.522381, 0.31895995, -9.373362)
 
-[node name="Outsidelight15" parent="NavigationRegion3D/Map/leftsidelights/lightholdertwo" unique_id=1633065936 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_leftsidelights_lightholdertwo#Outsidelight15" parent="." unique_id=1633065936 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.522382, 0.31895995, -16.838041)
 
-[node name="lightholdertwo2" type="Node3D" parent="NavigationRegion3D/Map/leftsidelights" unique_id=464755871]
+[node name="NavigationRegion3D_Map_leftsidelights#lightholdertwo2" type="Node3D" parent="." unique_id=464755871]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.126236, 0, 31.70665)
 
-[node name="Outsidelight" parent="NavigationRegion3D/Map/leftsidelights/lightholdertwo2" unique_id=67830684 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_leftsidelights_lightholdertwo2#Outsidelight" parent="." unique_id=67830684 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -18.414951, 0.31895995, 6.2536225)
 
-[node name="Outsidelight2" parent="NavigationRegion3D/Map/leftsidelights/lightholdertwo2" unique_id=426880303 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_leftsidelights_lightholdertwo2#Outsidelight2" parent="." unique_id=426880303 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -18.414951, 0.31895995, 2.2629018)
 
-[node name="Outsidelight3" parent="NavigationRegion3D/Map/leftsidelights/lightholdertwo2" unique_id=295602641 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_leftsidelights_lightholdertwo2#Outsidelight3" parent="." unique_id=295602641 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -18.414951, 0.31895995, -1.4566265)
 
-[node name="Outsidelight4" parent="NavigationRegion3D/Map/leftsidelights/lightholdertwo2" unique_id=1961558746 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_leftsidelights_lightholdertwo2#Outsidelight4" parent="." unique_id=1961558746 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -18.414951, 0.31895995, -5.7184424)
 
-[node name="Outsidelight5" parent="NavigationRegion3D/Map/leftsidelights/lightholdertwo2" unique_id=1723789261 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_leftsidelights_lightholdertwo2#Outsidelight5" parent="." unique_id=1723789261 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -18.414951, 0.31895995, -9.373362)
 
-[node name="Outsidelight6" parent="NavigationRegion3D/Map/leftsidelights/lightholdertwo2" unique_id=2074093362 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_leftsidelights_lightholdertwo2#Outsidelight6" parent="." unique_id=2074093362 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -18.414951, 0.31895995, -13.351479)
 
-[node name="Outsidelight7" parent="NavigationRegion3D/Map/leftsidelights/lightholdertwo2" unique_id=1287016306 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_leftsidelights_lightholdertwo2#Outsidelight7" parent="." unique_id=1287016306 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -18.414951, 0.31895995, -16.95095)
 
-[node name="Outsidelight8" parent="NavigationRegion3D/Map/leftsidelights/lightholdertwo2" unique_id=415160949 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_leftsidelights_lightholdertwo2#Outsidelight8" parent="." unique_id=415160949 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -18.414951, 0.31895995, -21.07146)
 
-[node name="Outsidelight9" parent="NavigationRegion3D/Map/leftsidelights/lightholdertwo2" unique_id=1220715399 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_leftsidelights_lightholdertwo2#Outsidelight9" parent="." unique_id=1220715399 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -13.522381, 0.31895995, 6.2536225)
 
-[node name="Outsidelight10" parent="NavigationRegion3D/Map/leftsidelights/lightholdertwo2" unique_id=1828672376 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_leftsidelights_lightholdertwo2#Outsidelight10" parent="." unique_id=1828672376 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -13.522381, 0.31895995, 2.2629018)
 
-[node name="Outsidelight11" parent="NavigationRegion3D/Map/leftsidelights/lightholdertwo2" unique_id=130580516 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_leftsidelights_lightholdertwo2#Outsidelight11" parent="." unique_id=130580516 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -13.522381, 0.31895995, -1.4566264)
 
-[node name="Outsidelight12" parent="NavigationRegion3D/Map/leftsidelights/lightholdertwo2" unique_id=553677051 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_leftsidelights_lightholdertwo2#Outsidelight12" parent="." unique_id=553677051 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -13.522381, 0.31895995, -5.7184424)
 
-[node name="Outsidelight13" parent="NavigationRegion3D/Map/leftsidelights/lightholdertwo2" unique_id=1366474624 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_leftsidelights_lightholdertwo2#Outsidelight13" parent="." unique_id=1366474624 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -13.522381, 0.31895995, -9.373362)
 
-[node name="Outsidelight14" parent="NavigationRegion3D/Map/leftsidelights/lightholdertwo2" unique_id=1344554292 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_leftsidelights_lightholdertwo2#Outsidelight14" parent="." unique_id=1344554292 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -13.522381, 0.31895995, -13.351479)
 
-[node name="Outsidelight15" parent="NavigationRegion3D/Map/leftsidelights/lightholdertwo2" unique_id=601460135 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_leftsidelights_lightholdertwo2#Outsidelight15" parent="." unique_id=601460135 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -13.522381, 0.31895995, -16.95095)
 
-[node name="Outsidelight16" parent="NavigationRegion3D/Map/leftsidelights/lightholdertwo2" unique_id=1099167922 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_leftsidelights_lightholdertwo2#Outsidelight16" parent="." unique_id=1099167922 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -13.522381, 0.31895995, -21.07146)
 
-[node name="frontsidelights" type="Node3D" parent="NavigationRegion3D/Map" unique_id=2070997742]
+[node name="NavigationRegion3D_Map#frontsidelights" type="Node3D" parent="." unique_id=2070997742]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.85573, 0.2247076, -21.843836)
 
-[node name="biglightholder4" type="Node3D" parent="NavigationRegion3D/Map/frontsidelights" unique_id=1831360169]
+[node name="NavigationRegion3D_Map_frontsidelights#biglightholder4" type="Node3D" parent="." unique_id=1831360169]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.44302368, 0, 63.08803)
 
-[node name="lightholdertwo" type="Node3D" parent="NavigationRegion3D/Map/frontsidelights/biglightholder4" unique_id=793197312]
+[node name="NavigationRegion3D_Map_frontsidelights_biglightholder4#lightholdertwo" type="Node3D" parent="." unique_id=793197312]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.000656, 0, 0)
 
-[node name="Outsidelight5" parent="NavigationRegion3D/Map/frontsidelights/biglightholder4/lightholdertwo" unique_id=826515022 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_frontsidelights_biglightholder4_lightholdertwo#Outsidelight5" parent="." unique_id=826515022 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -18.414951, 0.31895995, -9.373362)
 
-[node name="Outsidelight7" parent="NavigationRegion3D/Map/frontsidelights/biglightholder4/lightholdertwo" unique_id=2042836799 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_frontsidelights_biglightholder4_lightholdertwo#Outsidelight7" parent="." unique_id=2042836799 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -18.414951, 0.31895995, -16.95095)
 
-[node name="Outsidelight8" parent="NavigationRegion3D/Map/frontsidelights/biglightholder4/lightholdertwo" unique_id=1224829058 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_frontsidelights_biglightholder4_lightholdertwo#Outsidelight8" parent="." unique_id=1224829058 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -18.414951, 0.31895995, -21.07146)
 
-[node name="Outsidelight13" parent="NavigationRegion3D/Map/frontsidelights/biglightholder4/lightholdertwo" unique_id=462189910 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_frontsidelights_biglightholder4_lightholdertwo#Outsidelight13" parent="." unique_id=462189910 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, -0.70710677, -13.522381, 0.31895995, -9.373362)
 
-[node name="Outsidelight14" parent="NavigationRegion3D/Map/frontsidelights/biglightholder4/lightholdertwo" unique_id=1704680123 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_frontsidelights_biglightholder4_lightholdertwo#Outsidelight14" parent="." unique_id=1704680123 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -13.522381, 0.31895995, -13.351479)
 
-[node name="Outsidelight15" parent="NavigationRegion3D/Map/frontsidelights/biglightholder4/lightholdertwo" unique_id=2037116618 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_frontsidelights_biglightholder4_lightholdertwo#Outsidelight15" parent="." unique_id=2037116618 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -13.522381, 0.31895995, -16.95095)
 
-[node name="Outsidelight16" parent="NavigationRegion3D/Map/frontsidelights/biglightholder4/lightholdertwo" unique_id=510167413 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_frontsidelights_biglightholder4_lightholdertwo#Outsidelight16" parent="." unique_id=510167413 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -13.522381, 0.31895995, -21.07146)
 
-[node name="lightholdertwo2" type="Node3D" parent="NavigationRegion3D/Map/frontsidelights/biglightholder4" unique_id=1370395549]
+[node name="NavigationRegion3D_Map_frontsidelights_biglightholder4#lightholdertwo2" type="Node3D" parent="." unique_id=1370395549]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.000656, 0, 31.70665)
 
-[node name="lightholdertwo" type="Node3D" parent="NavigationRegion3D/Map/frontsidelights" unique_id=1941373365]
+[node name="NavigationRegion3D_Map_frontsidelights#lightholdertwo" type="Node3D" parent="." unique_id=1941373365]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.000656, 0, 0)
 
-[node name="Outsidelight" parent="NavigationRegion3D/Map/frontsidelights/lightholdertwo" unique_id=309509917 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_frontsidelights_lightholdertwo#Outsidelight" parent="." unique_id=309509917 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -18.414951, 0.31895995, 6.2536225)
 
-[node name="Outsidelight2" parent="NavigationRegion3D/Map/frontsidelights/lightholdertwo" unique_id=812390955 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_frontsidelights_lightholdertwo#Outsidelight2" parent="." unique_id=812390955 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -18.414951, 0.31895995, 2.2629018)
 
-[node name="Outsidelight3" parent="NavigationRegion3D/Map/frontsidelights/lightholdertwo" unique_id=1864689988 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_frontsidelights_lightholdertwo#Outsidelight3" parent="." unique_id=1864689988 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -18.414951, 0.31895995, -1.4566265)
 
-[node name="Outsidelight9" parent="NavigationRegion3D/Map/frontsidelights/lightholdertwo" unique_id=225476791 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_frontsidelights_lightholdertwo#Outsidelight9" parent="." unique_id=225476791 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -13.522381, 0.31895995, 6.2536225)
 
-[node name="Outsidelight10" parent="NavigationRegion3D/Map/frontsidelights/lightholdertwo" unique_id=1011483696 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_frontsidelights_lightholdertwo#Outsidelight10" parent="." unique_id=1011483696 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -13.522381, 0.31895995, 2.2629018)
 
-[node name="Outsidelight11" parent="NavigationRegion3D/Map/frontsidelights/lightholdertwo" unique_id=728073407 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_frontsidelights_lightholdertwo#Outsidelight11" parent="." unique_id=728073407 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -13.522381, 0.31895995, -1.4566264)
 
-[node name="Outsidelight12" parent="NavigationRegion3D/Map/frontsidelights/lightholdertwo" unique_id=1321364931 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_frontsidelights_lightholdertwo#Outsidelight12" parent="." unique_id=1321364931 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -13.522381, 0.31895995, -5.7184424)
 
-[node name="Outsidelight13" parent="NavigationRegion3D/Map/frontsidelights/lightholdertwo" unique_id=287817878 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_frontsidelights_lightholdertwo#Outsidelight13" parent="." unique_id=287817878 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, -13.522381, 0.31895995, -9.373362)
 
-[node name="lightholdertwo2" type="Node3D" parent="NavigationRegion3D/Map/frontsidelights" unique_id=1577528770]
+[node name="NavigationRegion3D_Map_frontsidelights#lightholdertwo2" type="Node3D" parent="." unique_id=1577528770]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.000656, 0, 31.70665)
 
-[node name="Outsidelight" parent="NavigationRegion3D/Map/frontsidelights/lightholdertwo2" unique_id=443885446 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_frontsidelights_lightholdertwo2#Outsidelight" parent="." unique_id=443885446 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -18.414951, 0.31895995, 6.2536225)
 
-[node name="Outsidelight2" parent="NavigationRegion3D/Map/frontsidelights/lightholdertwo2" unique_id=1573637936 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_frontsidelights_lightholdertwo2#Outsidelight2" parent="." unique_id=1573637936 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -18.414951, 0.31895995, 2.2629018)
 
-[node name="Outsidelight3" parent="NavigationRegion3D/Map/frontsidelights/lightholdertwo2" unique_id=595137448 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_frontsidelights_lightholdertwo2#Outsidelight3" parent="." unique_id=595137448 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -18.414951, 0.31895995, -1.4566265)
 
-[node name="Outsidelight4" parent="NavigationRegion3D/Map/frontsidelights/lightholdertwo2" unique_id=20768696 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_frontsidelights_lightholdertwo2#Outsidelight4" parent="." unique_id=20768696 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -18.414951, 0.31895995, -5.7184424)
 
-[node name="Outsidelight5" parent="NavigationRegion3D/Map/frontsidelights/lightholdertwo2" unique_id=1581595324 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_frontsidelights_lightholdertwo2#Outsidelight5" parent="." unique_id=1581595324 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -18.414951, 0.31895995, -9.373362)
 
-[node name="Outsidelight6" parent="NavigationRegion3D/Map/frontsidelights/lightholdertwo2" unique_id=755459408 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_frontsidelights_lightholdertwo2#Outsidelight6" parent="." unique_id=755459408 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -18.414951, 0.31895995, -13.351479)
 
-[node name="Outsidelight7" parent="NavigationRegion3D/Map/frontsidelights/lightholdertwo2" unique_id=1938303657 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_frontsidelights_lightholdertwo2#Outsidelight7" parent="." unique_id=1938303657 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -18.414951, 0.31895995, -16.95095)
 
-[node name="Outsidelight8" parent="NavigationRegion3D/Map/frontsidelights/lightholdertwo2" unique_id=1354133741 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_frontsidelights_lightholdertwo2#Outsidelight8" parent="." unique_id=1354133741 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -18.414951, 0.31895995, -21.07146)
 
-[node name="Outsidelight9" parent="NavigationRegion3D/Map/frontsidelights/lightholdertwo2" unique_id=1294226812 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_frontsidelights_lightholdertwo2#Outsidelight9" parent="." unique_id=1294226812 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -13.522381, 0.31895995, 6.2536225)
 
-[node name="Outsidelight10" parent="NavigationRegion3D/Map/frontsidelights/lightholdertwo2" unique_id=1708078751 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_frontsidelights_lightholdertwo2#Outsidelight10" parent="." unique_id=1708078751 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -13.522381, 0.31895995, 2.2629018)
 
-[node name="Outsidelight11" parent="NavigationRegion3D/Map/frontsidelights/lightholdertwo2" unique_id=374321978 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_frontsidelights_lightholdertwo2#Outsidelight11" parent="." unique_id=374321978 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -13.522381, 0.31895995, -1.4566264)
 
-[node name="Outsidelight12" parent="NavigationRegion3D/Map/frontsidelights/lightholdertwo2" unique_id=768673197 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_frontsidelights_lightholdertwo2#Outsidelight12" parent="." unique_id=768673197 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -13.522381, 0.31895995, -5.7184424)
 
-[node name="Outsidelight13" parent="NavigationRegion3D/Map/frontsidelights/lightholdertwo2" unique_id=605656200 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_frontsidelights_lightholdertwo2#Outsidelight13" parent="." unique_id=605656200 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -13.522381, 0.31895995, -9.373362)
 
-[node name="Outsidelight14" parent="NavigationRegion3D/Map/frontsidelights/lightholdertwo2" unique_id=727376473 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_frontsidelights_lightholdertwo2#Outsidelight14" parent="." unique_id=727376473 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, -13.522381, 0.31895995, -13.351479)
 
-[node name="Outsidelight17" parent="NavigationRegion3D/Map/frontsidelights/lightholdertwo2" unique_id=713422708 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_frontsidelights_lightholdertwo2#Outsidelight17" parent="." unique_id=713422708 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -9.873199, 0.31895995, -9.373362)
 
-[node name="Outsidelight18" parent="NavigationRegion3D/Map/frontsidelights/lightholdertwo2" unique_id=1137836080 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_frontsidelights_lightholdertwo2#Outsidelight18" parent="." unique_id=1137836080 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, -9.873199, 0.31895995, -13.351479)
 
-[node name="Outsidelight19" parent="NavigationRegion3D/Map/frontsidelights/lightholdertwo2" unique_id=718313376 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_frontsidelights_lightholdertwo2#Outsidelight19" parent="." unique_id=718313376 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -7.060013, 0.31895995, -9.373362)
 
-[node name="Outsidelight20" parent="NavigationRegion3D/Map/frontsidelights/lightholdertwo2" unique_id=169121295 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_frontsidelights_lightholdertwo2#Outsidelight20" parent="." unique_id=169121295 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, -7.060013, 0.31895995, -13.351479)
 
-[node name="Outsidelight21" parent="NavigationRegion3D/Map/frontsidelights/lightholdertwo2" unique_id=770423445 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_frontsidelights_lightholdertwo2#Outsidelight21" parent="." unique_id=770423445 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -3.4108315, 0.31895995, -9.373362)
 
-[node name="Outsidelight22" parent="NavigationRegion3D/Map/frontsidelights/lightholdertwo2" unique_id=1052306825 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_frontsidelights_lightholdertwo2#Outsidelight22" parent="." unique_id=1052306825 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, -3.4108315, 0.31895995, -13.351479)
 
-[node name="Outsidelight23" parent="NavigationRegion3D/Map/frontsidelights/lightholdertwo2" unique_id=1815588861 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_frontsidelights_lightholdertwo2#Outsidelight23" parent="." unique_id=1815588861 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.27695847, 0.31895995, -9.376705)
 
-[node name="Outsidelight24" parent="NavigationRegion3D/Map/frontsidelights/lightholdertwo2" unique_id=970779846 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_frontsidelights_lightholdertwo2#Outsidelight24" parent="." unique_id=970779846 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, 0.27695847, 0.31895995, -13.354822)
 
-[node name="Outsidelight25" parent="NavigationRegion3D/Map/frontsidelights/lightholdertwo2" unique_id=1987704429 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_frontsidelights_lightholdertwo2#Outsidelight25" parent="." unique_id=1987704429 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3.9261398, 0.31895995, -9.376705)
 
-[node name="Outsidelight26" parent="NavigationRegion3D/Map/frontsidelights/lightholdertwo2" unique_id=843675083 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_frontsidelights_lightholdertwo2#Outsidelight26" parent="." unique_id=843675083 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, 3.9261398, 0.31895995, -13.354822)
 
-[node name="Outsidelight15" parent="NavigationRegion3D/Map/frontsidelights/lightholdertwo2" unique_id=240959351 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_frontsidelights_lightholdertwo2#Outsidelight15" parent="." unique_id=240959351 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -13.522381, 0.31895995, -16.95095)
 
-[node name="Outsidelight16" parent="NavigationRegion3D/Map/frontsidelights/lightholdertwo2" unique_id=2101360889 groups=["lights"] instance=ExtResource("8_3g2c1")]
+[node name="NavigationRegion3D_Map_frontsidelights_lightholdertwo2#Outsidelight16" parent="." unique_id=2101360889 groups=["lights"] instance=ExtResource("8_3g2c1")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -13.522381, 0.31895995, -21.07146)
 
 [node name="Ambience" type="AudioStreamPlayer3D" parent="." unique_id=281882632]
 stream = ExtResource("12_0iorr")
 
 [node name="Radio" parent="." unique_id=1077230544 node_paths=PackedStringArray("dancer") instance=ExtResource("14_gewoo")]
-transform = Transform3D(-0.9459115, 0, -0.32442427, 0, 1, 0, 0.32442427, 0, -0.9459115, 0.445848, 1.1043743, 99.57426)
+transform = Transform3D(-0.7296666, 0, -0.683803, 0, 1, 0, 0.683803, 0, -0.7296666, -5.4832444, 1.1043743, 101.325386)
 dancer = NodePath("../creature")
 
 [node name="creature" parent="." unique_id=1562404874 instance=ExtResource("12_h6u84")]
-transform = Transform3D(-0.83491546, 0, -0.5503784, 0, 1, 0, 0.5503784, 0, -0.83491546, -2.7083309, 0.58252716, 98.44284)
+transform = Transform3D(-0.83491546, 0, -0.5503784, 0, 1, 0, 0.5503784, 0, -0.83491546, -9.355376, 0.58252716, 98.44284)
 dance_only = true
 
 [node name="RadioMusic" type="AudioStreamPlayer3D" parent="." unique_id=1725655764]
@@ -549,4 +553,7 @@ stream = ExtResource("13_gewoo")
 transform = Transform3D(1, 0, 0, 0, 0.7071068, 0.7071068, 0, -0.7071068, 0.7071068, -9, 10, 6)
 
 [node name="pipe-glass-large-long2" parent="." unique_id=1205796793 instance=ExtResource("13_0iorr")]
-transform = Transform3D(-4.371139e-08, -3.5, 0, 1, -1.5298986e-07, 0, 0, 0, 3.5, -1.0411925, 1.7544925, 98.291046)
+transform = Transform3D(-4.371139e-08, -3.5, 0, 1, -1.5298986e-07, 0, 0, 0, 3.5, -7.4285674, 1.7544925, 98.291046)
+
+[node name="MainMenu" type="AudioStreamPlayer3D" parent="." unique_id=1676280378]
+stream = ExtResource("13_nsn85")

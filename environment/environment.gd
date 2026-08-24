@@ -96,5 +96,7 @@ func trigger_game_over() -> void:
 	add_child(end_screen)
 	end_screen.show_results(elapsed_time, goblins_killed)
 
+	MenuMusic.play_music()
+
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	get_tree().paused = true

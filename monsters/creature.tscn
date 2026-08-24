@@ -271,11 +271,11 @@ _data = {
 size = Vector3(1, 1.7371826, 1.1235046)
 
 [node name="creature" unique_id=1562404874 instance=ExtResource("1_3df4v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.12684262, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 script = ExtResource("2_u226g")
 
 [node name="Armature" parent="." index="0" unique_id=1125681185]
-transform = Transform3D(0.013, 0, 0, 0, 0.013, 0, 0, 0, 0.013, 0, 0, 0)
+transform = Transform3D(0.013, 0, 0, 0, 0.013, 0, 0, 0, 0.013, 0, -0.42684262, 0)
 
 [node name="Skeleton3D" parent="Armature" index="0" unique_id=1504743859]
 bones/0/position = Vector3(7.9880652, 91.63251, -8.17834)
@@ -339,7 +339,7 @@ mesh = SubResource("SphereMesh_eyeglow")
 libraries/local = SubResource("AnimationLibrary_0u7sy")
 
 [node name="HurtBox" type="StaticBody3D" parent="." index="2" unique_id=900000001]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7785518, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35170918, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox" index="0" unique_id=900000002]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.13687897, 0.06175232)
