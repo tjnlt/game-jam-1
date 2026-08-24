@@ -9,10 +9,7 @@
 [ext_resource type="Script" uid="uid://ck3tji2lwmoeg" path="res://environment/environment.gd" id="9_env"]
 [ext_resource type="AudioStream" uid="uid://ccq4tk36kerrp" path="res://addons/audio/ambience.wav" id="12_0iorr"]
 [ext_resource type="PackedScene" uid="uid://b710ad4smtchk" path="res://monsters/creature.tscn" id="12_h6u84"]
-<<<<<<< Updated upstream
-=======
 [ext_resource type="PackedScene" uid="uid://dflkqaonrmslm" path="res://addons/KennyAssets/kenney_factory-kit_3.0/Models/GLB format/pipe-glass-large-long.glb" id="13_0iorr"]
->>>>>>> Stashed changes
 [ext_resource type="AudioStream" uid="uid://b1kqk048c62mx" path="res://addons/audio/epic_beat.wav" id="13_gewoo"]
 [ext_resource type="PackedScene" uid="uid://bslbptnrwrpkk" path="res://Reactor/radio.tscn" id="14_gewoo"]
 
