@@ -1,21 +1,21 @@
 [gd_scene format=3 uid="uid://b710ad4smtchk"]
 
-[ext_resource type="PackedScene" uid="uid://hh2obaqk5e7o" path="res://addons/creature/Meshy_AI_Creature_that_is_powe_biped/Meshy_AI_Creature_that_is_powe_biped_Animation_Boom_Dance_withSkin.glb" id="1_3df4v"]
-[ext_resource type="Texture2D" uid="uid://gx4j6rw67cgd" path="res://addons/creature/Meshy_AI_Creature_that_is_powe_biped/Meshy_AI_Creature_that_is_powe_biped_Animation_Boom_Dance_withSkin_texture_0.png" id="2_sevsk"]
+[ext_resource type="PackedScene" uid="uid://bl6mu7eba3vo4" path="res://addons/creature/Meshy_AI_Creature_that_is_powe_biped/Meshy_AI_Creature_that_is_powe_biped_Animation_Boom_Dance_withSkin.glb" id="1_3df4v"]
+[ext_resource type="Texture2D" uid="uid://cvaupdun3frhh" path="res://addons/creature/Meshy_AI_Creature_that_is_powe_biped/Meshy_AI_Creature_that_is_powe_biped_Animation_Boom_Dance_withSkin_texture_0.png" id="2_sevsk"]
 [ext_resource type="Script" uid="uid://cl35f3ljam6r" path="res://monsters/creature.gd" id="2_u226g"]
 [ext_resource type="Animation" uid="uid://lf0hf6utv06n" path="res://addons/creature_animations/fast_run.res" id="3_0u7sy"]
 [ext_resource type="Animation" uid="uid://bimdq3ljm1etd" path="res://addons/creature_animations/carry.res" id="3_rct7a"]
 [ext_resource type="Animation" uid="uid://5nvv618ulgu8" path="res://addons/creature_animations/run.res" id="4_owpbx"]
 [ext_resource type="Animation" uid="uid://cicosnkudwvml" path="res://addons/creature_animations/walk_backward.res" id="5_s2bae"]
 [ext_resource type="Animation" uid="uid://bn3n6vd4cgvic" path="res://addons/creature_animations/scream.res" id="6_u226g"]
-[ext_resource type="AudioStream" uid="uid://cm1afoe3ucl3e" path="res://addons/audio/creature_damage_sound_1.wav" id="9_okvct"]
-[ext_resource type="AudioStream" uid="uid://dsj5up1t2td0r" path="res://addons/audio/creature_damage_sound_2.wav" id="10_s06yi"]
-[ext_resource type="AudioStream" uid="uid://cdb1owqfnkdkd" path="res://addons/audio/creature_damage_sound_3.wav" id="11_ygmlt"]
-[ext_resource type="AudioStream" uid="uid://c12skrcvcwg8s" path="res://addons/audio/creature_damage_sound_4.wav" id="12_0ph8b"]
-[ext_resource type="AudioStream" uid="uid://ojvfks2nlib0" path="res://addons/audio/foot_step_1.wav" id="13_0deyl"]
-[ext_resource type="AudioStream" uid="uid://df2nerktuxnyc" path="res://addons/audio/foot_step_2.wav" id="14_7kv3o"]
-[ext_resource type="AudioStream" uid="uid://brtg7l4rxyvig" path="res://addons/audio/foot_step_3.wav" id="15_v6oth"]
-[ext_resource type="AudioStream" uid="uid://dpkfpiv1abb8q" path="res://addons/audio/foot_step_4.wav" id="16_jrldw"]
+[ext_resource type="AudioStream" uid="uid://eiarurqcm3tr" path="res://addons/audio/creature_damage_sound_1.wav" id="9_okvct"]
+[ext_resource type="AudioStream" uid="uid://bk8kfk0wxvi54" path="res://addons/audio/creature_damage_sound_2.wav" id="10_s06yi"]
+[ext_resource type="AudioStream" uid="uid://bcsb4g0cd5eg8" path="res://addons/audio/creature_damage_sound_3.wav" id="11_ygmlt"]
+[ext_resource type="AudioStream" uid="uid://cd7cpsmp2cngr" path="res://addons/audio/creature_damage_sound_4.wav" id="12_0ph8b"]
+[ext_resource type="AudioStream" uid="uid://cy6m6wrdpsaf8" path="res://addons/audio/foot_step_1.wav" id="13_0deyl"]
+[ext_resource type="AudioStream" uid="uid://cdlptccgurne0" path="res://addons/audio/foot_step_2.wav" id="14_7kv3o"]
+[ext_resource type="AudioStream" uid="uid://dlaul5xft8oy2" path="res://addons/audio/foot_step_3.wav" id="15_v6oth"]
+[ext_resource type="AudioStream" uid="uid://ghjjmm3bxckx" path="res://addons/audio/foot_step_4.wav" id="16_jrldw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0u7sy"]
 albedo_texture = ExtResource("2_sevsk")
@@ -321,7 +321,7 @@ bones/23/rotation = Quaternion(0.33354917, 5.2323006e-08, -0.004560607, 0.942721
 material_override = SubResource("StandardMaterial3D_0u7sy")
 
 [node name="EyeAttachment" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="1" unique_id=1640096343]
-transform = Transform3D(0.98446953, -0.1475146, 0.09517211, -0.011527482, -0.5952831, -0.80343246, 0.17517239, 0.7898585, -0.58773917, -17.469952, 114.16435, 36.328278)
+transform = Transform3D(0.937985, 0.048250318, 0.34330043, 0.34630305, -0.1762377, -0.921419, 0.016043808, 0.98316383, -0.18201777, -4.760702, 117.59189, 24.507648)
 bone_name = "headfront"
 bone_idx = 23
 

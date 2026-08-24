@@ -8,8 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://dcresl8uqkcgv" path="res://Reactor/map.tscn" id="7_te1ty"]
 [ext_resource type="PackedScene" uid="uid://u7xtskirf0nc" path="res://environment/generator.tscn" id="7_vh8kr"]
 [ext_resource type="Script" uid="uid://ck3tji2lwmoeg" path="res://environment/environment.gd" id="9_env"]
-[ext_resource type="AudioStream" uid="uid://ccq4tk36kerrp" path="res://addons/audio/ambience.wav" id="12_0iorr"]
+[ext_resource type="AudioStream" uid="uid://caliuoe8wppjd" path="res://addons/audio/ambience.wav" id="12_0iorr"]
 [ext_resource type="PackedScene" uid="uid://b710ad4smtchk" path="res://monsters/creature.tscn" id="12_h6u84"]
+[ext_resource type="PackedScene" uid="uid://bslbptnrwrpkk" path="res://Reactor/radio.tscn" id="14_gewoo"]
 [ext_resource type="AudioStream" uid="uid://b1kqk048c62mx" path="res://addons/audio/epic_beat.wav" id="13_gewoo"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_d81ba"]
@@ -115,6 +116,13 @@ navigation_mesh = SubResource("NavigationMesh_d81ba")
 [node name="Ambience" type="AudioStreamPlayer3D" parent="." unique_id=281882632]
 stream = ExtResource("12_0iorr")
 
+[node name="Radio" parent="." unique_id=1077230544 node_paths=PackedStringArray("dancer") instance=ExtResource("14_gewoo")]
+transform = Transform3D(-0.6194807, 0, 0.78501177, 0, 1, 0, -0.78501177, 0, -0.6194807, -2.694148, 1.1043743, 71.48561)
+dancer = NodePath("../creature")
+
+[node name="creature" parent="." unique_id=1562404874 instance=ExtResource("12_h6u84")]
+transform = Transform3D(-0.38004884, 0, 0.9249664, 0, 1, 0, -0.9249664, 0, -0.38004884, -3.8348901, 0.58252716, 69.18847)
+dance_only = true
 [node name="RadioMusic" type="AudioStreamPlayer3D" parent="." unique_id=1725655764]
 stream = ExtResource("13_gewoo")
 
