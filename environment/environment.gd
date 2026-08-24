@@ -1,5 +1,7 @@
 extends Node
 
+signal rods_changed
+
 const EndScreenScene := preload("res://ui/end_screen.tscn")
 
 const TOTAL_RODS : int = 8
@@ -54,6 +56,7 @@ func steal_rod() -> void:
 		return
 	rods_in_reactor -= 1
 	rods_stolen += 1
+	rods_changed.emit()
 
 
 # Call when a goblin carrying a stolen rod is killed before escaping.
@@ -63,6 +66,7 @@ func recover_rod() -> void:
 		return
 	rods_stolen -= 1
 	rods_in_reactor += 1
+	rods_changed.emit()
 
 
 # Call when a goblin carrying a stolen rod escapes (reaches its spawn/exit).
@@ -72,6 +76,7 @@ func lose_rod() -> void:
 		return
 	rods_stolen -= 1
 	rods_lost += 1
+	rods_changed.emit()
 
 	if rods_lost >= TOTAL_RODS:
 		_on_all_rods_lost()

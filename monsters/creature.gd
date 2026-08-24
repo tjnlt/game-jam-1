@@ -178,6 +178,12 @@ func take_damage(amount: int) -> void:
 		if environment and environment.has_method("register_goblin_kill"):
 			environment.register_goblin_kill()
 
+		if carried_rod:
+			if environment and environment.has_method("recover_rod"):
+				environment.recover_rod()
+			carried_rod.queue_free()
+			carried_rod = null
+
 		# Let the killing hit's sound finish playing instead of getting cut
 		# off when this creature (and its child AudioStreamPlayer3D) is freed.
 		sound.reparent(get_tree().current_scene, true)
@@ -273,6 +279,10 @@ func _try_pickup() -> void:
 func _grab_rod(rod: Node3D) -> void:
 	carried_rod = rod
 
+	var environment := get_tree().get_first_node_in_group("environment")
+	if environment and environment.has_method("steal_rod"):
+		environment.steal_rod()
+
 	# Drop it out of the group immediately so other creatures stop pathing
 	# to a rod that is already spoken for.
 	rod.remove_from_group("rods")
@@ -294,8 +304,8 @@ func _try_deliver() -> void:
 		return
 
 	var environment := get_tree().get_first_node_in_group("environment")
-	if environment and environment.has_method("register_rod_stolen"):
-		environment.register_rod_stolen()
+	if environment and environment.has_method("lose_rod"):
+		environment.lose_rod()
 
 	carried_rod.queue_free()
 	carried_rod = null
