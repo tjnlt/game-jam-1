@@ -1,5 +1,7 @@
 extends Area3D
 
+signal state_changed(is_leaking: bool)
+
 const MINIGAME_SCENE: PackedScene = preload("res://environment/oxygentank_minigame.tscn")
 
 @export var min_leak_seconds: float = 4.0
@@ -18,6 +20,7 @@ var player_ref: Node = null
 @onready var steam4: GPUParticles3D = $Steam4
 
 func _ready() -> void:
+	add_to_group("oxygentank")
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
 
@@ -51,6 +54,7 @@ func _schedule_next_leak() -> void:
 
 func _start_leak() -> void:
 	is_leaking = true
+	state_changed.emit(true)
 	steam.emitting = true
 	steam2.emitting = true
 	steam3.emitting = true
@@ -68,6 +72,7 @@ func _open_minigame() -> void:
 func _on_minigame_success() -> void:
 	active_minigame = null
 	is_leaking = false
+	state_changed.emit(false)
 	steam.emitting = false
 	steam2.emitting = false
 	steam3.emitting = false

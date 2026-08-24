@@ -1,5 +1,7 @@
 extends Area3D
 
+signal state_changed(is_broken: bool)
+
 const MINIGAME_SCENE: PackedScene = preload("res://environment/generator_minigame.tscn")
 
 @export var min_break_seconds: float = 60
@@ -40,6 +42,7 @@ func _schedule_next_break() -> void:
 
 func _break_generator() -> void:
 	is_broken = true
+	state_changed.emit(true)
 	for light in get_tree().get_nodes_in_group("lights"):
 		if light.has_method("TurnOff"):
 			light.TurnOff()
@@ -56,6 +59,7 @@ func _open_minigame() -> void:
 func _on_minigame_success() -> void:
 	active_minigame = null
 	is_broken = false
+	state_changed.emit(false)
 	if player_ref:
 		player_ref.can_move = true
 		player_ref.can_shoot = true

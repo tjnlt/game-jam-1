@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <!-- Grayed Tank Body Gradient -->
+    <linearGradient id="grayTank" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#4A4A4A" />
+      <stop offset="30%" stop-color="#757575" />
+      <stop offset="70%" stop-color="#9E9E9E" />
+      <stop offset="100%" stop-color="#4A4A4A" />
+    </linearGradient>
+    
+    <!-- Dull Metallic Valve Gradient -->
+    <linearGradient id="dullMetal" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#555555" />
+      <stop offset="50%" stop-color="#AAAAAA" />
+      <stop offset="100%" stop-color="#666666" />
+    </linearGradient>
+  </defs>
+
+  <!-- Tank Shadow -->
+  <ellipse cx="100" cy="188" rx="35" ry="6" fill="#000000" opacity="0.15" />
+
+  <!-- Main Tank Body (Grayed/Inactive) -->
+  <path d="M 70 65 
+           A 30 30 0 0 1 130 65 
+           L 130 165 
+           A 15 15 0 0 1 115 180 
+           L 85 180 
+           A 15 15 0 0 1 70 165 
+           Z" 
+        fill="url(#grayTank)" 
+        opacity="0.85" />
+
+  <!-- Subtle Highlight -->
+  <path d="M 78 60 
+           A 22 22 0 0 1 100 45 
+           L 100 175 
+           L 88 175 
+           A 10 10 0 0 1 78 165 
+           Z" 
+        fill="#ffffff" opacity="0.12" />
+
+  <!-- Dimmed O2 Text Label -->
+  <text x="100" y="125" 
+        font-family="Arial, sans-serif" 
+        font-weight="900" 
+        font-size="28" 
+        fill="#E0E0E0" 
+        text-anchor="middle" 
+        opacity="0.35"
+        letter-spacing="1">O₂</text>
+
+  <!-- Neck -->
+  <rect x="92" y="36" width="16" height="10" fill="url(#dullMetal)" rx="1" opacity="0.85" />
+
+  <!-- Main Valve Base -->
+  <rect x="88" y="26" width="24" height="10" fill="url(#dullMetal)" rx="2" opacity="0.85" />
+
+  <!-- Top Valve Knob -->
+  <path d="M 85 22 L 115 22 L 112 16 L 88 16 Z" fill="url(#dullMetal)" opacity="0.85" />
+  <circle cx="100" cy="19" r="3" fill="#222" />
+
+  <!-- Pressure Gauge (Pointing to Empty/Red) -->
+  <path d="M 112 31 L 122 31" stroke="url(#dullMetal)" stroke-width="4" stroke-linecap="round" opacity="0.85" />
+  <circle cx="127" cy="31" r="9" fill="#D5D5D5" stroke="#666" stroke-width="1.5" />
+  <!-- Gauge Needle (Pointing to 0 / Empty Left Side) -->
+  <line x1="127" y1="31" x2="121" y2="27" stroke="#e74c3c" stroke-width="1.5" stroke-linecap="round" />
+  <circle cx="127" cy="31" r="1.5" fill="#333" />
+
+  <!-- Outlet Nozzle -->
+  <path d="M 88 31 L 80 31" stroke="url(#dullMetal)" stroke-width="5" stroke-linecap="round" opacity="0.85" />
+
+  <!-- Gas Leak Waves / Hiss Effect coming from nozzle -->
+  <g stroke="#B0BEC5" stroke-linecap="round" fill="none" opacity="0.75">
+    <!-- Stream line 1 -->
+    <path d="M 76 31 C 65 31, 60 22, 45 23 C 35 24, 30 18, 20 18" stroke-width="2" stroke-dasharray="4 2" />
+    <!-- Stream line 2 -->
+    <path d="M 76 33 C 62 36, 58 42, 42 40 C 32 38, 25 46, 15 44" stroke-width="1.5" stroke-dasharray="5 3" />
+    <!-- Stream line 3 -->
+    <path d="M 78 29 C 68 25, 62 14, 50 15 C 40 16, 35 8, 25 10" stroke-width="1" opacity="0.5" />
+  </g>
+
+  <!-- Small Gas Particles / Pressure Droplets -->
+  <circle cx="68" cy="24" r="1.5" fill="#B0BEC5" opacity="0.6" />
+  <circle cx="55" cy="36" r="2" fill="#B0BEC5" opacity="0.5" />
+  <circle cx="38" cy="20" r="1" fill="#B0BEC5" opacity="0.4" />
+  <circle cx="30" cy="42" r="1.5" fill="#B0BEC5" opacity="0.4" />
+</svg>

@@ -9,7 +9,7 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -380.0
+offset_left = -492.0
 offset_top = -71.0
 offset_right = -16.0
 offset_bottom = -8.0
@@ -83,3 +83,17 @@ layout_mode = 2
 size_flags_vertical = 4
 expand_mode = 1
 stretch_mode = 0
+
+[node name="Bulb" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+size_flags_vertical = 4
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Generator" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+size_flags_vertical = 4
+expand_mode = 1
+stretch_mode = 5

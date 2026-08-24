@@ -1,0 +1,99 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://ui/rod_display.gd" id="1_script"]
+
+[node name="RodDisplay" type="Control"]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -492.0
+offset_top = -71.0
+offset_right = -16.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+script = ExtResource("1_script")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+alignment = 2
+
+[node name="Rod1" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(42, 63)
+layout_mode = 2
+size_flags_vertical = 4
+expand_mode = 1
+stretch_mode = 0
+
+[node name="Rod2" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(42, 63)
+layout_mode = 2
+size_flags_vertical = 4
+expand_mode = 1
+stretch_mode = 0
+
+[node name="Rod3" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(42, 63)
+layout_mode = 2
+size_flags_vertical = 4
+expand_mode = 1
+stretch_mode = 0
+
+[node name="Rod4" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(42, 63)
+layout_mode = 2
+size_flags_vertical = 4
+expand_mode = 1
+stretch_mode = 0
+
+[node name="Rod5" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(42, 63)
+layout_mode = 2
+size_flags_vertical = 4
+expand_mode = 1
+stretch_mode = 0
+
+[node name="Rod6" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(42, 63)
+layout_mode = 2
+size_flags_vertical = 4
+expand_mode = 1
+stretch_mode = 0
+
+[node name="Rod7" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(42, 63)
+layout_mode = 2
+size_flags_vertical = 4
+expand_mode = 1
+stretch_mode = 0
+
+[node name="Rod8" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(42, 63)
+layout_mode = 2
+size_flags_vertical = 4
+expand_mode = 1
+stretch_mode = 0
+
+[node name="Bulb" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+size_flags_vertical = 4
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Generator" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+size_flags_vertical = 4
+expand_mode = 1
+stretch_mode = 5
