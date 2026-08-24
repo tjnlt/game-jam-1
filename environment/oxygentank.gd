@@ -4,8 +4,8 @@ signal state_changed(is_leaking: bool)
 
 const MINIGAME_SCENE: PackedScene = preload("res://environment/oxygentank_minigame.tscn")
 
-@export var min_leak_seconds: float = 4.0
-@export var max_leak_seconds: float = 5.0
+@export var min_leak_seconds: float = 45.0
+@export var max_leak_seconds: float = 75.0
 
 
 var player_in_range: bool = false
