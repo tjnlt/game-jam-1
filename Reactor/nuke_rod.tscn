@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://be7fy3wq3lgm2"]
 
+[ext_resource type="Script" uid="uid://by4ca6da6cowq" path="res://Reactor/nuke_rod.gd" id="1_5am2v"]
 [ext_resource type="Texture2D" uid="uid://4dhfqmwns66f" path="res://Reactor/Textures/Concrete.jpg" id="1_v57qq"]
 [ext_resource type="Texture2D" uid="uid://wkep8bnc0xwp" path="res://Reactor/Textures/MetalFloorTexture.jpeg" id="2_wv7bq"]
 
@@ -40,6 +41,7 @@ bottom_radius = 0.75
 
 [node name="Nuke Rod" type="Node3D" unique_id=1201692476]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+script = ExtResource("1_5am2v")
 
 [node name="BottomRing1" type="MeshInstance3D" parent="." unique_id=685679918]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
