@@ -26,6 +26,7 @@ func _format_time(total_seconds: float) -> String:
 
 
 func _on_retry_pressed() -> void:
+	MenuMusic.stop_music()
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://environment/environment.tscn")
 
