@@ -13,3 +13,6 @@
 *.ctex*
 *.scn*
 *.bin*
+
+# Godot interrupted-save leftovers
+*.tmp

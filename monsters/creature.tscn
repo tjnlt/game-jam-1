@@ -274,10 +274,10 @@ size = Vector3(1, 1.7371826, 1.1235046)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.12684262, 0)
 script = ExtResource("2_u226g")
 
-[node name="Armature" parent="." index="0" unique_id=1304026690]
+[node name="Armature" parent="." index="0" unique_id=1125681185]
 transform = Transform3D(0.013, 0, 0, 0, 0.013, 0, 0, 0, 0.013, 0, 0, 0)
 
-[node name="Skeleton3D" parent="Armature" index="0" unique_id=2030576381]
+[node name="Skeleton3D" parent="Armature" index="0" unique_id=1504743859]
 bones/0/position = Vector3(7.9880652, 91.63251, -8.17834)
 bones/0/rotation = Quaternion(0.21205254, -0.30931497, 0.09343582, 0.92229486)
 bones/1/position = Vector3(6.67969, -6.0196643, 2.2190945)
@@ -317,7 +317,7 @@ bones/21/rotation = Quaternion(0.17872085, 0.15748875, -0.20131397, 0.9501205)
 bones/22/rotation = Quaternion(-0.13910578, 2.2642258e-08, 0.0019020193, 0.99027574)
 bones/23/rotation = Quaternion(0.33354917, 5.2323006e-08, -0.004560607, 0.9427217)
 
-[node name="char1" parent="Armature/Skeleton3D" index="0" unique_id=1408240659]
+[node name="char1" parent="Armature/Skeleton3D" index="0" unique_id=1380812200]
 material_override = SubResource("StandardMaterial3D_0u7sy")
 
 [node name="EyeAttachment" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="1" unique_id=1640096343]
@@ -335,7 +335,7 @@ transform = Transform3D(1, 4.656613e-08, 8.1490725e-08, -3.3527613e-08, 1, -4.47
 material_override = SubResource("StandardMaterial3D_eyeglow")
 mesh = SubResource("SphereMesh_eyeglow")
 
-[node name="AnimationPlayer" parent="." index="1" unique_id=805315263]
+[node name="AnimationPlayer" parent="." index="1" unique_id=1187260628]
 libraries/local = SubResource("AnimationLibrary_0u7sy")
 
 [node name="HurtBox" type="StaticBody3D" parent="." index="2" unique_id=900000001]
@@ -372,3 +372,5 @@ volume_db = -4.0
 [node name="FootStepSound4" type="AudioStreamPlayer3D" parent="." index="10" unique_id=172135217]
 stream = ExtResource("16_jrldw")
 volume_db = -4.0
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." index="11" unique_id=1822821229]
