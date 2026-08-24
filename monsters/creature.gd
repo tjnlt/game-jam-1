@@ -1,6 +1,5 @@
 extends Node3D
 
-
 const RUN_SPEED := 6.0
 const FAST_RUN_SPEED := 12.0
 const BACKWARD_SPEED := 1.0
@@ -10,6 +9,10 @@ const FOOTSTEP_DISTANCE := 2.0 # distance travelled between footstep sounds
 const FAST_FOOTSTEP_DISTANCE := 3.5 # wider stride while sprinting so footsteps don't double in rate
 const SEPARATION_RADIUS := 1.0 # creatures closer than this get pushed apart
 const SEPARATION_SPEED := 4.0
+const PICKUP_RADIUS := 1.5 # how close a creature must get to grab a rod
+const DELIVER_RADIUS := 1.5 # how close to its spawn before the rod counts as stolen
+const IDLE_RADIUS := 3.0 # how close to the reactor counts as "waiting there"
+const ROD_CARRY_OFFSET := Vector3(0, 0.5, 0.6) # where a carried rod sits on the creature
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var damage_sounds: Array[AudioStreamPlayer3D] = [
@@ -27,10 +30,18 @@ var _retreat_timer := 0.0
 var _fast_mode := false
 var _distance_since_footstep := 0.0
 var health := 2
+var move_dir
+var carried_rod: Node3D = null
+var _idling := false
+var _warned_no_reactor := false
+var spawn_position: Vector3
+
+var timer = 0.25
 
 func _ready() -> void:
 	add_to_group("enemies")
 	player = get_tree().get_first_node_in_group("player")
+	spawn_position = global_position
 
 	if dance_only:
 		animation_player.stop()
@@ -44,7 +55,7 @@ func _unhandled_key_input(event: InputEvent) -> void:
 	if OS.is_debug_build() and event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_L:
 		_fast_mode = not _fast_mode
 		if not _retreating:
-			animation_player.play("local/fast_run" if _fast_mode else "local/run")
+			animation_player.play(_movement_animation())
 
 func _physics_process(delta: float) -> void:
 	if dance_only:
@@ -70,7 +81,7 @@ func _physics_process(delta: float) -> void:
 
 		if _retreat_timer <= 0.0:
 			_retreating = false
-			animation_player.play("local/fast_run" if _fast_mode else "local/run")
+			animation_player.play(_movement_animation())
 		return
 
 	var distance := to_player.length()
@@ -85,16 +96,35 @@ func _physics_process(delta: float) -> void:
 		_advance_footsteps(BACKWARD_SPEED * delta)
 		return
 
+	if carried_rod == null:
+		_try_pickup()
+	else:
+		_try_deliver()
+
 	var speed := FAST_RUN_SPEED if _fast_mode else RUN_SPEED
 	#nav_agent.target_position = player.global_position
-	nav_agent.target_position = _get_rod_target()
-	var move_dir := global_position.direction_to(nav_agent.get_next_path_position())
+	timer += delta
+	if timer >= 0.25:
+		_update_idle_state()
+		nav_agent.target_position = _get_target()
+		timer = 0.0
+		move_dir = global_position.direction_to(nav_agent.get_next_path_position())
+		
+		_apply_separation(delta)
+		var look_dir = move_dir
+		look_dir.y = 0.0
+		if look_dir != Vector3.ZERO:
+			look_at(global_position - look_dir.normalized(), Vector3.UP)
+	
+	if _idling:
+		return
+
+	# An almost purely vertical move_dir means we are standing on the target.
+	# Following it just bounces the creature up and down in place.
+	if Vector2(move_dir.x, move_dir.z).length() < 0.1:
+		return
+
 	global_position += move_dir * speed * delta
-	_apply_separation(delta)
-	var look_dir := move_dir
-	look_dir.y = 0.0
-	if look_dir != Vector3.ZERO:
-		look_at(global_position - look_dir.normalized(), Vector3.UP)
 	_advance_footsteps(speed * delta, FAST_FOOTSTEP_DISTANCE if _fast_mode else FOOTSTEP_DISTANCE)
 
 # Pushes this creature away from other nearby creatures so they don't stack
@@ -157,20 +187,119 @@ func take_damage(amount: int) -> void:
 		queue_free()
 	else:
 		sound.play()
-		
-		
-	
-	
-	# --- ROD LOGIC ---
-func _get_rod_target():
+
+# --- ROD LOGIC ---
+
+# Nearest unclaimed rod, or null when every rod is taken or gone.
+func _get_nearest_rod() -> Node3D:
 	var closest: Node3D = null
 	var closest_dist := INF
 	for rod in get_tree().get_nodes_in_group("rods"):
-		var d:= global_position.distance_squared_to((rod as Node3D).global_position)
+		var d := global_position.distance_squared_to((rod as Node3D).global_position)
 		if d < closest_dist:
 			closest_dist = d
 			closest = rod
-	return closest.global_position if closest else global_position
+	return closest
+
+
+func _get_reactor() -> Node3D:
+	return get_tree().get_first_node_in_group("reactor") as Node3D
+
+
+# Carrying -> home. Otherwise the nearest rod, or the reactor to wait at
+# when there are none. Never returns our own position: targeting yourself
+# produces a vertical move_dir that bounces the creature in place.
+func _get_target() -> Vector3:
+	if carried_rod:
+		return spawn_position
+
+	var rod := _get_nearest_rod()
+	if rod:
+		return rod.global_position
+
+	var reactor := _get_reactor()
+	if reactor:
+		return reactor.global_position
+
+	return global_position
+
+
+func _at_reactor() -> bool:
+	var reactor := _get_reactor()
+	if reactor == null:
+		if not _warned_no_reactor:
+			_warned_no_reactor = true
+			push_warning("creature: no node is in the \"reactor\" group - idling in place instead of regrouping there.")
+		# Nothing to walk to, so idle where we stand
+		# rather than jittering.
+		return true
+	# The reactor origin usually sits inside its own housing where there is no
+	# navmesh, so "arrived" means the agent got as far as the path allows -
+	# not that we are literally within IDLE_RADIUS of the centre.
+	if nav_agent.is_navigation_finished():
+		return true
+
+	return global_position.distance_to(reactor.global_position) <= IDLE_RADIUS
+
+
+# Idle means: empty-handed, no rod to go for, and already loitering at the
+# reactor. Only touches the animation on a state change so we don't restart
+# the dance every frame.
+func _update_idle_state() -> void:
+	var should_idle := carried_rod == null and _get_nearest_rod() == null and _at_reactor()
+	if should_idle == _idling:
+		return
+	_idling = should_idle
+	animation_player.play(_movement_animation())
+
+
+func _movement_animation() -> String:
+	if _idling:
+		return "local/dance"
+	if carried_rod:
+		return "local/carry"
+	return "local/fast_run" if _fast_mode else "local/run"
+
+
+func _try_pickup() -> void:
+	var rod := _get_nearest_rod()
+	if rod == null:
+		return
+	if global_position.distance_to(rod.global_position) > PICKUP_RADIUS:
+		return
+	_grab_rod(rod)
+
+
+func _grab_rod(rod: Node3D) -> void:
+	carried_rod = rod
+
+	# Drop it out of the group immediately so other creatures stop pathing
+	# to a rod that is already spoken for.
+	rod.remove_from_group("rods")
+	if "carrier" in rod:
+		rod.carrier = self
+
+	# false = keep the local transform rather than the world one, so the
+	# offset below positions it relative to the creature.
+	rod.reparent(self, false)
+	rod.position = ROD_CARRY_OFFSET
+
+	_idling = false
+	animation_player.play(_movement_animation())
+	nav_agent.target_position = spawn_position
+
+
+func _try_deliver() -> void:
+	if global_position.distance_to(spawn_position) > DELIVER_RADIUS:
+		return
+
+	var environment := get_tree().get_first_node_in_group("environment")
+	if environment and environment.has_method("register_rod_stolen"):
+		environment.register_rod_stolen()
+
+	carried_rod.queue_free()
+	carried_rod = null
+	queue_free()
 
 
 # Called by Door.gd (via the "enemies" group) when a navigation link is

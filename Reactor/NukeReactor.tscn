@@ -123,7 +123,7 @@ uv1_scale = Vector3(2, 2, 1)
 [sub_resource type="CylinderMesh" id="CylinderMesh_6tw0t"]
 height = 0.1
 
-[node name="Reactor" type="Node3D" unique_id=1826133669]
+[node name="Reactor" type="Node3D" unique_id=1826133669 groups=["reactor"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 1)
 
 [node name="Reactor_Bottom" type="MeshInstance3D" parent="." unique_id=1504187197]
