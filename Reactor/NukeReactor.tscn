@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dm7kfip6u5cbv" path="res://Reactor/Textures/Liquid.png" id="2_sadly"]
 [ext_resource type="Texture2D" uid="uid://wkep8bnc0xwp" path="res://Reactor/Textures/MetalFloorTexture.jpeg" id="3_sadly"]
 [ext_resource type="Texture2D" uid="uid://btxdijsf5it2k" path="res://Reactor/Textures/RD_SYM.png" id="4_pcb2m"]
+[ext_resource type="PackedScene" uid="uid://be7fy3wq3lgm2" path="res://Reactor/nuke_rod.tscn" id="4_qr6f0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6wv1j"]
 albedo_color = Color(0.38039216, 0.38039216, 0.38039216, 1)
@@ -313,6 +314,9 @@ mesh = SubResource("CylinderMesh_2mxse")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.633305, 3.66355, 1.4406879)
 material_override = SubResource("StandardMaterial3D_kn21s")
 mesh = SubResource("CylinderMesh_2mxse")
+
+[node name="Nuke Rod" parent="RodHolders/RodHolder1" unique_id=1201692476 instance=ExtResource("4_qr6f0")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 8.633, 0.83669007, 1.441)
 
 [node name="RodHolder2" type="Node3D" parent="RodHolders" unique_id=357346085]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.24397397, 3)

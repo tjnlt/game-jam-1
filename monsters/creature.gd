@@ -10,7 +10,7 @@ const FOOTSTEP_DISTANCE := 2.0 # distance travelled between footstep sounds
 const FAST_FOOTSTEP_DISTANCE := 3.5 # wider stride while sprinting so footsteps don't double in rate
 const SEPARATION_RADIUS := 1.0 # creatures closer than this get pushed apart
 const SEPARATION_SPEED := 4.0
-
+@onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var damage_sounds: Array[AudioStreamPlayer3D] = [
 	$DamageSound1, $DamageSound2, $DamageSound3, $DamageSound4
@@ -34,8 +34,10 @@ func _ready() -> void:
 
 	if dance_only:
 		animation_player.stop()
-	else:
+	else: 
 		animation_player.play("local/run")
+		
+	await get_tree().physics_frame
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	# Debug-only toggle for testing the fast_run animation/speed.
@@ -84,9 +86,15 @@ func _physics_process(delta: float) -> void:
 		return
 
 	var speed := FAST_RUN_SPEED if _fast_mode else RUN_SPEED
-	global_position += to_player_dir * speed * delta
+	#nav_agent.target_position = player.global_position
+	nav_agent.target_position = _get_rod_target()
+	var move_dir := global_position.direction_to(nav_agent.get_next_path_position())
+	global_position += move_dir * speed * delta
 	_apply_separation(delta)
-	look_at(global_position - to_player_dir, Vector3.UP)
+	var look_dir := move_dir
+	look_dir.y = 0.0
+	if look_dir != Vector3.ZERO:
+		look_at(global_position - look_dir.normalized(), Vector3.UP)
 	_advance_footsteps(speed * delta, FAST_FOOTSTEP_DISTANCE if _fast_mode else FOOTSTEP_DISTANCE)
 
 # Pushes this creature away from other nearby creatures so they don't stack
@@ -149,3 +157,24 @@ func take_damage(amount: int) -> void:
 		queue_free()
 	else:
 		sound.play()
+		
+		
+	
+	
+	# --- ROD LOGIC ---
+func _get_rod_target():
+	var closest: Node3D = null
+	var closest_dist := INF
+	for rod in get_tree().get_nodes_in_group("rods"):
+		var d:= global_position.distance_squared_to((rod as Node3D).global_position)
+		if d < closest_dist:
+			closest_dist = d
+			closest = rod
+	return closest.global_position if closest else global_position
+
+
+# Called by Door.gd (via the "enemies" group) when a navigation link is
+# toggled. Disabling a link does not invalidate paths agents have already
+# computed, so nudge the target to force a fresh query next frame.
+func refresh_navigation() -> void:
+	nav_agent.target_position = global_position
