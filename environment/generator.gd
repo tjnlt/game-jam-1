@@ -2,8 +2,8 @@ extends Area3D
 
 const MINIGAME_SCENE: PackedScene = preload("res://environment/generator_minigame.tscn")
 
-@export var min_break_seconds: float = 5
-@export var max_break_seconds: float = 7
+@export var min_break_seconds: float = 60
+@export var max_break_seconds: float = 120
 
 var player_in_range: bool = false
 var is_broken: bool = false

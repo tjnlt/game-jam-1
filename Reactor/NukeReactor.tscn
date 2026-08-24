@@ -497,3 +497,33 @@ mesh = SubResource("CylinderMesh_6tw0t")
 transform = Transform3D(0.5, 2.1855692e-08, 0.8660253, 0.8660254, -3.785517e-08, -0.49999997, 2.1855694e-08, 0.99999994, -3.785517e-08, 0.9779482, 6.618908, -3.6579227)
 material_override = SubResource("StandardMaterial3D_eklmo")
 mesh = SubResource("CylinderMesh_6tw0t")
+
+[node name="Nuke Rod" parent="." unique_id=1812713554 instance=ExtResource("4_qr6f0")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -2.3851776, 0.5445523, 1.4413481)
+
+[node name="Nuke Rod2" parent="." unique_id=532973539 instance=ExtResource("4_qr6f0")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -0.3017912, 0.5445523, 3.3520823)
+
+[node name="Nuke Rod3" parent="." unique_id=951314651 instance=ExtResource("4_qr6f0")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 2.3861618, 0.5445523, 3.3100424)
+
+[node name="Nuke Rod4" parent="." unique_id=294127064 instance=ExtResource("4_qr6f0")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 4.3740964, 0.5445523, 1.2726352)
+
+[node name="Nuke Rod5" parent="." unique_id=430267136 instance=ExtResource("4_qr6f0")]
+transform = Transform3D(-0.25, 0, -2.1855694e-08, 0, 0.25, 0, 2.1855694e-08, 0, -0.25, 4.310728, 0.5445523, -1.4239974)
+
+[node name="Nuke Rod6" parent="." unique_id=1622352068 instance=ExtResource("4_qr6f0")]
+transform = Transform3D(-0.25, 0, -2.1855694e-08, 0, 0.25, 0, 2.1855694e-08, 0, -0.25, 2.2554972, 0.5445523, -3.3649843)
+
+[node name="Nuke Rod7" parent="." unique_id=744364539 instance=ExtResource("4_qr6f0")]
+transform = Transform3D(-0.25, 0, -2.1855694e-08, 0, 0.25, 0, 2.1855694e-08, 0, -0.25, -0.43278337, 0.5445523, -3.3622441)
+
+[node name="Nuke Rod8" parent="." unique_id=42234442 instance=ExtResource("4_qr6f0")]
+transform = Transform3D(-0.25, 0, -2.1855694e-08, 0, 0.25, 0, 2.1855694e-08, 0, -0.25, -2.4502897, 0.5445523, -1.3541164)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1386612531]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.6986828, 0)
+light_color = Color(0.16470589, 0.8901961, 0.13333334, 1)
+omni_range = 28.497
+omni_attenuation = 0.469

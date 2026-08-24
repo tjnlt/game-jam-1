@@ -15,4 +15,4 @@ light_energy = 16.0
 light_indirect_energy = 3.773
 light_volumetric_fog_energy = 2.584
 light_size = 0.555
-omni_range = 2.511676
+omni_range = 5.801
