@@ -18,7 +18,7 @@ extends Node3D
 @export_range(0.1, 1.0, 0.05)
 var spawn_interval_multiplier: float = 0.80
 
-@export var maximum_goblins: int = 1000
+@export var maximum_goblins: int = 50
 
 @export var ground_ray_height: float = 10.0
 

@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://playercharacter/proto_controller.tscn" id="3_wjl7u"]
 [ext_resource type="PackedScene" uid="uid://dv33mjkltx4ua" path="res://environment/Spawner.tscn" id="6_vh8kr"]
+[ext_resource type="PackedScene" uid="uid://wvgmck4e3n3e" path="res://environment/spawn_hole.tscn" id="7_0iorr"]
 [ext_resource type="Script" uid="uid://e1mgmeobxdwl" path="res://environment/goblin_spawner.gd" id="7_6qvha"]
 [ext_resource type="PackedScene" uid="uid://dsf3srwusnksu" path="res://environment/basiclight.tscn" id="7_nmo3v"]
 [ext_resource type="PackedScene" uid="uid://dcresl8uqkcgv" path="res://Reactor/map.tscn" id="7_te1ty"]
@@ -103,22 +104,40 @@ goblin_scene = ExtResource("12_h6u84")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -133.60425, 0, 71.52945)
 
 [node name="Marker3D4" type="Marker3D" parent="SpawnPoints" unique_id=592883958]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.13724, 1.0440223, 5.1259003)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.137238, 1.0440223, 8.1259)
+
+[node name="SpawnHole" parent="SpawnPoints/Marker3D4" unique_id=554658832 instance=ExtResource("7_0iorr")]
+transform = Transform3D(0.25427446, 0, 0.9671321, 0, 1, 0, -0.9671321, 0, 0.25427446, 0, 0.42158508, 0)
 
 [node name="Marker3D2" type="Marker3D" parent="SpawnPoints" unique_id=317656719]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.8035, 0.89286494, -1.1618195)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.803497, 0.89286494, -5.1618195)
+
+[node name="SpawnHole" parent="SpawnPoints/Marker3D2" unique_id=239414471 instance=ExtResource("7_0iorr")]
+transform = Transform3D(0.25427446, 0, 0.9671321, 0, 1, 0, -0.9671321, 0, 0.25427446, 0, 0.42158508, 0)
 
 [node name="Marker3D" type="Marker3D" parent="SpawnPoints" unique_id=1014194913]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 147.41861, 3.0928466, 37.570282)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 137.41861, 0.09997034, 77.57028)
+
+[node name="SpawnHole" parent="SpawnPoints/Marker3D" unique_id=1919769296 instance=ExtResource("7_0iorr")]
+transform = Transform3D(-0.56111515, 0, -0.8277379, 0, 1, 0, 0.8277379, 0, -0.56111515, 0, 0.82333124, 0)
 
 [node name="Marker3D6" type="Marker3D" parent="SpawnPoints" unique_id=547654839]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 145.41861, 8.092847, 33.570282)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 214.41861, 0.50961244, 34.570282)
+
+[node name="SpawnHole" parent="SpawnPoints/Marker3D6" unique_id=637248 instance=ExtResource("7_0iorr")]
+transform = Transform3D(-0.56111515, 0, -0.8277379, 0, 1, 0, 0.8277379, 0, -0.56111515, 0, 0.42383993, 0)
 
 [node name="Marker3D3" type="Marker3D" parent="SpawnPoints" unique_id=202231609]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 115.7, -2.107135, -29.503998)
+transform = Transform3D(0.06989041, 0, 0.99755466, 0, 1, 0, -0.99755466, 0, 0.06989041, 122.7, 0.7805476, -55.503998)
+
+[node name="SpawnHole" parent="SpawnPoints/Marker3D3" unique_id=1570045222 instance=ExtResource("7_0iorr")]
+transform = Transform3D(-0.56111526, 0, -0.827738, 0, 1, 0, 0.827738, 0, -0.56111526, 0, 0.123395205, 0)
 
 [node name="Marker3D5" type="Marker3D" parent="SpawnPoints" unique_id=1478080678]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.501007, -2.0722287, 122.19455)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.501007, 0.34580255, 122.19455)
+
+[node name="SpawnHole" parent="SpawnPoints/Marker3D5" unique_id=2071169881 instance=ExtResource("7_0iorr")]
+transform = Transform3D(-0.8243131, 0, 0.5661344, 0, 1, 0, -0.5661344, 0, -0.8243131, 0, 0.54135454, 0)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=43126117]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 78.1729)
