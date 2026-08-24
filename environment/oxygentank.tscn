@@ -1,42 +1,61 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene format=3 uid="uid://d22t2o454vfji"]
 
 [ext_resource type="Script" uid="uid://dhuvl8iemn6am" path="res://environment/oxygentank.gd" id="1_2g1x2"]
-[ext_resource type="PackedScene" uid="uid://brolc3ic5ey13" path="res://addons/KennyAssets/kenney_factory-kit_3.0/Models/FBX format/hopper-high-round.fbx" id="1_xggt1"]
+[ext_resource type="PackedScene" uid="uid://cv3a7pi6457uw" path="res://environment/o_2.tscn" id="2_2g1x2"]
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_ox1"]
-height = 2.5
-radius = 0.9
-
-[sub_resource type="QuadMesh" id="QuadMesh_ox1"]
-size = Vector2(0.2, 0.2)
+[sub_resource type="BoxShape3D" id="BoxShape3D_3g2c1"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ox1"]
 direction = Vector3(0, 1, 0)
 spread = 25.0
-gravity = Vector3(0, 0.2, 0)
 initial_velocity_min = 0.5
 initial_velocity_max = 1.2
+gravity = Vector3(0, 0.2, 0)
 scale_min = 0.3
 scale_max = 0.6
 color = Color(1, 1, 1, 0.5)
 
+[sub_resource type="QuadMesh" id="QuadMesh_ox1"]
+size = Vector2(0.2, 0.2)
+
 [node name="Oxygentank" type="Area3D" unique_id=1959012536]
 script = ExtResource("1_2g1x2")
 
-[node name="hopper-high-round" parent="." unique_id=1199284159 instance=ExtResource("1_xggt1")]
-transform = Transform3D(0.78008586, 0, 0, 0, 0.67565435, 0, 0, 0, 1, -0.011358619, 0, -0.020792007)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=314005805]
+transform = Transform3D(3.5521846, 0, 0, 0, 3.858941, 0, 0, 0, 8.8560705, 0.7283393, 2.1054559, 0.6216314)
+shape = SubResource("BoxShape3D_3g2c1")
 
-[node name="hopper-high-round2" parent="." unique_id=73013437 instance=ExtResource("1_xggt1")]
-transform = Transform3D(0.78008586, 0, 0, 0, -0.67565435, 8.742278e-08, 0, -5.906758e-08, -1, -0.011358619, 2.0136776, -0.020792007)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CylinderShape3D_ox1")
-
-[node name="Steam" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
+[node name="Steam" type="GPUParticles3D" parent="." unique_id=41093064]
+transform = Transform3D(0.49379238, 0.71347344, -0.4971167, -0.8436063, 0.5317239, -0.0748224, 0.21094504, 0.4563174, 0.86445165, 0.35050917, 1.9771112, -0.07460719)
 emitting = false
 amount = 24
 lifetime = 1.5
-draw_pass_1 = SubResource("QuadMesh_ox1")
 process_material = SubResource("ParticleProcessMaterial_ox1")
+draw_pass_1 = SubResource("QuadMesh_ox1")
+
+[node name="Steam3" type="GPUParticles3D" parent="." unique_id=614235438]
+transform = Transform3D(0.3642279, 0.71347356, 0.5985765, 0.2748995, 0.5317239, -0.8010619, -0.88981384, 0.45631742, -0.0024648793, 0.35050917, 1.9771112, -0.07460719)
+emitting = false
+amount = 24
+lifetime = 1.5
+process_material = SubResource("ParticleProcessMaterial_ox1")
+draw_pass_1 = SubResource("QuadMesh_ox1")
+
+[node name="Steam2" type="GPUParticles3D" parent="." unique_id=1548894975]
+transform = Transform3D(0.49379238, 0.71347344, -0.4971167, -0.8436063, 0.5317239, -0.0748224, 0.21094504, 0.4563174, 0.86445165, 0.3171078, 1.8274869, 1.7665092)
+emitting = false
+amount = 24
+lifetime = 1.5
+process_material = SubResource("ParticleProcessMaterial_ox1")
+draw_pass_1 = SubResource("QuadMesh_ox1")
+
+[node name="Steam4" type="GPUParticles3D" parent="." unique_id=703851521]
+transform = Transform3D(0.38480297, 0.7134735, 0.58556163, 0.24690413, 0.53172386, -0.8101285, -0.88936234, 0.45631737, 0.028449278, 0.3171078, 1.8274869, 1.7665092)
+emitting = false
+amount = 24
+lifetime = 1.5
+process_material = SubResource("ParticleProcessMaterial_ox1")
+draw_pass_1 = SubResource("QuadMesh_ox1")
+
+[node name="O2_Tank" parent="." unique_id=1440354156 instance=ExtResource("2_2g1x2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12965655, 0, -0.034094363)

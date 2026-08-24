@@ -13,12 +13,18 @@ var leak_timer: Timer
 var player_ref: Node = null
 
 @onready var steam: GPUParticles3D = $Steam
+@onready var steam2: GPUParticles3D = $Steam2
+@onready var steam3: GPUParticles3D = $Steam3
+@onready var steam4: GPUParticles3D = $Steam4
 
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
 
 	steam.emitting = false
+	steam2.emitting = false
+	steam3.emitting = false
+	steam4.emitting = false
 
 	leak_timer = Timer.new()
 	leak_timer.one_shot = true
@@ -46,6 +52,9 @@ func _schedule_next_leak() -> void:
 func _start_leak() -> void:
 	is_leaking = true
 	steam.emitting = true
+	steam2.emitting = true
+	steam3.emitting = true
+	steam4.emitting = true
 
 func _open_minigame() -> void:
 	active_minigame = MINIGAME_SCENE.instantiate()
@@ -60,6 +69,9 @@ func _on_minigame_success() -> void:
 	active_minigame = null
 	is_leaking = false
 	steam.emitting = false
+	steam2.emitting = false
+	steam3.emitting = false
+	steam4.emitting = false
 	if player_ref:
 		player_ref.can_move = true
 		player_ref.can_shoot = true
