@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://24aacmkjoeyr"]
+
+[ext_resource type="Script" uid="uid://ftsthktc7qj7" path="res://environment/minigames/generator/generator_minigame.gd" id="1_xmumn"]
+
+[node name="GeneratorMinigame" type="Control" unique_id=1586191439]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_xmumn")
+
+[node name="Panel" type="Panel" parent="." unique_id=1058741699]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -150.0
+offset_right = 200.0
+offset_bottom = 150.0
+
+[node name="VBox" type="VBoxContainer" parent="Panel" unique_id=251180855]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
+
+[node name="Bar" type="ProgressBar" parent="Panel/VBox" unique_id=357747863]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="GreenZoneMarker" type="ColorRect" parent="Panel/VBox/Bar" unique_id=738770217]
+layout_mode = 0
+anchor_left = 0.8
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(0, 1, 0, 0.35)
+
+[node name="Switches" type="HBoxContainer" parent="Panel/VBox" unique_id=1209635345]
+layout_mode = 2
+alignment = 1
+
+[node name="Switch1" type="VBoxContainer" parent="Panel/VBox/Switches" unique_id=404310205]
+layout_mode = 2
+
+[node name="SwitchLight1" type="ColorRect" parent="Panel/VBox/Switches/Switch1" unique_id=2039200051]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+color = Color(1, 0, 0, 1)
+
+[node name="SwitchButton1" type="Button" parent="Panel/VBox/Switches/Switch1" unique_id=364226339]
+layout_mode = 2
+text = "Switch 1"
+
+[node name="Switch2" type="VBoxContainer" parent="Panel/VBox/Switches" unique_id=447065259]
+layout_mode = 2
+
+[node name="SwitchLight2" type="ColorRect" parent="Panel/VBox/Switches/Switch2" unique_id=1203293592]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+color = Color(1, 0, 0, 1)
+
+[node name="SwitchButton2" type="Button" parent="Panel/VBox/Switches/Switch2" unique_id=48843281]
+layout_mode = 2
+text = "Switch 2"
+
+[node name="Switch3" type="VBoxContainer" parent="Panel/VBox/Switches" unique_id=1680700752]
+layout_mode = 2
+
+[node name="SwitchLight3" type="ColorRect" parent="Panel/VBox/Switches/Switch3" unique_id=261102247]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+color = Color(1, 0, 0, 1)
+
+[node name="SwitchButton3" type="Button" parent="Panel/VBox/Switches/Switch3" unique_id=930215635]
+layout_mode = 2
+text = "Switch 3"
+
+[node name="FillButton" type="Button" parent="Panel/VBox" unique_id=938597]
+layout_mode = 2
+text = "HOLD / SPAM TO CHARGE"
+
+[node name="StartButton" type="Button" parent="Panel/VBox" unique_id=1379233761]
+layout_mode = 2
+text = "START"

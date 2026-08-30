@@ -1,9 +1,9 @@
-[gd_scene load_steps=7 format=3]
+[gd_scene format=3]
 
-[ext_resource type="Script" path="res://ui/main_menu.gd" id="1"]
-[ext_resource type="Texture2D" uid="uid://ctypd21h66ilu" path="res://Reactor/Textures/Metal_walls.jpg" id="2"]
-[ext_resource type="Texture2D" uid="uid://btxdijsf5it2k" path="res://Reactor/Textures/RD_SYM.png" id="3"]
-[ext_resource type="Shader" path="res://ui/hazard_stripes.gdshader" id="4"]
+[ext_resource type="Script" uid="uid://cud3aebw5gbgn" path="res://ui/main_menu.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://ctypd21h66ilu" path="res://environment/Reactor/Textures/Metal_walls.jpg" id="2"]
+[ext_resource type="Texture2D" uid="uid://btxdijsf5it2k" path="res://environment/Reactor/Textures/RD_SYM.png" id="3"]
+[ext_resource type="Shader" uid="uid://sv8r4r68was5" path="res://ui/hazard_stripes.gdshader" id="4"]
 
 [sub_resource type="ShaderMaterial" id="HazardStripeMaterial"]
 shader = ExtResource("4")

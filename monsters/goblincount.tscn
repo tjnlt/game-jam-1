@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://clmbojh6osenm"]
+
+[ext_resource type="Script" uid="uid://c1ip55pj23yqj" path="res://monsters/goblincount.gd" id="1_jq58f"]
+
+[node name="Goblincount" type="Node3D" unique_id=1177031012]
+script = ExtResource("1_jq58f")
+
+[node name="Label3D" type="Label3D" parent="." unique_id=839796076]
+text = "test"
+font_size = 10
+outline_size = 20
+uppercase = true
+autowrap_mode = 2
