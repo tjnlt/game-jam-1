@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bcbtrrrflihlo"]
+
+[ext_resource type="Script" uid="uid://d2tpwainrk5qk" path="res://environment/flatlight.gd" id="1_a4xpy"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_www8k"]
+emission_enabled = true
+emission = Color(8.663535e-07, 0.6818449, 1.732707e-06, 1)
+emission_energy_multiplier = 8.28
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_5tmi2"]
+
+[node name="Flatlight" type="Node3D" unique_id=1850807112]
+script = ExtResource("1_a4xpy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=690821683]
+transform = Transform3D(0.6260253, 0, 0, 0, 1, 0, 0, 0, 0.16805783, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_www8k")
+mesh = SubResource("PlaneMesh_5tmi2")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1408282107]

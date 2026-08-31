@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://u7xtskirf0nc"]
+
+[ext_resource type="Script" uid="uid://tbvi4gek01ow" path="res://environment/minigames/generator/generator.gd" id="1_pejd3"]
+[ext_resource type="PackedScene" uid="uid://c5loicrbm4sla" path="res://addons/KennyAssets/kenney_factory-kit_3.0/Models/FBX format/machine-window.fbx" id="2_pejd3"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_nmo0g"]
+height = 0.5241699
+radius = 0.6694336
+
+[node name="generator" type="Area3D" unique_id=1782917758]
+script = ExtResource("1_pejd3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2112343772]
+transform = Transform3D(2.74, 0, 0, 0, 2.74, 0, 0, 0, 2.74, 0, 0.7509765, 0)
+shape = SubResource("CylinderShape3D_nmo0g")
+
+[node name="machine-window" parent="." unique_id=1312301054 instance=ExtResource("2_pejd3")]
+
+[node name="machine-window2" parent="." unique_id=1507632937 instance=ExtResource("2_pejd3")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 0.9112208, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1174178874]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6829996, 0.67209136)
+light_color = Color(0.41300347, 1.38636, 0.30736786, 1)
+light_energy = 11.773
+omni_range = 0.439
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="." unique_id=1397403846]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.674878, -0.6423222)
+light_color = Color(0.41300347, 1.38636, 0.30736786, 1)
+light_energy = 11.773
+omni_range = 0.439
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="." unique_id=1169707178]
+transform = Transform3D(1, 0, 0, 0, 0.89496815, 0, 0, 0, 1, 0.65963924, 0.62394476, -0.014906406)
+light_color = Color(0.41300347, 1.38636, 0.30736786, 1)
+light_energy = 11.773
+omni_range = 0.439
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="." unique_id=1178367118]
+transform = Transform3D(1, 0, 0, 0, 0.7737275, 0, 0, 0, 1, -0.63638186, 0.64616764, -0.014906406)
+light_color = Color(0.41300347, 1.38636, 0.30736786, 1)
+light_energy = 11.773
+omni_range = 0.439
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="." unique_id=1883080726]
+transform = Transform3D(1.0905523, 0, 0, 0, 1, 0, 0, 0, 1, 0.18359804, 1.2826462, -0.30152243)
+light_color = Color(0.41300347, 1.38636, 0.30736786, 1)
+light_energy = 11.773
+omni_range = 0.227

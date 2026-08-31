@@ -1,8 +1,0 @@
-[gd_scene format=3 uid="uid://wvgmck4e3n3e"]
-
-[ext_resource type="ArrayMesh" uid="uid://dqguvrfpv6rky" path="res://Reactor/Textures/Meshy_AI_Make_a_hole_that_come_0823232922_texture_obj/Meshy_AI_Make_a_hole_that_come_0823232922_texture.obj" id="1_dme1c"]
-
-[node name="SpawnHole" type="Node3D" unique_id=554658832]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1925072629]
-mesh = ExtResource("1_dme1c")

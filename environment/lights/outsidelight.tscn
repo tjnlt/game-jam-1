@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://bqw1w0ql7k0b7"]
+
+[ext_resource type="PackedScene" uid="uid://bxv1vatvw0ov6" path="res://addons/StreetLightAsset/fab/source/Street Light/SM Street Light.fbx" id="1_n1e8p"]
+[ext_resource type="Script" uid="uid://b4gt20mbpnb45" path="res://environment/lights/outsidelighthandler.gd" id="2_urd6a"]
+
+[node name="Outsidelight" type="Node3D" unique_id=1108001718]
+script = ExtResource("2_urd6a")
+
+[node name="SM Street Light" parent="." unique_id=97422796 instance=ExtResource("1_n1e8p")]
+
+[node name="Light3D" type="SpotLight3D" parent="SM Street Light" unique_id=503550104]
+transform = Transform3D(1, 0, 0, 0, 0.028004557, -0.9996078, 0, 0.9996078, 0.028004557, 0, 2.0564387, 0.6042)
+light_color = Color(1, 0.27058825, 0.09803922, 1)
+light_energy = 16.0
+light_indirect_energy = 5.998
+light_volumetric_fog_energy = 2.584
+light_size = 3.875
+spot_range = 0.7400665
+spot_attenuation = -1.87
+
+[node name="Light3D2" type="SpotLight3D" parent="SM Street Light" unique_id=393681225]
+transform = Transform3D(1, 0, 0, 0, 0.7541258, -0.65673006, 0, 0.65673006, 0.7541258, 0, 2.0564387, 0.6042)
+light_color = Color(1, 0.27058825, 0.09803922, 1)
+light_energy = 16.0
+light_indirect_energy = 5.998
+light_volumetric_fog_energy = 2.584
+light_size = 3.875
+spot_range = 0.7400665
+spot_attenuation = -1.87
+
+[node name="SpotLight3D" type="SpotLight3D" parent="SM Street Light" unique_id=1694432772 groups=["lights"]]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.005954653, 2.7088797, 0.6330293)
+light_color = Color(1, 0.40784314, 0.14117648, 1)
+light_energy = 10.775
+light_size = 8.02
+light_specular = 0.983
+spot_range = 47.937
+spot_angle = 50.954742
