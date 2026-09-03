@@ -33,6 +33,14 @@ var elapsed_spawn_time: float = 0.0
 
 var spawning_enabled: bool = true
 
+## Names each goblin uniquely. The MultiplayerSpawner replicates the name, so
+## host and clients agree on which creature is which.
+var spawn_counter: int = 0
+
+## Node the goblins are parented to. Sits behind a MultiplayerSpawner in the
+## level, which is what gets them onto the clients.
+var creature_container: Node = null
+
 
 # ─────────────────────────────────────────────
 # START
@@ -43,6 +51,21 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
 	randomize()
+
+	# Goblins are host-authoritative: the host spawns them and the level's
+	# MultiplayerSpawner replicates each one to the clients. A client running
+	# this loop would spawn a second set that only it can see.
+	if not Net.is_authority():
+		spawning_enabled = false
+		return
+
+	creature_container = get_tree().current_scene.get_node_or_null("Creatures")
+	if creature_container == null:
+		push_warning(
+			"GoblinSpawner: no 'Creatures' node in the level - "
+			+ "goblins will not replicate to clients."
+		)
+		creature_container = get_tree().current_scene
 
 	# Try to find SpawnPoints automatically
 	# if it was not assigned in the Inspector.
@@ -107,6 +130,17 @@ func _ready() -> void:
 	print("Spawning first goblin NOW.")
 
 	print("================================")
+
+
+	# Hold off until every peer is in the level. A goblin spawned while a client
+	# is still loading never reaches that client, so it would be visible to the
+	# host alone - and only the host could shoot it.
+	if Net.is_online():
+		await Net.level_started
+
+
+	if not is_inside_tree():
+		return
 
 
 	# Spawn one immediately.
@@ -321,11 +355,16 @@ func spawn_goblin() -> void:
 
 func _place_goblin(goblin_3d: Node3D, ground_position: Vector3) -> void:
 
-	get_tree().current_scene.add_child(
+	# Position before the node enters the tree, so the MultiplayerSpawner sends
+	# the clients a goblin that is already standing in the right place.
+	goblin_3d.position = ground_position
+
+	spawn_counter += 1
+	goblin_3d.name = "Goblin%d" % spawn_counter
+
+	creature_container.add_child(
 		goblin_3d
 	)
-
-	goblin_3d.global_position = ground_position
 
 	# Remember where it came from so it can carry a stolen rod back here.
 	if "spawn_position" in goblin_3d:

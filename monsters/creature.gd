@@ -1,4 +1,13 @@
 extends Node3D
+##
+## MULTIPLAYER
+## Creatures are host-authoritative: only the host runs the AI in
+## _physics_process, and a MultiplayerSynchronizer pushes the resulting
+## transform to the clients. Anything a client can see or hear for itself
+## (footsteps, animations) is derived locally so it costs no bandwidth;
+## anything that changes shared state (rods, kills, deaths) is an RPC from
+## the host.
+##
 
 const RUN_SPEED := 6.0
 const FAST_RUN_SPEED := 12.0
@@ -36,37 +45,93 @@ var _distance_since_footstep := 0.0
 var health := 2
 var move_dir
 var carried_rod: Node3D = null
+## Kept alongside carried_rod so the rod can still be named in an RPC after it
+## has been reparented onto this creature.
+var carried_rod_id: String = ""
 var _idling := false
 var _warned_no_reactor := false
 var spawn_position: Vector3
 var _rave_spot: Vector3
 var _rave_spot_set := false
 var _despawn_timer := 0.0
+var _last_position: Vector3
 
 var timer = 0.25
 
 func _ready() -> void:
 	add_to_group("enemies")
-	player = get_tree().get_first_node_in_group("player")
 	spawn_position = global_position
+	_last_position = global_position
 
 	if dance_only:
 		animation_player.stop()
-	else: 
+	else:
 		animation_player.play("local/run")
-		
+
+	_setup_synchronizer()
+
 	await get_tree().physics_frame
 
+
+## Pushes this creature's transform to the clients. The radio dancer is skipped:
+## it is a fixed scene node that never moves, so there is nothing to replicate.
+func _setup_synchronizer() -> void:
+	if dance_only or not Net.is_online():
+		return
+
+	var config := SceneReplicationConfig.new()
+	for path in [".:position", ".:rotation"]:
+		var property := NodePath(path)
+		config.add_property(property)
+		config.property_set_replication_mode(
+			property, SceneReplicationConfig.REPLICATION_MODE_ALWAYS
+		)
+
+	var sync := MultiplayerSynchronizer.new()
+	sync.name = "NetSync"
+	sync.replication_config = config
+	sync.replication_interval = 1.0 / 20.0
+	add_child(sync)
+
+
 func _unhandled_key_input(event: InputEvent) -> void:
-	# Debug-only toggle for testing the fast_run animation/speed.
+	# Debug-only toggle for testing the fast_run animation/speed. Host only -
+	# a client pressing L must not change how the creature moves for everyone.
+	if not Net.is_authority():
+		return
 	if OS.is_debug_build() and event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_L:
 		_fast_mode = not _fast_mode
 		if not _retreating:
-			animation_player.play(_movement_animation())
+			_play_animation(_movement_animation())
+
+
+## Footsteps are driven by distance actually travelled rather than by the AI, so
+## clients - which only receive the transform - still hear creatures moving.
+func _process(_delta: float) -> void:
+	if dance_only:
+		return
+
+	var moved := global_position.distance_to(_last_position)
+	_last_position = global_position
+
+	if _idling:
+		return
+
+	_advance_footsteps(moved, FAST_FOOTSTEP_DISTANCE if _fast_mode else FOOTSTEP_DISTANCE)
+
 
 func _physics_process(delta: float) -> void:
 	if dance_only:
 		return
+
+	# Clients receive this creature's position from the host and must not run
+	# their own copy of the AI, or the two would fight over the transform.
+	if not Net.is_authority():
+		return
+
+	# Re-picked every frame: the creature chases whoever is closest right now,
+	# not whichever player happened to exist when it spawned.
+	player = _get_nearest_player()
 
 	if not player:
 		return
@@ -84,11 +149,10 @@ func _physics_process(delta: float) -> void:
 		global_position -= to_player_dir * BACKWARD_SPEED * delta
 		_apply_separation(delta)
 		look_at(global_position - to_player_dir, Vector3.UP)
-		_advance_footsteps(BACKWARD_SPEED * delta)
 
 		if _retreat_timer <= 0.0:
 			_retreating = false
-			animation_player.play(_movement_animation())
+			_play_animation(_movement_animation())
 		return
 
 	var distance := to_player.length()
@@ -96,11 +160,10 @@ func _physics_process(delta: float) -> void:
 	if distance <= RETREAT_RADIUS:
 		_retreating = true
 		_retreat_timer = RETREAT_DURATION
-		animation_player.play("local/walk_backward")
+		_play_animation("local/walk_backward")
 		global_position -= to_player_dir * BACKWARD_SPEED * delta
 		_apply_separation(delta)
 		look_at(global_position - to_player_dir, Vector3.UP)
-		_advance_footsteps(BACKWARD_SPEED * delta)
 		return
 
 	if carried_rod == null:
@@ -118,13 +181,13 @@ func _physics_process(delta: float) -> void:
 		nav_agent.target_position = _get_target()
 		timer = 0.0
 		move_dir = global_position.direction_to(nav_agent.get_next_path_position())
-		
+
 		_apply_separation(delta)
 		var look_dir = move_dir
 		look_dir.y = 0.0
 		if look_dir != Vector3.ZERO:
 			look_at(global_position - look_dir.normalized(), Vector3.UP)
-	
+
 	if _idling:
 		_despawn_timer -= delta
 		if _despawn_timer <= 0.0:
@@ -137,7 +200,6 @@ func _physics_process(delta: float) -> void:
 		return
 
 	global_position += move_dir * speed * delta
-	_advance_footsteps(speed * delta, FAST_FOOTSTEP_DISTANCE if _fast_mode else FOOTSTEP_DISTANCE)
 
 # Pushes this creature away from other nearby creatures so they don't stack
 # on top of each other. O(n) per creature per frame - fine for this game's
@@ -181,11 +243,19 @@ func take_damage(amount: int) -> void:
 	if dance_only:
 		return
 
+	# Only the host resolves hits, so one trigger pull cannot be counted by
+	# four peers at once. Bullets on clients are visual only.
+	if not Net.is_authority():
+		return
+
 	health -= amount
 
-	var sound: AudioStreamPlayer3D = damage_sounds.pick_random()
+	var sound_index := randi() % damage_sounds.size()
+	var died := health <= 0
 
-	if health <= 0:
+	_broadcast(&"_react_to_damage", [sound_index, died])
+
+	if died:
 		var environment := get_tree().get_first_node_in_group("environment")
 		if environment and environment.has_method("register_goblin_kill"):
 			environment.register_goblin_kill()
@@ -193,19 +263,28 @@ func take_damage(amount: int) -> void:
 		if carried_rod:
 			if environment and environment.has_method("recover_rod"):
 				environment.recover_rod()
-			if carried_rod.has_method("return_home"):
-				carried_rod.return_home()
-			carried_rod = null
+			_broadcast(&"_detach_rod", [carried_rod_id, true])
 
-		# Let the killing hit's sound finish playing instead of getting cut
-		# off when this creature (and its child AudioStreamPlayer3D) is freed.
+		# The MultiplayerSpawner that spawned this creature replicates the
+		# despawn, so freeing it here removes it on every peer.
+		queue_free()
+
+
+## Plays the hit sound on every peer, and on a killing blow moves it out of the
+## creature first so it is not cut off when the creature is freed.
+@rpc("authority", "call_local", "reliable")
+func _react_to_damage(sound_index: int, died: bool) -> void:
+	if sound_index < 0 or sound_index >= damage_sounds.size():
+		return
+
+	var sound: AudioStreamPlayer3D = damage_sounds[sound_index]
+
+	if died:
 		sound.reparent(get_tree().current_scene, true)
 		sound.finished.connect(sound.queue_free)
-		sound.play()
 
-		queue_free()
-	else:
-		sound.play()
+	sound.play()
+
 
 # --- ROD LOGIC ---
 
@@ -218,6 +297,22 @@ func _get_nearest_rod() -> Node3D:
 		if d < closest_dist:
 			closest_dist = d
 			closest = rod
+	return closest
+
+
+## Nearest player body. With four of them the creature has to re-evaluate as
+## they move, instead of committing to one for its whole life.
+func _get_nearest_player() -> Node3D:
+	var closest: Node3D = null
+	var closest_dist := INF
+	for candidate in get_tree().get_nodes_in_group("player"):
+		var body := candidate as Node3D
+		if body == null or not is_instance_valid(body):
+			continue
+		var d := global_position.distance_squared_to(body.global_position)
+		if d < closest_dist:
+			closest_dist = d
+			closest = body
 	return closest
 
 
@@ -282,7 +377,7 @@ func _update_idle_state() -> void:
 	if should_idle == _idling:
 		return
 	_idling = should_idle
-	animation_player.play(_movement_animation())
+	_play_animation(_movement_animation())
 
 	if _idling:
 		_despawn_timer = randf_range(DESPAWN_MIN_DELAY, DESPAWN_MAX_DELAY)
@@ -302,30 +397,12 @@ func _try_pickup() -> void:
 		return
 	if global_position.distance_to(rod.global_position) > PICKUP_RADIUS:
 		return
-	_grab_rod(rod)
-
-
-func _grab_rod(rod: Node3D) -> void:
-	carried_rod = rod
 
 	var environment := get_tree().get_first_node_in_group("environment")
 	if environment and environment.has_method("steal_rod"):
 		environment.steal_rod()
 
-	# Drop it out of the group immediately so other creatures stop pathing
-	# to a rod that is already spoken for.
-	rod.remove_from_group("rods")
-	if "carrier" in rod:
-		rod.carrier = self
-
-	# false = keep the local transform rather than the world one, so the
-	# offset below positions it relative to the creature.
-	rod.reparent(self, false)
-	rod.position = ROD_CARRY_OFFSET
-
-	_idling = false
-	animation_player.play(_movement_animation())
-	nav_agent.target_position = spawn_position
+	_broadcast(&"_attach_rod", [String(rod.get("rod_id"))])
 
 
 func _try_deliver() -> void:
@@ -336,9 +413,82 @@ func _try_deliver() -> void:
 	if environment and environment.has_method("lose_rod"):
 		environment.lose_rod()
 
-	carried_rod.queue_free()
-	carried_rod = null
+	_broadcast(&"_detach_rod", [carried_rod_id, false])
 	queue_free()
+
+
+## Moves a rod onto this creature on every peer. Rods are ordinary scene nodes
+## rather than spawned ones, so each peer has to be told to reparent its own.
+@rpc("authority", "call_local", "reliable")
+func _attach_rod(rod_id: String) -> void:
+	var rod := _find_rod(rod_id)
+	if rod == null:
+		return
+
+	carried_rod = rod
+	carried_rod_id = rod_id
+
+	# Drop it out of the group immediately so other creatures stop pathing
+	# to a rod that is already spoken for.
+	rod.remove_from_group("rods")
+	rod.set("carrier", self)
+
+	# false = keep the local transform rather than the world one, so the
+	# offset below positions it relative to the creature.
+	rod.reparent(self, false)
+	rod.position = ROD_CARRY_OFFSET
+
+	_idling = false
+	animation_player.play(_movement_animation())
+
+	if Net.is_authority():
+		nav_agent.target_position = spawn_position
+
+
+## send_home = the creature was killed and the rod goes back to its holder.
+## Otherwise the creature escaped with it and the rod is gone for good.
+@rpc("authority", "call_local", "reliable")
+func _detach_rod(rod_id: String, send_home: bool) -> void:
+	var rod := _find_rod(rod_id)
+	carried_rod = null
+	carried_rod_id = ""
+
+	if rod == null:
+		return
+
+	if send_home and rod.has_method("return_home"):
+		rod.return_home()
+	elif not send_home:
+		rod.queue_free()
+
+
+## Rods leave the "rods" group while carried, so the lookup uses "all_rods",
+## which they never leave.
+func _find_rod(rod_id: String) -> Node3D:
+	for rod in get_tree().get_nodes_in_group("all_rods"):
+		if String(rod.get("rod_id")) == rod_id:
+			return rod as Node3D
+	return null
+
+
+# --- NETWORK HELPERS ---
+
+func _broadcast(method: StringName, args: Array = []) -> void:
+	Net.broadcast(self, method, args)
+
+
+## Animation changes are decided by the host and mirrored to the clients.
+## A client reaching this (from inside an RPC handler) just plays it locally.
+func _play_animation(anim: String) -> void:
+	if Net.is_online() and Net.is_authority():
+		_remote_play_animation.rpc(anim)
+	else:
+		animation_player.play(anim)
+
+
+@rpc("authority", "call_local", "reliable")
+func _remote_play_animation(anim: String) -> void:
+	animation_player.play(anim)
 
 
 # Called by Door.gd (via the "enemies" group) when a navigation link is

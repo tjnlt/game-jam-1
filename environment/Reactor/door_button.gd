@@ -46,7 +46,11 @@ extends Area3D
 @export var door_close_sound_offset: float = 0.15
 
 
+## True only when this peer's own player is at the button - every peer has all
+## four bodies, so the authority check is what makes "in range" mean "me".
 var player_in_range: bool = false
+
+## Host-owned. Clients ask the host to press and it decides.
 var button_available: bool = true
 
 var message_showing: bool = false
@@ -72,97 +76,125 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 
 	if event.is_action_pressed("interact"):
-
-		if button_available:
-			_activate_button()
-
-		else:
-			denied_sound.play()
-			_show_malfunction_message()
+		_request_press()
 
 
 func _on_body_entered(body: Node3D) -> void:
-	if body.is_in_group("player"):
+	if body.is_in_group("player") and body.is_multiplayer_authority():
 		player_in_range = true
 
 
 func _on_body_exited(body: Node3D) -> void:
-	if body.is_in_group("player"):
+	if body.is_in_group("player") and body.is_multiplayer_authority():
 		player_in_range = false
 
 
-func _activate_button() -> void:
+# ─────────────────────────────────────────────
+# PRESSING
+#
+# Which doors close is random, so the host has to roll it once and send the
+# result - four peers each rolling their own would close different doors.
+# ─────────────────────────────────────────────
+
+func _request_press() -> void:
+	if Net.is_authority():
+		_handle_press()
+	else:
+		_ask_host_to_press.rpc_id(1)
+
+
+@rpc("any_peer", "reliable")
+func _ask_host_to_press() -> void:
+	if not Net.is_authority():
+		return
+	_handle_press()
+
+
+func _handle_press() -> void:
 	if not button_available:
+		Net.broadcast(self, &"_deny_press")
 		return
 
+	var indices := _pick_door_indices()
+	if indices.is_empty():
+		print("Door button has no doors assigned.")
+		return
+
+	Net.broadcast(self, &"_run_door_sequence", [indices])
+
+
+## Host only. Picks 1-3 of the assigned doors at random and returns their
+## indices, which are the same on every peer because the doors come from
+## exported slots rather than from scene order.
+func _pick_door_indices() -> PackedInt32Array:
+	var assigned: Array[int] = []
+	for i in 4:
+		if _door_at(i) != null:
+			assigned.append(i)
+
+	if assigned.is_empty():
+		return PackedInt32Array()
+
+	assigned.shuffle()
+
+	var amount_to_close: int = randi_range(1, 3)
+	amount_to_close = min(amount_to_close, assigned.size())
+
+	var chosen := PackedInt32Array()
+	for i in range(amount_to_close):
+		chosen.append(assigned[i])
+	return chosen
+
+
+func _door_at(index: int) -> Node3D:
+	match index:
+		0: return door_1
+		1: return door_2
+		2: return door_3
+		3: return door_4
+	return null
+
+
+func _indicator_at(index: int) -> MeshInstance3D:
+	match index:
+		0: return indicator_1
+		1: return indicator_2
+		2: return indicator_3
+		3: return indicator_4
+	return null
+
+
+@rpc("authority", "call_local", "reliable")
+func _deny_press() -> void:
+	denied_sound.play()
+	_show_malfunction_message()
+
+
+## Runs on every peer with the same door indices, so the doors, indicators and
+## cooldown stay in step everywhere.
+@rpc("authority", "call_local", "reliable")
+func _run_door_sequence(indices: PackedInt32Array) -> void:
 	button_available = false
 
-	var door_pairs: Array = [
-		{
-			"door": door_1,
-			"indicator": indicator_1
-		},
-		{
-			"door": door_2,
-			"indicator": indicator_2
-		},
-		{
-			"door": door_3,
-			"indicator": indicator_3
-		},
-		{
-			"door": door_4,
-			"indicator": indicator_4
-		}
-	]
-
-	# Remove any unassigned doors.
-	door_pairs = door_pairs.filter(
-		func(pair):
-			return pair["door"] != null
-	)
-
-	if door_pairs.is_empty():
-		print("Door button has no doors assigned.")
-		button_available = true
-		return
-
-	door_pairs.shuffle()
-
-	# Randomly choose 1, 2, or 3 doors.
-	var amount_to_close: int = randi_range(1, 3)
-	amount_to_close = min(amount_to_close, door_pairs.size())
-
-	var selected_pairs: Array = []
-
-	for i in range(amount_to_close):
-		selected_pairs.append(door_pairs[i])
-
 	# Play one close sound per door, slightly offset so each is audible.
-	_play_door_close_sounds(selected_pairs.size())
+	_play_door_close_sounds(indices.size())
 
 	# Close selected doors and activate their indicators.
-	for pair in selected_pairs:
-		var door: Node3D = pair["door"]
-		var indicator: MeshInstance3D = pair["indicator"]
-
-		if door.has_method("close_door"):
+	for index in indices:
+		var door := _door_at(index)
+		if door and door.has_method("close_door"):
 			door.close_door()
-
-		_set_indicator(indicator, true)
+		_set_indicator(_indicator_at(index), true)
 
 	# Keep the doors closed.
 	await get_tree().create_timer(closed_time).timeout
 
 	# Reopen selected doors and deactivate their indicators.
-	for pair in selected_pairs:
-		var door: Node3D = pair["door"]
-		var indicator: MeshInstance3D = pair["indicator"]
-
+	for index in indices:
+		var door := _door_at(index)
 		if is_instance_valid(door) and door.has_method("open_door"):
 			door.open_door()
-
-		_set_indicator(indicator, false)
+		_set_indicator(_indicator_at(index), false)
 
 	# Keep the button unavailable during cooldown.
 	await get_tree().create_timer(cooldown_time).timeout

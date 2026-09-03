@@ -32,15 +32,15 @@ extends CharacterBody3D
 
 @export_group("Input Actions")
 ## Name of Input Action to move Left.
-@export var input_left : String = "ui_left"
+@export var input_left : String = "left"
 ## Name of Input Action to move Right.
-@export var input_right : String = "ui_right"
+@export var input_right : String = "right"
 ## Name of Input Action to move Forward.
-@export var input_forward : String = "ui_up"
+@export var input_forward : String = "up"
 ## Name of Input Action to move Backward.
-@export var input_back : String = "ui_down"
+@export var input_back : String = "down"
 ## Name of Input Action to Jump.
-@export var input_jump : String = "ui_accept"
+@export var input_jump : String = "jump"
 ## Name of Input Action to Sprint.
 @export var input_sprint : String = "sprint"
 ## Name of Input Action to toggle freefly mode.
@@ -66,11 +66,59 @@ var bullet=load("res://gun/bullet.tscn")
 # GUN AUDIO
 @onready var gun_audio = $Head/Camera3D/gun/GunAudio
 
+## MULTIPLAYER
+## The body is named after the peer id that owns it (see Net.begin_level), so
+## the name is the single source of truth for who drives this controller.
+@onready var hud: CanvasLayer = $HUD
+
+
+func _enter_tree() -> void:
+	set_multiplayer_authority(str(name).to_int())
+
+
 func _ready() -> void:
 	add_to_group("player")
 	check_input_mappings()
 	look_rotation.y = rotation.y
 	look_rotation.x = head.rotation.x
+
+	_setup_synchronizer()
+
+	# Only the owner simulates its body. Letting every peer run the movement
+	# code would fight the transforms arriving from the owner, so remote bodies
+	# are purely visual: no input, no movement, no camera, and no HUD - a
+	# CanvasLayer draws regardless of which camera is current, so another
+	# player's HUD would otherwise be painted over our own screen.
+	var mine := is_multiplayer_authority()
+	camera.current = mine
+	hud.visible = mine
+	hud.process_mode = Node.PROCESS_MODE_INHERIT if mine else Node.PROCESS_MODE_DISABLED
+	set_physics_process(mine)
+	set_process_unhandled_input(mine)
+
+
+## Replicates this body's transform to the other peers. Built in code rather
+## than in the scene so there is exactly one place that decides what is synced.
+func _setup_synchronizer() -> void:
+	if not Net.is_online():
+		return
+
+	var config := SceneReplicationConfig.new()
+
+	for path in [".:position", ".:rotation", "Head:rotation"]:
+		var property := NodePath(path)
+		config.add_property(property)
+		config.property_set_replication_mode(
+			property, SceneReplicationConfig.REPLICATION_MODE_ALWAYS
+		)
+
+	var sync := MultiplayerSynchronizer.new()
+	sync.name = "NetSync"
+	sync.replication_config = config
+	sync.replication_interval = 1.0 / 30.0
+	sync.set_multiplayer_authority(get_multiplayer_authority())
+	add_child(sync)
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	# Mouse capturing
@@ -78,7 +126,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		capture_mouse()
 	if Input.is_key_pressed(KEY_ESCAPE):
 		release_mouse()
-	
+
 	# Look around
 	if mouse_captured and event is InputEventMouseMotion:
 		rotate_look(event.relative)
@@ -136,15 +184,30 @@ func _physics_process(delta: float) -> void:
 	
 	# Handling gun firing
 	if can_shoot and Input.is_action_just_pressed("fire"):
-		anim_player.play("gun_recoil")
-		gun_audio.pitch_scale = randf_range(0.8, 1.2)
-		gun_audio.play()
-		var bullet_instance = bullet.instantiate()
-		bullet_instance.position = pos.global_position
-		bullet_instance.transform.basis = pos.global_transform.basis
-		get_parent().add_child(bullet_instance)
-		
-	
+		_fire.rpc()
+
+
+## Runs on every peer so the shot, its recoil and its sound are seen by all.
+## The bullet is not replicated - each peer simulates its own copy along the
+## same straight line, and only the host's copy is allowed to deal damage
+## (see bullet.gd), so nobody can be shot twice by one trigger pull.
+@rpc("any_peer", "call_local", "reliable")
+func _fire() -> void:
+	# A remote sender may only fire the body it actually owns.
+	var sender := multiplayer.get_remote_sender_id()
+	if sender != 0 and sender != get_multiplayer_authority():
+		return
+
+	anim_player.play("gun_recoil")
+	gun_audio.pitch_scale = randf_range(0.8, 1.2)
+	gun_audio.play()
+
+	var bullet_instance = bullet.instantiate()
+	bullet_instance.position = pos.global_position
+	bullet_instance.transform.basis = pos.global_transform.basis
+	# Deliberately not get_parent(): player bodies live under a MultiplayerSpawner,
+	# and bullets must not end up inside a container that replicates its children.
+	get_tree().current_scene.add_child(bullet_instance)
 
 
 ## Rotate us to look around.

@@ -36,15 +36,6 @@ visible = false
 light_energy = 0.1
 shadow_enabled = true
 
-[node name="ProtoController" parent="." unique_id=104429770 groups=["player"] instance=ExtResource("3_wjl7u")]
-transform = Transform3D(-0.16399916, 0, -0.9864605, 0, 1, 0, 0.9864605, 0, -0.16399916, -13.188936, 0.29461694, 78.47974)
-can_freefly = true
-input_left = "left"
-input_right = "right"
-input_forward = "up"
-input_back = "down"
-input_jump = "jump"
-
 [node name="Basiclight" parent="." unique_id=700343751 instance=ExtResource("7_nmo3v")]
 transform = Transform3D(0.7077212, 0, -0.7064919, 0, 1, 0, 0.7064919, 0, 0.7077212, 12.479685, 0.57726884, 101.63912)
 
@@ -988,3 +979,15 @@ stream = ExtResource("13_nsn85")
 
 [node name="Goblincount" parent="." unique_id=1177031012 instance=ExtResource("14_nsn85")]
 transform = Transform3D(-4.325853, -0.54213667, -1.3842655, 0.027354674, 3.4222283, -0.4404088, -4.3886466, 0.5557105, 1.3617138, -0.48790485, 1.9996058, 73.00094)
+
+[node name="Players" type="Node3D" parent="."]
+
+[node name="PlayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://playercharacter/proto_controller.tscn")
+spawn_path = NodePath("../Players")
+
+[node name="Creatures" type="Node3D" parent="."]
+
+[node name="CreatureSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://monsters/creature.tscn")
+spawn_path = NodePath("../Creatures")
