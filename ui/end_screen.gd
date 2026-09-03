@@ -26,8 +26,16 @@ func _format_time(total_seconds: float) -> String:
 
 
 func _on_retry_pressed() -> void:
-	MenuMusic.stop_music()
 	get_tree().paused = false
+
+	# A rematch has to be agreed by everyone, so it is set up back in the lobby
+	# rather than by one peer reloading the level under the others' feet.
+	if Net.is_online():
+		Net.leave()
+		get_tree().change_scene_to_file("res://ui/lobby.tscn")
+		return
+
+	MenuMusic.stop_music()
 	get_tree().change_scene_to_file("res://environment/environment.tscn")
 
 

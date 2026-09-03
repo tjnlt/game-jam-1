@@ -1,5 +1,8 @@
 extends Node
 
+## Flip to false to bring the menu music back.
+const MUTED := true
+
 const MUSIC := preload("res://addons/audio/main_menu_music_ambient.wav")
 
 @onready var player: AudioStreamPlayer = AudioStreamPlayer.new()
@@ -12,6 +15,8 @@ func _ready() -> void:
 
 
 func play_music() -> void:
+	if MUTED:
+		return
 	if not player.playing:
 		player.play()
 

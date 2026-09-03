@@ -1,0 +1,127 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://ui/lobby.gd" id="1_lobby"]
+
+[node name="Lobby" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lobby")
+
+[node name="Center" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="PanelContainer" parent="Center"]
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="Center/Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 24
+
+[node name="VBox" type="VBoxContainer" parent="Center/Panel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="Center/Panel/Margin/VBox"]
+layout_mode = 2
+text = "MULTIPLAYER"
+horizontal_alignment = 1
+
+[node name="NameRow" type="HBoxContainer" parent="Center/Panel/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="NameLabel" type="Label" parent="Center/Panel/Margin/VBox/NameRow"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "Your name"
+
+[node name="NameEdit" type="LineEdit" parent="Center/Panel/Margin/VBox/NameRow"]
+custom_minimum_size = Vector2(260, 0)
+layout_mode = 2
+
+[node name="AddressRow" type="HBoxContainer" parent="Center/Panel/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="AddressLabel" type="Label" parent="Center/Panel/Margin/VBox/AddressRow"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "Host address"
+
+[node name="AddressEdit" type="LineEdit" parent="Center/Panel/Margin/VBox/AddressRow"]
+custom_minimum_size = Vector2(260, 0)
+layout_mode = 2
+placeholder_text = "127.0.0.1"
+
+[node name="ConnectRow" type="HBoxContainer" parent="Center/Panel/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="HostButton" type="Button" parent="Center/Panel/Margin/VBox/ConnectRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Host"
+
+[node name="JoinButton" type="Button" parent="Center/Panel/Margin/VBox/ConnectRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Join"
+
+[node name="StatusLabel" type="Label" parent="Center/Panel/Margin/VBox"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+text = "Host a game, or enter the host's address and join."
+autowrap_mode = 3
+
+[node name="PlayerList" type="Label" parent="Center/Panel/Margin/VBox"]
+custom_minimum_size = Vector2(0, 110)
+layout_mode = 2
+text = "Not connected."
+vertical_alignment = 0
+
+[node name="LevelRow" type="HBoxContainer" parent="Center/Panel/Margin/VBox"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="LevelLabel" type="Label" parent="Center/Panel/Margin/VBox/LevelRow"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "Level"
+
+[node name="LevelOption" type="OptionButton" parent="Center/Panel/Margin/VBox/LevelRow"]
+custom_minimum_size = Vector2(260, 0)
+layout_mode = 2
+
+[node name="ActionRow" type="HBoxContainer" parent="Center/Panel/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="StartButton" type="Button" parent="Center/Panel/Margin/VBox/ActionRow"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Start game"
+
+[node name="LeaveButton" type="Button" parent="Center/Panel/Margin/VBox/ActionRow"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Disconnect"
+
+[node name="BackButton" type="Button" parent="Center/Panel/Margin/VBox/ActionRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Back"

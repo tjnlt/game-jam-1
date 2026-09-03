@@ -35,8 +35,9 @@ func _on_next_pressed() -> void:
 		_update_page()
 		return
 
-	MenuMusic.stop_music()
-	get_tree().change_scene_to_file("res://environment/environment.tscn")
+	# The lobby decides which level to load, so the music keeps playing until
+	# the host actually starts the game.
+	get_tree().change_scene_to_file("res://ui/lobby.tscn")
 
 
 func _update_page() -> void:
