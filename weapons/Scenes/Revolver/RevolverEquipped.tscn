@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://2vtcu4qhvhcs"]
+
+[ext_resource type="Script" uid="uid://b2cth68vqgfj7" path="res://weapons/Scenes/Revolver/RevolverEquipped.gd" id="1_lvvw8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lvvw8"]
+albedo_color = Color(0.15891457, 0.16181812, 0.15497965, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lvvw8"]
+material = SubResource("StandardMaterial3D_lvvw8")
+size = Vector3(0.26116943, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ufxfl"]
+albedo_color = Color(0.315106, 0.1943849, 0.09173039, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_i51gi"]
+material = SubResource("StandardMaterial3D_ufxfl")
+size = Vector3(0.26116943, 1, 1)
+
+[node name="RevolverEquipped" type="Node3D" unique_id=635134293 node_paths=PackedStringArray("weapon_model", "fire_ray")]
+script = ExtResource("1_lvvw8")
+weapon_model = NodePath("WeaponModel")
+fire_ray = NodePath("FireRay")
+
+[node name="WeaponModel" type="Node3D" parent="." unique_id=62976364]
+
+[node name="Frame" type="MeshInstance3D" parent="WeaponModel" unique_id=1205579395]
+transform = Transform3D(0.30996436, 0, 0, 0, 0.22360271, 0, 0, 0, 0.422503, -0.33109418, 0, 0)
+mesh = SubResource("BoxMesh_lvvw8")
+
+[node name="Grip" type="MeshInstance3D" parent="WeaponModel" unique_id=1418124473]
+transform = Transform3D(0.28490236, 0, 0, 0, 0.2895727, 0, 0, 0, 0.103799805, -0.33109418, -0.18004894, 0.17905432)
+mesh = SubResource("BoxMesh_i51gi")
+
+[node name="Barrel" type="MeshInstance3D" parent="WeaponModel" unique_id=921849985]
+transform = Transform3D(0.16534908, 0, 0, 0, 0.06858421, 0, 0, 0, 0.422503, -0.33109418, 0.04943639, -0.3519623)
+mesh = SubResource("BoxMesh_lvvw8")
+
+[node name="Hammer" type="MeshInstance3D" parent="WeaponModel" unique_id=1393922585]
+transform = Transform3D(0.2237201, 0, 0, 0, 0.13015181, 0, 0, 0, 0.08348337, -0.33109418, 0.1247358, 0.10608038)
+mesh = SubResource("BoxMesh_lvvw8")
+
+[node name="FireRay" type="RayCast3D" parent="." unique_id=2105366151]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.33559984, 0.05005735, -0.5018592)
+target_position = Vector3(0, 0, -50)

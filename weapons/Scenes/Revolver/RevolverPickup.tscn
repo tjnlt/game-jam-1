@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://c2yigx1tfbkxv"]
+
+[ext_resource type="Script" uid="uid://ldgqlghg2tve" path="res://weapons/Scenes/Revolver/WeaponPickup.gd" id="1_t1gf2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lvvw8"]
+albedo_color = Color(0.15891457, 0.16181812, 0.15497965, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_e5pn6"]
+material = SubResource("StandardMaterial3D_lvvw8")
+size = Vector3(0.26116943, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ufxfl"]
+albedo_color = Color(0.315106, 0.1943849, 0.09173039, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_t1gf2"]
+material = SubResource("StandardMaterial3D_ufxfl")
+size = Vector3(0.26116943, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d81ba"]
+size = Vector3(1, 1, 0.9805298)
+
+[node name="RevolverPickup" type="RigidBody3D" unique_id=74908976]
+script = ExtResource("1_t1gf2")
+
+[node name="WeaponModel" type="Node3D" parent="." unique_id=1215615944]
+
+[node name="Frame" type="MeshInstance3D" parent="WeaponModel" unique_id=611816787]
+transform = Transform3D(0.30996436, 0, 0, 0, 0.22360271, 0, 0, 0, 0.422503, -0.33109418, 0, 0)
+mesh = SubResource("BoxMesh_e5pn6")
+
+[node name="Grip" type="MeshInstance3D" parent="WeaponModel" unique_id=1433587059]
+transform = Transform3D(0.28490236, 0, 0, 0, 0.2895727, 0, 0, 0, 0.103799805, -0.33109418, -0.18004894, 0.17905432)
+mesh = SubResource("BoxMesh_t1gf2")
+
+[node name="Barrel" type="MeshInstance3D" parent="WeaponModel" unique_id=567112136]
+transform = Transform3D(0.16534908, 0, 0, 0, 0.06858421, 0, 0, 0, 0.422503, -0.33109418, 0.04943639, -0.3519623)
+mesh = SubResource("BoxMesh_e5pn6")
+
+[node name="Hammer" type="MeshInstance3D" parent="WeaponModel" unique_id=974106229]
+transform = Transform3D(0.2237201, 0, 0, 0, 0.13015181, 0, 0, 0, 0.08348337, -0.33109418, 0.1247358, 0.10608038)
+mesh = SubResource("BoxMesh_e5pn6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=35996222]
+transform = Transform3D(0.38289118, 0, 0, 0, 0.60596406, 0, 0, 0, 1, -0.32114297, 0, -0.112213135)
+shape = SubResource("BoxShape3D_d81ba")

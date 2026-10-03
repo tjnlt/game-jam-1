@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://c6ue3fhjhhq6w"]
+
+[ext_resource type="Script" uid="uid://cnhvr1ih6we2e" path="res://playercharacter/PlayerController.gd" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://b1dydpoe5ts3y" path="res://weapons/WeaponManager.gd" id="2_onrkg"]
+[ext_resource type="Script" uid="uid://bm80o0o0s7quv" path="res://weapons/Definitions/weapon_data.gd" id="3_hqtel"]
+[ext_resource type="Resource" uid="uid://bgpcuj61u1pt3" path="res://weapons/revolver.tres" id="4_sweqy"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d81ba"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g04v2"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_d81ba"]
+size = Vector3(0.82702637, 0.77905273, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oob6c"]
+albedo_color = Color(0.17254902, 1, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_g04v2"]
+material = SubResource("StandardMaterial3D_oob6c")
+size = Vector3(1, 1.2485352, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4flbx"]
+
+[node name="Player" type="CharacterBody3D" unique_id=1092143562 node_paths=PackedStringArray("weapons_manager") groups=["mortals"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3424022, 0)
+script = ExtResource("1_4flbx")
+weapons_manager = NodePath("Head/Camera3D/WeaponManager")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=712938260]
+shape = SubResource("CapsuleShape3D_d81ba")
+
+[node name="UncrouchCheck" type="ShapeCast3D" parent="." unique_id=723672624]
+shape = SubResource("CapsuleShape3D_g04v2")
+target_position = Vector3(0, 0.9, 0)
+
+[node name="Head" type="Node3D" parent="." unique_id=333848458]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2132787, 0)
+
+[node name="HeadMesh" type="MeshInstance3D" parent="Head" unique_id=88369339]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.013122559, -0.002319336, 0)
+mesh = SubResource("BoxMesh_d81ba")
+
+[node name="Camera3D" type="Camera3D" parent="Head" unique_id=646698157]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.011123598, 0)
+current = true
+
+[node name="WeaponManager" type="Node3D" parent="Head/Camera3D" unique_id=1522490088 node_paths=PackedStringArray("shooter_body")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.6133852)
+script = ExtResource("2_onrkg")
+weapon_data_array = Array[ExtResource("3_hqtel")]([ExtResource("4_sweqy")])
+shooter_body = NodePath("../../..")
+
+[node name="Visuals" type="Node3D" parent="." unique_id=1617469950]
+
+[node name="Body" type="MeshInstance3D" parent="Visuals" unique_id=2099049708]
+transform = Transform3D(0.4600327, 0, 0, 0, 1.1419489, 0, 0, 0, 0.68138725, 0, 0.12901497, 0)
+mesh = SubResource("BoxMesh_g04v2")
+
+[node name="Feet" type="MeshInstance3D" parent="Visuals" unique_id=50396000]
+transform = Transform3D(0.4005362, 0, 0, 0, 0.39999998, 0, 0, 0, 0.4480732, 0, -0.7183286, 0)
+mesh = SubResource("BoxMesh_4flbx")

@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bjlsnca8uw3jb"]
+
+[ext_resource type="Script" uid="uid://dq8h7gwg1b3wf" path="res://weapons/VFX/HitImpacts/VFXScenes/impact_vfx_scene.gd" id="1_4r8kk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g04v2"]
+albedo_color = Color(0.045256145, 0.045256153, 0.045256153, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_d81ba"]
+material = SubResource("StandardMaterial3D_g04v2")
+size = Vector3(0.1, 0.1, 0.1)
+
+[node name="DefaultImpactVfx" type="Node3D" unique_id=1497328350]
+script = ExtResource("1_4r8kk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=253132500]
+mesh = SubResource("BoxMesh_d81ba")
+
+[node name="Timer" type="Timer" parent="." unique_id=745640050]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

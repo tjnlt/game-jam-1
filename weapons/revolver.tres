@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="WeaponData" format=3 uid="uid://bgpcuj61u1pt3"]
+
+[ext_resource type="Script" uid="uid://bm80o0o0s7quv" path="res://weapons/Definitions/weapon_data.gd" id="1_hd78q"]
+[ext_resource type="Script" uid="uid://qja5dtnmo864" path="res://weapons/VFX/HitImpacts/weapon_impact.gd" id="1_v5wlp"]
+[ext_resource type="Resource" uid="uid://rgkfg6672c8k" path="res://weapons/VFX/HitImpacts/default_impact.tres" id="2_a45h7"]
+[ext_resource type="PackedScene" uid="uid://2vtcu4qhvhcs" path="res://weapons/Scenes/Revolver/RevolverEquipped.tscn" id="2_q1onw"]
+[ext_resource type="Resource" uid="uid://bnm33ildgs6rq" path="res://weapons/VFX/HitImpacts/blood_impact.tres" id="3_3v6gq"]
+[ext_resource type="PackedScene" uid="uid://c2yigx1tfbkxv" path="res://weapons/Scenes/Revolver/RevolverPickup.tscn" id="3_bne1r"]
+
+[resource]
+script = ExtResource("1_hd78q")
+weapon_name = "Revolver"
+weapon_equipped_scene = ExtResource("2_q1onw")
+weapon_pickup_scene = ExtResource("3_bne1r")
+max_magazine_capacity = 6
+max_total_ammo = 24
+reload_time = 1.5
+recoil_kickback = 0.18
+recoil_rotation_degrees = Vector3(-12, 3, 0)
+impacts = Array[ExtResource("1_v5wlp")]([ExtResource("2_a45h7"), ExtResource("3_3v6gq")])
+metadata/_custom_type_script = "uid://bm80o0o0s7quv"

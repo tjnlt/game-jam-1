@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="WeaponImpact" format=3 uid="uid://rgkfg6672c8k"]
+
+[ext_resource type="PackedScene" uid="uid://bjlsnca8uw3jb" path="res://weapons/VFX/HitImpacts/VFXScenes/DefaultImpactVFX.tscn" id="1_0q3jv"]
+[ext_resource type="Script" uid="uid://qja5dtnmo864" path="res://weapons/VFX/HitImpacts/weapon_impact.gd" id="1_72prr"]
+
+[resource]
+script = ExtResource("1_72prr")
+impact_scene = ExtResource("1_0q3jv")
+metadata/_custom_type_script = "uid://qja5dtnmo864"
