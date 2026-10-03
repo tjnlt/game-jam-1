@@ -62,7 +62,7 @@ mesh = SubResource("BoxMesh_crate")
 [node name="Players" type="Node3D" parent="."]
 
 [node name="PlayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://playercharacter/proto_controller.tscn")
+_spawnable_scenes = PackedStringArray("res://playercharacter/player.tscn")
 spawn_path = NodePath("../Players")
 
 [node name="HUD" type="CanvasLayer" parent="."]

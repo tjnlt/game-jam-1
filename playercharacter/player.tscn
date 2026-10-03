@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://b1dydpoe5ts3y" path="res://weapons/WeaponManager.gd" id="2_onrkg"]
 [ext_resource type="Script" uid="uid://bm80o0o0s7quv" path="res://weapons/Definitions/weapon_data.gd" id="3_hqtel"]
 [ext_resource type="Resource" uid="uid://bgpcuj61u1pt3" path="res://weapons/revolver.tres" id="4_sweqy"]
+[ext_resource type="PackedScene" path="res://ui/rod_display.tscn" id="5_roddisp"]
+[ext_resource type="PackedScene" path="res://ui/timer_display.tscn" id="6_timerdisp"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d81ba"]
 
@@ -22,19 +24,20 @@ size = Vector3(1, 1.2485352, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_4flbx"]
 
 [node name="Player" type="CharacterBody3D" unique_id=1092143562 node_paths=PackedStringArray("weapons_manager") groups=["mortals"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3424022, 0)
 script = ExtResource("1_4flbx")
 weapons_manager = NodePath("Head/Camera3D/WeaponManager")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=712938260]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_d81ba")
 
 [node name="UncrouchCheck" type="ShapeCast3D" parent="." unique_id=723672624]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_g04v2")
 target_position = Vector3(0, 0.9, 0)
 
 [node name="Head" type="Node3D" parent="." unique_id=333848458]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2132787, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2132787, 0)
 
 [node name="HeadMesh" type="MeshInstance3D" parent="Head" unique_id=88369339]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.013122559, -0.002319336, 0)
@@ -51,6 +54,7 @@ weapon_data_array = Array[ExtResource("3_hqtel")]([ExtResource("4_sweqy")])
 shooter_body = NodePath("../../..")
 
 [node name="Visuals" type="Node3D" parent="." unique_id=1617469950]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="Body" type="MeshInstance3D" parent="Visuals" unique_id=2099049708]
 transform = Transform3D(0.4600327, 0, 0, 0, 1.1419489, 0, 0, 0, 0.68138725, 0, 0.12901497, 0)
@@ -59,3 +63,35 @@ mesh = SubResource("BoxMesh_g04v2")
 [node name="Feet" type="MeshInstance3D" parent="Visuals" unique_id=50396000]
 transform = Transform3D(0.4005362, 0, 0, 0, 0.39999998, 0, 0, 0, 0.4480732, 0, -0.7183286, 0)
 mesh = SubResource("BoxMesh_4flbx")
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1377769609]
+
+[node name="CrosshairHorizontal" type="ColorRect" parent="HUD" unique_id=1344118612]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -1.0
+offset_right = 8.0
+offset_bottom = 1.0
+mouse_filter = 2
+color = Color(1, 1, 1, 0.8)
+
+[node name="RodDisplay" parent="HUD" instance=ExtResource("5_roddisp")]
+
+[node name="TimerDisplay" parent="HUD" instance=ExtResource("6_timerdisp")]
+
+[node name="CrosshairVertical" type="ColorRect" parent="HUD" unique_id=552650561]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -8.0
+offset_right = 1.0
+offset_bottom = 8.0
+mouse_filter = 2
+color = Color(1, 1, 1, 0.8)

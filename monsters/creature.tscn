@@ -338,7 +338,7 @@ mesh = SubResource("SphereMesh_eyeglow")
 [node name="AnimationPlayer" parent="." index="1" unique_id=1187260628]
 libraries/local = SubResource("AnimationLibrary_0u7sy")
 
-[node name="HurtBox" type="StaticBody3D" parent="." index="2" unique_id=900000001]
+[node name="HurtBox" type="StaticBody3D" parent="." index="2" unique_id=900000001 groups=["mortals"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35170918, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox" index="0" unique_id=900000002]

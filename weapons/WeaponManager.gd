@@ -25,12 +25,21 @@ func _initialize_all_weapons() -> void:
 	for child in get_children():
 		child.queue_free()
 	weapon_instances.clear()
-	
+
+	# Godot loads revolver.tres once and hands the same object to every player
+	# body on this machine, so without copies all players would share one
+	# magazine. Ammo lives on WeaponData, so each manager gets its own.
+	var own_copies: Array[WeaponData] = []
+	for weapon_data in weapon_data_array:
+		own_copies.append(weapon_data.duplicate() if weapon_data else null)
+	weapon_data_array = own_copies
+
 	for weapon_data in weapon_data_array:
 		if weapon_data and weapon_data.weapon_equipped_scene:
 			var weapon_instance = weapon_data.weapon_equipped_scene.instantiate()
 			weapon_instance.shooter_body = shooter_body
-			
+			weapon_instance.deal_damage.connect(_on_weapon_deal_damage)
+
 			if weapon_instance.has_method("set_weapon_data"):
 				weapon_instance.set_weapon_data(weapon_data)
 				
@@ -84,6 +93,17 @@ func attack() -> void:
 	if current_weapon_instance and current_weapon_instance.has_method("attack"):
 		current_weapon_instance.attack()
 	
+## Every peer simulates each shot so everyone sees the impact, but only the host
+## applies damage (same rule as gun/bullet.gd) so one shot can't hit four times.
+## The ray hits a goblin's HurtBox, and take_damage lives on its parent.
+func _on_weapon_deal_damage(damage_amount: int, _hit_point: Vector3, _hit_normal: Vector3, collider: Object) -> void:
+	if not Net.is_authority():
+		return
+	if collider.has_method("take_damage"):
+		collider.take_damage(damage_amount)
+	elif collider is Node and collider.get_parent() and collider.get_parent().has_method("take_damage"):
+		collider.get_parent().take_damage(damage_amount)
+
 func reload_current_weapon() -> void:
 	if current_weapon_instance and current_weapon_instance.has_method("manual_reload"):
 		current_weapon_instance.manual_reload()
@@ -99,7 +119,8 @@ func throw_current_weapon(throw_force: Vector3 = Vector3.ZERO) -> bool:
 		# Instantiate the pickup/world scene for the weapon.
 		var weapon_pickup = weapon_data.weapon_pickup_scene.instantiate()
 		# Add it to the main game world, not as a child of the player.
-		get_tree().root.add_child(weapon_pickup)
+		# current_scene rather than root, so it goes away when the level changes.
+		get_tree().current_scene.add_child(weapon_pickup)
 		weapon_pickup.global_position = current_weapon_instance.global_position
 		
 		# IMPORTANT: Copy the current weapon's data (including ammo state) to the pickup.
@@ -165,9 +186,10 @@ func pickup_weapon(new_weapon_data: WeaponData) -> bool:
 		var weapon_instance = new_weapon_data.weapon_equipped_scene.instantiate()
 		if weapon_instance.has_method("set_weapon_data"):
 			weapon_instance.set_weapon_data(new_weapon_data)
-			
+
 		weapon_instance.shooter_body = shooter_body
-		
+		weapon_instance.deal_damage.connect(_on_weapon_deal_damage)
+
 		add_child(weapon_instance)
 		weapon_instance.visible = false
 		weapon_instance.set_process_mode(Node.PROCESS_MODE_DISABLED)

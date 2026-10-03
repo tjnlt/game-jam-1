@@ -15,7 +15,7 @@ signal level_started
 const DEFAULT_PORT: int = 24565
 const MAX_PLAYERS: int = 4
 
-const PLAYER_SCENE: PackedScene = preload("res://playercharacter/proto_controller.tscn")
+const PLAYER_SCENE: PackedScene = preload("res://playercharacter/player.tscn")
 
 ## Levels the host can start. Keyed by the label shown in the lobby.
 const LEVELS: Dictionary = {
